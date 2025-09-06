@@ -17,7 +17,9 @@ import {
   Mail,
   CheckCircle,
   Users,
-  TrendingUp
+  TrendingUp,
+  Menu,
+  X
 } from "lucide-react";
 
 // Count Up Component
@@ -352,6 +354,7 @@ const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const LogisticsLandingPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Get translations
   const t = useTranslations();
@@ -399,10 +402,10 @@ const LogisticsLandingPage: React.FC = () => {
   ];
 
   const stats = [
-    { number: 50000, label: t('stats.shipmentsDelivered'), suffix: "+" },
-    { number: 200, label: t('stats.countriesServed'), suffix: "+" },
-    { number: 99, label: t('stats.onTimeDelivery'), suffix: "%" },
-    { number: 24, label: t('stats.customerSupport'), suffix: "/7" }
+    { number: 20000, label: t('stats.shipmentsDelivered'), suffix: "+" },
+    { number: 1500, label: t('stats.countriesServed'), suffix: "+" },
+    { number: 1000, label: t('stats.onTimeDelivery'), suffix: "+" },
+    { number: 300, label: t('stats.customerSupport'), suffix: "+" }
   ];
 
   const whyChooseUs = [
@@ -435,13 +438,71 @@ const LogisticsLandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Language Switcher */}
-      <div className="fixed top-4 right-4 z-50">
-        <LanguageSwitcher />
-      </div>
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo and Company Name */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <Truck className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <span className="text-xl font-bold text-primary">Huang Shan Global</span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              <a href="#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</a>
+              <a href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</a>
+              <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</a>
+              <a href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</a>
+              <a href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</a>
+              <a href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</a>
+              <a href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</a>
+              <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</a>
+            </nav>
+
+            {/* Language Switcher and Mobile Menu */}
+            <div className="flex items-center space-x-4">
+              <LanguageSwitcher />
+              
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="lg:hidden border-t border-border mt-1"
+              >
+                <nav className="py-4 space-y-2">
+                  <a href="#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</a>
+                  <a href="/about" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</a>
+                  <a href="#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</a>
+                  <a href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</a>
+                  <a href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</a>
+                  <a href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</a>
+                  <a href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</a>
+                  <a href="#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</a>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <AnimatedGridPattern
           numSquares={30}
           maxOpacity={0.1}
@@ -475,7 +536,7 @@ const LogisticsLandingPage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-muted/50">
+      <section id="services" className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,7 +665,7 @@ const LogisticsLandingPage: React.FC = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 bg-muted/50">
+      <section id="contact" className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -635,7 +696,7 @@ const LogisticsLandingPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">{t('contact.phone')}</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">038.959.1238 - 058.585.1999</p>
                   </div>
                 </div>
                 
@@ -645,7 +706,7 @@ const LogisticsLandingPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">{t('contact.email')}</h3>
-                    <p className="text-muted-foreground">contact@logistics.com</p>
+<p className="text-muted-foreground">huangshanglobal@gmail.com</p>
                   </div>
                 </div>
                 
@@ -655,7 +716,7 @@ const LogisticsLandingPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">{t('contact.address')}</h3>
-                    <p className="text-muted-foreground">123 Logistics Ave, Business District</p>
+                    <p className="text-muted-foreground">C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội</p>
                   </div>
                 </div>
               </motion.div>

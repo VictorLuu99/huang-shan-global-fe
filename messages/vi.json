@@ -1,73 +1,129 @@
 {
+  "nav": {
+    "home": "TRANG CHỦ",
+    "about": "GIỚI THIỆU", 
+    "services": "DỊCH VỤ",
+    "policies": "CHÍNH SÁCH",
+    "recruitment": "TUYỂN DỤNG",
+    "news": "TIN TỨC",
+    "complaints": "KIẾN THỨC",
+    "contact": "LIÊN HỆ"
+  },
+  "about": {
+    "title": "🌏 Giới thiệu Huang Shan Global",
+    "subtitle": "CÔNG TY CỔ PHẦN THƯƠNG MẠI XUẤT NHẬP KHẨU HUANG SHAN GLOBAL",
+    "company": {
+      "phone": "Điện thoại: 038.959.1238 - 058.585.1999",
+      "address": "Địa chỉ: C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội",
+      "license": "Giấy chứng nhận đăng ký doanh nghiệp số 0111008822 do Sở Tài Chính Thành phố Hà Nội cấp",
+      "representative": "Người đại diện: Nguyễn Đình Sơn"
+    },
+    "introduction": {
+      "title": "🏢 Giới thiệu",
+      "content": "Huang Shan Global là đơn vị tiên phong trong lĩnh vực xuất nhập khẩu và logistics Trung Quốc – Việt Nam, chuyên cung cấp giải pháp toàn diện từ vận chuyển, đặt hàng, thanh toán hộ, đến nhập khẩu máy móc chuyên dụng. Với hệ thống kho bãi, phương tiện vận tải chủ động tại cả Trung Quốc và Việt Nam, cùng đội ngũ nhân sự giàu kinh nghiệm, Huang Shan Global cam kết mang đến dịch vụ nhanh chóng – an toàn – minh bạch – tiết kiệm cho mọi khách hàng."
+    },
+    "mission": {
+      "title": "🎯 Sứ mệnh",
+      "content": "Chúng tôi tồn tại để giúp các doanh nghiệp, nhà bán lẻ và cá nhân kinh doanh dễ dàng tiếp cận nguồn hàng Trung Quốc chất lượng, tối ưu chi phí, giảm thiểu rủi ro và tăng lợi nhuận. Huang Shan Global đồng hành cùng khách hàng trong từng đơn hàng, từng chặng đường phát triển."
+    },
+    "vision": {
+      "title": "👁️ Tầm nhìn", 
+      "content": "Huang Shan Global hướng tới trở thành thương hiệu logistics và xuất nhập khẩu số 1 tại Việt Nam trong lĩnh vực thương mại với Trung Quốc, đồng thời mở rộng mạng lưới quốc tế, xây dựng hệ sinh thái dịch vụ trọn gói, khẳng định vị thế trên thị trường khu vực Đông Nam Á."
+    },
+    "values": {
+      "title": "🌟 Giá trị cốt lõi",
+      "trust": {
+        "title": "Uy tín",
+        "description": "Cam kết đúng hẹn, đúng hàng, đúng chất lượng."
+      },
+      "efficiency": {
+        "title": "Hiệu quả",
+        "description": "Dịch vụ tối ưu, chi phí hợp lý, nâng cao lợi nhuận cho khách hàng."
+      },
+      "transparency": {
+        "title": "Minh bạch",
+        "description": "Quy trình rõ ràng, thông tin chính xác, không phát sinh chi phí ẩn."
+      },
+      "partnership": {
+        "title": "Đồng hành",
+        "description": "CSKH 1:1, hỗ trợ 24/7, luôn bên cạnh khách hàng trong mọi tình huống."
+      },
+      "innovation": {
+        "title": "Đột phá",
+        "description": "Liên tục cải tiến dịch vụ, ứng dụng công nghệ để nâng cao trải nghiệm."
+      }
+    },
+    "conclusion": "Với những giá trị trên, Huang Shan Global không chỉ là đơn vị vận chuyển – nhập khẩu, mà còn là người bạn đồng hành chiến lược giúp khách hàng tự tin mở rộng kinh doanh và vươn xa."
+  },
   "hero": {
-    "title": "Giải Pháp Logistics Toàn Cầu",
-    "subtitle": "Tối ưu hóa chuỗi cung ứng của bạn với các dịch vụ logistics toàn diện. Nhanh chóng, đáng tin cậy và an toàn trên toàn thế giới.",
-    "getQuote": "Nhận Báo Giá",
+    "title": "UY TÍN SỐ 1 VIỆT NAM",
+    "subtitle": "ĐƠN VỊ NHẬP KHẨU VÀ VẬN CHUYỂN TRUNG QUỐC - VIỆT NAM",
+    "getQuote": "Nhận Báo Giá Miễn Phí",
     "trackShipment": "Theo Dõi Đơn Hàng"
   },
   "services": {
-    "title": "Dịch Vụ Của Chúng Tôi",
-    "subtitle": "Giải pháp logistics toàn diện được thiết kế riêng cho nhu cầu doanh nghiệp của bạn",
+    "title": "DỊCH VỤ",
+    "subtitle": "Dịch vụ vận chuyển đa dạng – phù hợp mọi nhu cầu",
     "groundTransportation": {
-      "title": "Vận Chuyển Đường Bộ",
-      "description": "Giải pháp vận chuyển đường bộ đáng tin cậy cho các lô hàng nội địa và khu vực với theo dõi thời gian thực."
+      "title": "Vận chuyển đường bộ Trung – Việt",
+      "description": "2–3 ngày, kho bãi 2 đầu, an toàn – nhanh chóng."
     },
     "airFreight": {
-      "title": "Vận Chuyển Hàng Không",
-      "description": "Dịch vụ vận chuyển hàng không quốc tế nhanh chóng cho các lô hàng nhạy cảm về thời gian trên toàn thế giới."
+      "title": "Vận chuyển TMĐT siêu tốc",
+      "description": "Line chuyên biệt 2–3 ngày, tối ưu shop online & TMĐT."
     },
     "oceanFreight": {
-      "title": "Vận Chuyển Đường Biển",
-      "description": "Giải pháp vận chuyển đường biển tiết kiệm chi phí cho các lô hàng quốc tế khối lượng lớn."
+      "title": "Vận chuyển đường biển",
+      "description": "Hàng cồng kềnh, máy móc, thiết bị công nghiệp, chứng từ đầy đủ."
     },
     "warehousing": {
-      "title": "Kho Bãi",
-      "description": "Trung tâm lưu trữ và phân phối an toàn với hệ thống quản lý tồn kho tiên tiến."
+      "title": "Vận chuyển chính ngạch",
+      "description": "Hóa đơn VAT, nhập khẩu lâu dài, minh bạch, an toàn."
     },
     "globalNetwork": {
-      "title": "Mạng Lưới Toàn Cầu",
-      "description": "Mạng lưới logistics toàn thế giới bao phủ hơn 200 quốc gia và vùng lãnh thổ."
+      "title": "Nhập khẩu máy móc",
+      "description": "Thẩm định nhà máy, thủ tục hải quan, vận chuyển an toàn."
     },
     "insurance": {
-      "title": "Bảo Hiểm Hàng Hóa",
-      "description": "Bảo vệ bảo hiểm hàng hóa toàn diện cho các lô hàng có giá trị của bạn."
+      "title": "Order & Tối ưu nguồn hàng",
+      "description": "Tìm nguồn uy tín, đàm phán giá, đặt hàng A–Z."
     }
   },
   "stats": {
-    "title": "Tác Động Của Chúng Tôi",
-    "subtitle": "Những con số nói lên sự xuất sắc của chúng tôi",
-    "shipmentsDelivered": "Đơn Hàng Đã Giao",
-    "countriesServed": "Quốc Gia Phục Vụ",
-    "onTimeDelivery": "Giao Hàng Đúng Hạn",
-    "customerSupport": "Hỗ Trợ Khách Hàng"
+    "title": "NHỮNG CON SỐ ẤN TƯỢNG TẠI HUANG SHAN GLOBAL",
+    "subtitle": "Những con số này không chỉ thể hiện năng lực vận hành mạnh mẽ, mà còn khẳng định sự tin cậy tuyệt đối",
+    "shipmentsDelivered": "Đơn Hàng Vận Chuyển",
+    "countriesServed": "Khách Hàng Tin Tưởng",
+    "onTimeDelivery": "Chủng Loại Hàng Hóa",
+    "customerSupport": "Đối Tác Chiến Lược"
   },
   "partners": {
-    "title": "Đối Tác Tin Cậy",
-    "subtitle": "Hợp tác với các công ty hàng đầu trên toàn thế giới"
+    "title": "ĐỐI TÁC TIÊU BIỂU",
+    "subtitle": "250+ đối tác chiến lược tin tưởng lựa chọn"
   },
   "whyChooseUs": {
-    "title": "Tại Sao Chọn Chúng Tôi",
-    "subtitle": "Trải nghiệm sự khác biệt với các dịch vụ logistics cao cấp của chúng tôi",
+    "title": "VÌ SAO NÊN CHỌN HUANG SHAN GLOBAL?",
+    "subtitle": "Uy tín số 1 Việt Nam trong lĩnh vực nhập khẩu và vận chuyển Trung Quốc - Việt Nam",
     "fastDelivery": {
-      "title": "Giao Hàng Nhanh",
-      "description": "Tùy chọn vận chuyển nhanh với thời gian giao hàng đảm bảo"
+      "title": "Hàng về siêu nhanh – chỉ 2–3 ngày",
+      "description": "Line vận chuyển TMĐT chuyên biệt, không kiểm hóa, tránh tình trạng tắc biên"
     },
     "secureHandling": {
-      "title": "Xử Lý An Toàn",
-      "description": "Các biện pháp bảo mật tiên tiến và xử lý gói hàng cẩn thận"
+      "title": "Chi phí tối ưu – minh bạch tuyệt đối",
+      "description": "Phí dịch vụ rẻ chỉ từ 1%, phù hợp từ đơn lẻ đến hàng lô"
     },
     "costEffective": {
-      "title": "Tiết Kiệm Chi Phí",
-      "description": "Giá cả cạnh tranh với cơ cấu phí minh bạch"
+      "title": "Chính sách đền bù chi tiết, đảm bảo",
+      "description": "Đền 100% giá trị hàng hóa nếu mua gói bảo hiểm 5%"
     },
     "expertSupport": {
-      "title": "Hỗ Trợ Chuyên Gia",
-      "description": "Dịch vụ khách hàng 24/7 từ các chuyên gia logistics"
+      "title": "CSKH tận tâm – đồng hành 24/7",
+      "description": "Mỗi khách hàng đều có nhân viên hỗ trợ riêng từ A–Z"
     }
   },
   "contact": {
-    "title": "Liên Hệ",
-    "subtitle": "Sẵn sàng tối ưu hóa logistics của bạn? Liên hệ với chúng tôi ngay hôm nay",
+    "title": "LIÊN HỆ VỚI CHÚNG TÔI",
+    "subtitle": "NHẬN TƯ VẤN VÀ BÁO GIÁ MIỄN PHÍ",
     "phone": "Điện Thoại",
     "email": "Email",
     "address": "Địa Chỉ",
@@ -84,8 +140,8 @@
     }
   },
   "footer": {
-    "companyName": "LogisticsPro",
-    "companyDescription": "Đối tác đáng tin cậy cho các giải pháp logistics toàn cầu.",
+    "companyName": "Huang Shan Global",
+    "companyDescription": "CÔNG TY CỔ PHẦN THƯƠNG MẠI XUẤT NHẬP KHẨU HUANG SHAN GLOBAL",
     "services": "Dịch Vụ",
     "company": "Công Ty",
     "support": "Hỗ Trợ",
@@ -97,6 +153,6 @@
     "trackPackage": "Theo Dõi Gói Hàng",
     "shippingCalculator": "Tính Phí Vận Chuyển",
     "documentation": "Tài Liệu",
-    "copyright": "© 2024 LogisticsPro. Tất cả quyền được bảo lưu."
+    "copyright": "© 2024 Huang Shan Global. Tất cả quyền được bảo lưu."
   }
 }
