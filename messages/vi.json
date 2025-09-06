@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "title": "Giải Pháp Logistics Toàn Cầu",
+    "subtitle": "Tối ưu hóa chuỗi cung ứng của bạn với các dịch vụ logistics toàn diện. Nhanh chóng, đáng tin cậy và an toàn trên toàn thế giới.",
+    "getQuote": "Nhận Báo Giá",
+    "trackShipment": "Theo Dõi Đơn Hàng"
+  },
+  "services": {
+    "title": "Dịch Vụ Của Chúng Tôi",
+    "subtitle": "Giải pháp logistics toàn diện được thiết kế riêng cho nhu cầu doanh nghiệp của bạn",
+    "groundTransportation": {
+      "title": "Vận Chuyển Đường Bộ",
+      "description": "Giải pháp vận chuyển đường bộ đáng tin cậy cho các lô hàng nội địa và khu vực với theo dõi thời gian thực."
+    },
+    "airFreight": {
+      "title": "Vận Chuyển Hàng Không",
+      "description": "Dịch vụ vận chuyển hàng không quốc tế nhanh chóng cho các lô hàng nhạy cảm về thời gian trên toàn thế giới."
+    },
+    "oceanFreight": {
+      "title": "Vận Chuyển Đường Biển",
+      "description": "Giải pháp vận chuyển đường biển tiết kiệm chi phí cho các lô hàng quốc tế khối lượng lớn."
+    },
+    "warehousing": {
+      "title": "Kho Bãi",
+      "description": "Trung tâm lưu trữ và phân phối an toàn với hệ thống quản lý tồn kho tiên tiến."
+    },
+    "globalNetwork": {
+      "title": "Mạng Lưới Toàn Cầu",
+      "description": "Mạng lưới logistics toàn thế giới bao phủ hơn 200 quốc gia và vùng lãnh thổ."
+    },
+    "insurance": {
+      "title": "Bảo Hiểm Hàng Hóa",
+      "description": "Bảo vệ bảo hiểm hàng hóa toàn diện cho các lô hàng có giá trị của bạn."
+    }
+  },
+  "stats": {
+    "title": "Tác Động Của Chúng Tôi",
+    "subtitle": "Những con số nói lên sự xuất sắc của chúng tôi",
+    "shipmentsDelivered": "Đơn Hàng Đã Giao",
+    "countriesServed": "Quốc Gia Phục Vụ",
+    "onTimeDelivery": "Giao Hàng Đúng Hạn",
+    "customerSupport": "Hỗ Trợ Khách Hàng"
+  },
+  "partners": {
+    "title": "Đối Tác Tin Cậy",
+    "subtitle": "Hợp tác với các công ty hàng đầu trên toàn thế giới"
+  },
+  "whyChooseUs": {
+    "title": "Tại Sao Chọn Chúng Tôi",
+    "subtitle": "Trải nghiệm sự khác biệt với các dịch vụ logistics cao cấp của chúng tôi",
+    "fastDelivery": {
+      "title": "Giao Hàng Nhanh",
+      "description": "Tùy chọn vận chuyển nhanh với thời gian giao hàng đảm bảo"
+    },
+    "secureHandling": {
+      "title": "Xử Lý An Toàn",
+      "description": "Các biện pháp bảo mật tiên tiến và xử lý gói hàng cẩn thận"
+    },
+    "costEffective": {
+      "title": "Tiết Kiệm Chi Phí",
+      "description": "Giá cả cạnh tranh với cơ cấu phí minh bạch"
+    },
+    "expertSupport": {
+      "title": "Hỗ Trợ Chuyên Gia",
+      "description": "Dịch vụ khách hàng 24/7 từ các chuyên gia logistics"
+    }
+  },
+  "contact": {
+    "title": "Liên Hệ",
+    "subtitle": "Sẵn sàng tối ưu hóa logistics của bạn? Liên hệ với chúng tôi ngay hôm nay",
+    "phone": "Điện Thoại",
+    "email": "Email",
+    "address": "Địa Chỉ",
+    "form": {
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "email": "Email",
+      "company": "Công Ty",
+      "message": "Tin Nhắn",
+      "messagePlaceholder": "Hãy cho chúng tôi biết về nhu cầu logistics của bạn...",
+      "sendMessage": "Gửi Tin Nhắn",
+      "thankYou": "Cảm Ơn Bạn!",
+      "thankYouMessage": "Chúng tôi đã nhận được tin nhắn của bạn và sẽ liên hệ lại trong vòng 24 giờ."
+    }
+  },
+  "footer": {
+    "companyName": "LogisticsPro",
+    "companyDescription": "Đối tác đáng tin cậy cho các giải pháp logistics toàn cầu.",
+    "services": "Dịch Vụ",
+    "company": "Công Ty",
+    "support": "Hỗ Trợ",
+    "aboutUs": "Về Chúng Tôi",
+    "careers": "Tuyển Dụng",
+    "news": "Tin Tức",
+    "contact": "Liên Hệ",
+    "helpCenter": "Trung Tâm Trợ Giúp",
+    "trackPackage": "Theo Dõi Gói Hàng",
+    "shippingCalculator": "Tính Phí Vận Chuyển",
+    "documentation": "Tài Liệu",
+    "copyright": "© 2024 LogisticsPro. Tất cả quyền được bảo lưu."
+  }
+}

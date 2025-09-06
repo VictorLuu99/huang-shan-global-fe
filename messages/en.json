@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "title": "Global Logistics Solutions",
+    "subtitle": "Streamline your supply chain with our comprehensive logistics services. Fast, reliable, and secure shipping worldwide.",
+    "getQuote": "Get Quote",
+    "trackShipment": "Track Shipment"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive logistics solutions tailored to your business needs",
+    "groundTransportation": {
+      "title": "Ground Transportation",
+      "description": "Reliable ground shipping solutions for domestic and regional deliveries with real-time tracking."
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "description": "Fast international air cargo services for time-sensitive shipments worldwide."
+    },
+    "oceanFreight": {
+      "title": "Ocean Freight",
+      "description": "Cost-effective sea freight solutions for large volume international shipments."
+    },
+    "warehousing": {
+      "title": "Warehousing",
+      "description": "Secure storage and distribution centers with advanced inventory management systems."
+    },
+    "globalNetwork": {
+      "title": "Global Network",
+      "description": "Worldwide logistics network covering 200+ countries and territories."
+    },
+    "insurance": {
+      "title": "Insurance Coverage",
+      "description": "Comprehensive cargo insurance protection for your valuable shipments."
+    }
+  },
+  "stats": {
+    "title": "Our Impact",
+    "subtitle": "Numbers that speak for our excellence",
+    "shipmentsDelivered": "Shipments Delivered",
+    "countriesServed": "Countries Served",
+    "onTimeDelivery": "On-Time Delivery",
+    "customerSupport": "Customer Support"
+  },
+  "partners": {
+    "title": "Trusted Partners",
+    "subtitle": "Working with industry leaders worldwide"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "Experience the difference with our premium logistics services",
+    "fastDelivery": {
+      "title": "Fast Delivery",
+      "description": "Express shipping options with guaranteed delivery times"
+    },
+    "secureHandling": {
+      "title": "Secure Handling",
+      "description": "Advanced security measures and careful package handling"
+    },
+    "costEffective": {
+      "title": "Cost Effective",
+      "description": "Competitive pricing with transparent fee structure"
+    },
+    "expertSupport": {
+      "title": "Expert Support",
+      "description": "24/7 customer service from logistics professionals"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to optimize your logistics? Contact us today",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your logistics needs...",
+      "sendMessage": "Send Message",
+      "thankYou": "Thank You!",
+      "thankYouMessage": "We've received your message and will get back to you within 24 hours."
+    }
+  },
+  "footer": {
+    "companyName": "LogisticsPro",
+    "companyDescription": "Your trusted partner for global logistics solutions.",
+    "services": "Services",
+    "company": "Company",
+    "support": "Support",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "news": "News",
+    "contact": "Contact",
+    "helpCenter": "Help Center",
+    "trackPackage": "Track Package",
+    "shippingCalculator": "Shipping Calculator",
+    "documentation": "Documentation",
+    "copyright": "© 2024 LogisticsPro. All rights reserved."
+  }
+}

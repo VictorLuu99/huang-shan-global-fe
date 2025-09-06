@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "title": "全球物流解决方案",
+    "subtitle": "通过我们全面的物流服务优化您的供应链。快速、可靠、安全地服务全球。",
+    "getQuote": "获取报价",
+    "trackShipment": "跟踪货物"
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "为您的业务需求量身定制的全面物流解决方案",
+    "groundTransportation": {
+      "title": "公路运输",
+      "description": "为国内和区域配送提供可靠的公路运输解决方案，配备实时跟踪。"
+    },
+    "airFreight": {
+      "title": "空运",
+      "description": "为全球时间敏感货物提供快速的国际航空货运服务。"
+    },
+    "oceanFreight": {
+      "title": "海运",
+      "description": "为大批量国际货物提供经济实惠的海运解决方案。"
+    },
+    "warehousing": {
+      "title": "仓储",
+      "description": "配备先进库存管理系统的安全存储和分拨中心。"
+    },
+    "globalNetwork": {
+      "title": "全球网络",
+      "description": "覆盖200多个国家和地区的全球物流网络。"
+    },
+    "insurance": {
+      "title": "货物保险",
+      "description": "为您的贵重货物提供全面的货物保险保护。"
+    }
+  },
+  "stats": {
+    "title": "我们的影响力",
+    "subtitle": "数字见证我们的卓越",
+    "shipmentsDelivered": "货物已配送",
+    "countriesServed": "服务国家",
+    "onTimeDelivery": "准时配送",
+    "customerSupport": "客户支持"
+  },
+  "partners": {
+    "title": "值得信赖的合作伙伴",
+    "subtitle": "与全球行业领导者合作"
+  },
+  "whyChooseUs": {
+    "title": "为什么选择我们",
+    "subtitle": "通过我们优质的物流服务体验不同",
+    "fastDelivery": {
+      "title": "快速配送",
+      "description": "提供保证配送时间的快递选项"
+    },
+    "secureHandling": {
+      "title": "安全处理",
+      "description": "先进的安全措施和细心的包裹处理"
+    },
+    "costEffective": {
+      "title": "成本效益",
+      "description": "透明费用结构的竞争性定价"
+    },
+    "expertSupport": {
+      "title": "专业支持",
+      "description": "来自物流专业人员的24/7客户服务"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "准备优化您的物流？今天就联系我们",
+    "phone": "电话",
+    "email": "邮箱",
+    "address": "地址",
+    "form": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "邮箱",
+      "company": "公司",
+      "message": "消息",
+      "messagePlaceholder": "告诉我们您的物流需求...",
+      "sendMessage": "发送消息",
+      "thankYou": "谢谢您！",
+      "thankYouMessage": "我们已收到您的消息，将在24小时内回复您。"
+    }
+  },
+  "footer": {
+    "companyName": "LogisticsPro",
+    "companyDescription": "您值得信赖的全球物流解决方案合作伙伴。",
+    "services": "服务",
+    "company": "公司",
+    "support": "支持",
+    "aboutUs": "关于我们",
+    "careers": "招聘",
+    "news": "新闻",
+    "contact": "联系",
+    "helpCenter": "帮助中心",
+    "trackPackage": "跟踪包裹",
+    "shippingCalculator": "运费计算器",
+    "documentation": "文档",
+    "copyright": "© 2024 LogisticsPro. 版权所有。"
+  }
+}

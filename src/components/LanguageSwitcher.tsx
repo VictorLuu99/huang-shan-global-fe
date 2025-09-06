@@ -1,0 +1,86 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { useState, useTransition } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Globe, ChevronDown } from "lucide-react";
+
+const languages = [
+  { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
+  { code: "zh", name: "中文", flag: "🇨🇳" },
+  { code: "en", name: "English", flag: "🇺🇸" },
+];
+
+export default function LanguageSwitcher() {
+  const locale = useLocale();
+  const [isPending, startTransition] = useTransition();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const currentLanguage = languages.find(lang => lang.code === locale);
+
+  const handleLanguageChange = (newLocale: string) => {
+    startTransition(() => {
+      // Set cookie for locale
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=lax`;
+      
+      // Reload page to apply new locale
+      window.location.reload();
+      setIsOpen(false);
+    });
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center space-x-2 px-4 py-2 bg-background border border-border rounded-lg hover:bg-muted transition-colors"
+        disabled={isPending}
+      >
+        <Globe className="w-4 h-4 text-primary" />
+        <span className="text-sm font-medium">{currentLanguage?.flag}</span>
+        <span className="text-sm font-medium">{currentLanguage?.name}</span>
+        <ChevronDown 
+          className={`w-4 h-4 text-muted-foreground transition-transform ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full mt-2 right-0 bg-background border border-border rounded-lg shadow-lg min-w-[160px] z-50"
+          >
+            {languages.map((language) => (
+              <button
+                key={language.code}
+                onClick={() => handleLanguageChange(language.code)}
+                className={`w-full px-4 py-3 text-left text-sm hover:bg-muted transition-colors first:rounded-t-lg last:rounded-b-lg flex items-center space-x-3 ${
+                  language.code === locale
+                    ? 'bg-primary/10 text-primary font-medium'
+                    : 'text-foreground'
+                }`}
+                disabled={isPending}
+              >
+                <span className="text-lg">{language.flag}</span>
+                <span>{language.name}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Backdrop */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+    </div>
+  );
+}
