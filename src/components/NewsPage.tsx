@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslation } from '../contexts/LanguageContext';
 import Link from 'next/link';
 import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
@@ -43,7 +43,7 @@ export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   const articlesPerPage = 9;
 

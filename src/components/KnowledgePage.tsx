@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslation } from '../contexts/LanguageContext';
 import Link from 'next/link';
 import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
@@ -41,7 +41,7 @@ const KnowledgePage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   // Mock knowledge guides data
   const knowledgeGuides: KnowledgeGuide[] = [

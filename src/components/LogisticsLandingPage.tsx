@@ -8,7 +8,7 @@ import {
   useSpring,
   AnimatePresence,
 } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "../contexts/LanguageContext";
 import {
   Truck,
   Globe,
@@ -300,7 +300,7 @@ const LogisticsLandingPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   // Get translations
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   const partnerLogos: Logo[] = [
     { name: "FedEx", id: 1, img: FedExIcon },
@@ -393,7 +393,7 @@ const LogisticsLandingPage: React.FC = () => {
             // backgroundImage: "url(/images/112113799_loai-hinh-logistics.jpg)",
             // backgroundImage: "url(/images/137121254-the-world-logistics-there-are-world-map-with-logistic-network-distribution-on-background-and.jpg)",
             // backgroundImage: "url(/images/logistics.jpg)",
-            backgroundImage: "url(/images/background_images.png)",
+            backgroundImage: "url(/images/background_home.jpg)",
             // backgroundImage: "url(/images/pngtree-d-rendering-of-a-logistics-company-s-import-export-shipping-operations-image_3817708.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -424,9 +424,6 @@ const LogisticsLandingPage: React.FC = () => {
               <button className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors">
                 {t("hero.trackShipment")}
               </button>
-              {/* <button className="px-8 py-4 border border-border rounded-lg text-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-colors">
-                {t('hero.trackShipment')}
-              </button> */}
             </div>
           </motion.div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslation } from '../contexts/LanguageContext';
 import Link from 'next/link';
 import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
@@ -59,7 +59,7 @@ export default function RecruitmentPage() {
     coverLetter: '',
     resume: null as File | null
   });
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   // Mock job listings data
   const jobListings: JobListing[] = [

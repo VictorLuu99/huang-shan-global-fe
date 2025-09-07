@@ -1,4 +1,60 @@
 {
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "services": "SERVICES",
+    "policies": "POLICIES",
+    "recruitment": "CAREERS",
+    "news": "NEWS",
+    "complaints": "KNOWLEDGE",
+    "contact": "CONTACT"
+  },
+  "about": {
+    "title": "🌏 About Huang Shan Global",
+    "subtitle": "HUANG SHAN GLOBAL IMPORT-EXPORT TRADING JOINT STOCK COMPANY",
+    "company": {
+      "phone": "Phone: 038.959.1238 - 058.585.1999",
+      "address": "Address: C38-30, Block C Geleximco, Duong Noi, Ha Dong, Hanoi",
+      "license": "Business registration certificate No. 0111008822 issued by Hanoi City Department of Finance",
+      "representative": "Legal representative: Nguyen Dinh Son"
+    },
+    "introduction": {
+      "title": "🏢 Introduction",
+      "content": "Huang Shan Global is a pioneer in the field of China-Vietnam import-export and logistics, specializing in providing comprehensive solutions from transportation, ordering, payment processing, to importing specialized machinery. With our own warehouse system and transportation fleet in both China and Vietnam, along with an experienced team, Huang Shan Global is committed to providing fast - safe - transparent - cost-effective services to all customers."
+    },
+    "mission": {
+      "title": "🎯 Mission",
+      "content": "We exist to help businesses, retailers and individuals easily access quality Chinese goods, optimize costs, minimize risks and increase profits. Huang Shan Global accompanies customers in every order, every step of development."
+    },
+    "vision": {
+      "title": "👁️ Vision",
+      "content": "Huang Shan Global aims to become the No.1 logistics and import-export brand in Vietnam in the field of trade with China, while expanding international networks, building a comprehensive service ecosystem, and establishing a position in the Southeast Asian market."
+    },
+    "values": {
+      "title": "🌟 Core Values",
+      "trust": {
+        "title": "Trust",
+        "description": "Commitment to on-time delivery, right goods, right quality."
+      },
+      "efficiency": {
+        "title": "Efficiency",
+        "description": "Optimal service, reasonable cost, enhancing customer profit."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "Clear process, accurate information, no hidden costs."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "1:1 customer service, 24/7 support, always by customer's side in every situation."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Continuously improving services, applying technology to enhance experience."
+      }
+    },
+    "conclusion": "With these values, Huang Shan Global is not only a transportation and import company, but also a strategic partner helping customers confidently expand their business and reach further."
+  },
   "hero": {
     "title": "VIETNAM'S NO. 1 TRUSTED",
     "subtitle": "CHINA-VIETNAM IMPORT AND LOGISTICS COMPANY",
@@ -341,7 +397,6 @@
     },
     "downloadGuide": "Download Guide",
     "viewGuide": "View Guide",
-    "featured": "Featured",
     "readingTime": "min read",
     "guides": {
       "customs_procedures": {
@@ -391,6 +446,10 @@
     "trackPackage": "Track Package",
     "shippingCalculator": "Shipping Calculator",
     "documentation": "Documentation",
+    "service1": "China-Vietnam Overland Shipping",
+    "service2": "Express E-commerce Shipping",
+    "service3": "Sea Freight Services",
+    "service4": "Regular Channel Shipping",
     "copyright": "© 2024 Huang Shan Global. All rights reserved."
   }
 }

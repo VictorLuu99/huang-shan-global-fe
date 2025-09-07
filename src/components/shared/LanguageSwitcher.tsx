@@ -1,10 +1,9 @@
 "use client";
 
-import { useLocale } from "next-intl";
-import { useState, useTransition, memo, useCallback } from "react";
+import { useState, memo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const languages = [
   { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
@@ -13,33 +12,21 @@ const languages = [
 ];
 
 const LanguageSwitcher = memo(() => {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const { currentLocale, changeLanguage } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const currentLanguage = languages.find(lang => lang.code === locale);
+  const currentLanguage = languages.find(lang => lang.code === currentLocale);
 
   const handleLanguageChange = useCallback((newLocale: string) => {
     setIsOpen(false);
-    startTransition(() => {
-      // Extract the pathname without the current locale prefix
-      const segments = pathname.split('/');
-      const pathWithoutLocale = segments.slice(2).join('/');
-      const newPath = `/${newLocale}${pathWithoutLocale ? `/${pathWithoutLocale}` : ''}`;
-      
-      // Navigate to the same page with the new locale
-      router.push(newPath);
-    });
-  }, [router, pathname]);
+    changeLanguage(newLocale as 'vi' | 'zh' | 'en');
+  }, [changeLanguage]);
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-4 py-2 bg-background border border-border rounded-lg hover:bg-muted transition-colors"
-        disabled={isPending}
       >
         {/* <Globe className="w-4 h-4 text-primary" /> */}
         <span className="text-sm font-medium">{currentLanguage?.flag}</span>
@@ -65,11 +52,10 @@ const LanguageSwitcher = memo(() => {
                 key={language.code}
                 onClick={() => handleLanguageChange(language.code)}
                 className={`w-full px-4 py-3 text-left text-sm hover:bg-muted transition-colors first:rounded-t-lg last:rounded-b-lg flex items-center space-x-3 ${
-                  language.code === locale
+                  language.code === currentLocale
                     ? 'bg-primary/10 text-primary font-medium'
                     : 'text-foreground'
                 }`}
-                disabled={isPending}
               >
                 <span className="text-lg">{language.flag}</span>
                 <span>{language.name}</span>

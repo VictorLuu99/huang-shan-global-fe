@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslation } from '../contexts/LanguageContext';
 import Link from 'next/link';
 import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
@@ -49,7 +49,7 @@ const ContactPage: React.FC = () => {
     priority: 'normal'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

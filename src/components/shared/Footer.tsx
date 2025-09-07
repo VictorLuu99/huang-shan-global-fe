@@ -1,11 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslation } from '../../contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function Footer() {
-  const t = useTranslations('footer');
+  const { t } = useTranslation();
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -32,10 +32,10 @@ export default function Footer() {
                   aria-label="Huang Shan Global Logo"
                 />
               </div>
-              <h3 className="text-xl font-bold">{t('companyName')}</h3>
+              <h3 className="text-xl font-bold">{t('footer.companyName')}</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              {t('companyDescription')}
+              {t('footer.companyDescription')}
             </p>
             <div className="space-y-2 text-sm text-gray-400">
               <p>
@@ -80,34 +80,34 @@ export default function Footer() {
 
           {/* Services */}
           <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.1 }}>
-            <h4 className="text-lg font-semibold mb-4">{t('services')}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.services')}</h4>
             <ul className="space-y-2">
-              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">Vận chuyển đường bộ Trung – Việt</Link></li>
-              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">Vận chuyển TMĐT siêu tốc</Link></li>
-              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">Vận chuyển đường biển</Link></li>
-              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">Vận chuyển chính ngạch</Link></li>
+              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.service1')}</Link></li>
+              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.service2')}</Link></li>
+              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.service3')}</Link></li>
+              <li><Link href="/#services" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.service4')}</Link></li>
             </ul>
           </motion.div>
 
           {/* Company */}
           <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.2 }}>
-            <h4 className="text-lg font-semibold mb-4">{t('company')}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.company')}</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('aboutUs')}</Link></li>
-              <li><Link href="/#careers" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('careers')}</Link></li>
-              <li><Link href="/#news" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('news')}</Link></li>
-              <li><Link href="/#contact" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('contact')}</Link></li>
+              <li><Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.aboutUs')}</Link></li>
+              <li><Link href="/#careers" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.careers')}</Link></li>
+              <li><Link href="/#news" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.news')}</Link></li>
+              <li><Link href="/#contact" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.contact')}</Link></li>
             </ul>
           </motion.div>
 
           {/* Support */}
           <motion.div {...fadeInUp} transition={{ ...fadeInUp.transition, delay: 0.3 }}>
-            <h4 className="text-lg font-semibold mb-4">{t('support')}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.support')}</h4>
             <ul className="space-y-2">
-              <li><Link href="/#help" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('helpCenter')}</Link></li>
-              <li><Link href="/#track" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('trackPackage')}</Link></li>
-              <li><Link href="/#calculator" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('shippingCalculator')}</Link></li>
-              <li><Link href="/#docs" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('documentation')}</Link></li>
+              <li><Link href="/#help" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.helpCenter')}</Link></li>
+              <li><Link href="/#track" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.trackPackage')}</Link></li>
+              <li><Link href="/#calculator" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.shippingCalculator')}</Link></li>
+              <li><Link href="/#docs" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">{t('footer.documentation')}</Link></li>
             </ul>
           </motion.div>
         </div>
@@ -118,7 +118,7 @@ export default function Footer() {
           transition={{ ...fadeInUp.transition, delay: 0.4 }}
           className="mt-12 pt-8 border-t border-gray-800 text-center"
         >
-          <p className="text-gray-400 text-sm">{t('copyright')}</p>
+          <p className="text-gray-400 text-sm">{t('footer.copyright')}</p>
         </motion.div>
       </div>
     </footer>

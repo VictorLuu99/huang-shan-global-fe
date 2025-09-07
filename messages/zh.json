@@ -1,4 +1,60 @@
 {
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "policies": "政策",
+    "recruitment": "招聘",
+    "news": "新闻",
+    "complaints": "知识",
+    "contact": "联系"
+  },
+  "about": {
+    "title": "🌏 黄山环球简介",
+    "subtitle": "黄山环球进出口贸易股份有限公司",
+    "company": {
+      "phone": "电话：038.959.1238 - 058.585.1999",
+      "address": "地址：河内市河东区阳内Geleximco小区C区C38-30号",
+      "license": "河内市财政厅颁发的企业注册证书编号0111008822",
+      "representative": "法定代表人：阮廷山"
+    },
+    "introduction": {
+      "title": "🏢 公司简介",
+      "content": "黄山环球是中越进出口和物流领域的先行者，专业提供从运输、订货、代付款到进口专业机械设备的全面解决方案。凭借在中国和越南的自有仓储系统和运输车队，以及经验丰富的团队，黄山环球致力于为所有客户提供快速-安全-透明-经济的服务。"
+    },
+    "mission": {
+      "title": "🎯 使命",
+      "content": "我们致力于帮助企业、零售商和个人经营者轻松获得优质的中国商品，优化成本，降低风险，增加利润。黄山环球陪伴客户的每一个订单，每一步发展历程。"
+    },
+    "vision": {
+      "title": "👁️ 愿景",
+      "content": "黄山环球致力于成为越南在对华贸易领域的第一物流和进出口品牌，同时扩展国际网络，建设全方位服务生态系统，在东南亚市场确立地位。"
+    },
+    "values": {
+      "title": "🌟 核心价值观",
+      "trust": {
+        "title": "信誉",
+        "description": "承诺按时、按质、按量交付。"
+      },
+      "efficiency": {
+        "title": "高效",
+        "description": "优化服务，合理成本，为客户增加利润。"
+      },
+      "transparency": {
+        "title": "透明",
+        "description": "流程清晰，信息准确，无隐性费用。"
+      },
+      "partnership": {
+        "title": "伙伴关系",
+        "description": "1对1客户服务，24/7支持，在任何情况下都与客户同在。"
+      },
+      "innovation": {
+        "title": "创新",
+        "description": "持续改进服务，运用技术提升体验。"
+      }
+    },
+    "conclusion": "基于这些价值观，黄山环球不仅是一家运输进口公司，更是帮助客户自信扩展业务、走得更远的战略伙伴。"
+  },
   "hero": {
     "title": "越南第一信誉",
     "subtitle": "中越进出口贸易和物流公司",
@@ -391,6 +447,10 @@
     "trackPackage": "跟踪包裹",
     "shippingCalculator": "运费计算器",
     "documentation": "文档",
+    "service1": "中越陆路运输",
+    "service2": "电商超速运输",
+    "service3": "海上运输",
+    "service4": "正规渠道运输",
     "copyright": "© 2024 黄山环球. 版权所有。"
   }
 }

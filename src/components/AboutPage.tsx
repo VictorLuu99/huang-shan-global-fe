@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslation } from '../contexts/LanguageContext';
 import Link from "next/link";
 import LanguageSwitcher from "./shared/LanguageSwitcher";
 import { 
@@ -22,7 +22,7 @@ import {
 
 const AboutPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   const coreValues = [
     {

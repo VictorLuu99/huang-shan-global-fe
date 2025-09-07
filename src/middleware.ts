@@ -1,18 +1,13 @@
-import createMiddleware from 'next-intl/middleware';
-import {locales, defaultLocale} from './i18n';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales,
-
-  // Used when no locale matches
-  defaultLocale,
-  
-  // Always prefix with locale
-  localePrefix: 'as-needed'
-});
+// No locale-based routing - Redux handles language state
+export function middleware(request: NextRequest) {
+  // Let all requests pass through without locale redirects
+  return NextResponse.next();
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // Only needed for specific API routes or special handling
+  matcher: []
 };
