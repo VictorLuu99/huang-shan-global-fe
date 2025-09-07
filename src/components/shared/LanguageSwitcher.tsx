@@ -2,7 +2,7 @@
 
 import { useState, memo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useTranslation } from "../../contexts/LanguageContext";
 
 const languages = [

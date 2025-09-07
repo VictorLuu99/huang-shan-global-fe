@@ -1,18 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { useTranslation } from '../contexts/LanguageContext';
-import Link from "next/link";
-import LanguageSwitcher from "./shared/LanguageSwitcher";
 import { 
   Shield, 
   MapPin,
   Phone,
   Users,
   TrendingUp,
-  Menu,
-  X,
   Target,
   Eye,
   Star,
@@ -21,7 +17,6 @@ import {
 } from "lucide-react";
 
 const AboutPage: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
 
   const coreValues = [

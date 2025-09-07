@@ -1,14 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import Link from 'next/link';
-import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
-  Truck, 
-  Menu, 
-  X,
   Search,
   Calendar,
   User,
@@ -39,7 +34,6 @@ interface NewsArticle {
 }
 
 export default function NewsPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -340,7 +334,7 @@ export default function NewsPage() {
                 {selectedCategory === 'all' ? t('news.latest.title') : categories.find(c => c.id === selectedCategory)?.name}
               </h2>
               <span className="text-gray-500">
-                {t('news.results', { count: filteredArticles.length })}
+{`${filteredArticles.length} ${t('news.results')}`}
               </span>
             </div>
 

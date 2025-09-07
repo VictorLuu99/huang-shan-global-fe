@@ -5,7 +5,7 @@ export type Locale = 'vi' | 'zh' | 'en';
 
 interface LanguageState {
   currentLocale: Locale;
-  messages: Record<string, any>;
+  messages: Record<string, unknown>;
 }
 
 const initialState: LanguageState = {
@@ -20,7 +20,7 @@ const languageSlice = createSlice({
     setLocale: (state, action: PayloadAction<Locale>) => {
       state.currentLocale = action.payload;
     },
-    setMessages: (state, action: PayloadAction<Record<string, any>>) => {
+    setMessages: (state, action: PayloadAction<Record<string, unknown>>) => {
       state.messages = action.payload;
     },
   },

@@ -3,12 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import Link from 'next/link';
-import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
-  Truck, 
-  Menu, 
-  X,
   Users, 
   MapPin, 
   Clock, 
@@ -43,7 +38,6 @@ interface JobListing {
 }
 
 export default function RecruitmentPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [showApplication, setShowApplication] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -333,7 +327,7 @@ export default function RecruitmentPage() {
               </div>
               
               <p className="text-gray-600 text-center">
-                {t('recruitment.search.results', { count: filteredJobs.length })}
+{`${filteredJobs.length} ${t('recruitment.search.results')}`}
               </p>
             </motion.div>
           </div>

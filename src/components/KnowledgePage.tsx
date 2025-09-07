@@ -1,14 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import Link from 'next/link';
-import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
-  Truck, 
-  Menu, 
-  X,
   BookOpen,
   Search,
   Download,
@@ -38,7 +33,6 @@ interface KnowledgeGuide {
 }
 
 const KnowledgePage: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useTranslation();
@@ -338,7 +332,7 @@ const KnowledgePage: React.FC = () => {
             >
               <h2 className="text-3xl font-bold mb-4">{t('knowledge.allGuides.title')}</h2>
               <p className="text-muted-foreground">
-                {t('knowledge.search.results', { count: filteredGuides.length })}
+{`${filteredGuides.length} ${t('knowledge.search.results')}`}
               </p>
             </motion.div>
 

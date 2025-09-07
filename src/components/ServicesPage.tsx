@@ -1,14 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
 import Link from 'next/link';
-import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
   Truck, 
-  Menu, 
-  X,
   Package,
   Plane,
   Ship,
@@ -22,7 +19,6 @@ import {
 } from 'lucide-react';
 
 const ServicesPage: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
 
   const services = [

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import {
   motion,
   useInView,
@@ -384,10 +385,13 @@ const LogisticsLandingPage: React.FC = () => {
       {/* Hero Section */}
       <section id="home" className="pt-16">
         <div className="container mx-auto px-4">
-          <img
+          <Image
             src="/images/background_home.jpg"
             alt="Huang Shan Global Logistics"
+            width={1200}
+            height={600}
             className="w-full h-auto object-contain rounded-lg"
+            priority
           />
         </div>
       </section>

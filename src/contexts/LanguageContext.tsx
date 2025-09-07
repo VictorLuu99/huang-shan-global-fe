@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Import translation files
 import viMessages from '../../messages/vi.json';
@@ -20,7 +20,7 @@ export type Locale = 'vi' | 'zh' | 'en';
 
 interface LanguageContextType {
   currentLocale: Locale;
-  messages: Record<string, any>;
+  messages: Record<string, unknown>;
   changeLanguage: (locale: Locale) => void;
   t: (key: string) => string;
 }
@@ -28,8 +28,10 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Helper function to get nested translation
-function getNestedTranslation(obj: any, path: string): string {
-  const result = path.split('.').reduce((current, key) => current?.[key], obj);
+function getNestedTranslation(obj: Record<string, unknown>, path: string): string {
+  const result = path.split('.').reduce((current: unknown, key: string) => {
+    return (current as Record<string, unknown>)?.[key];
+  }, obj);
   
   // Always return a string - if result is an object or undefined, return the key as fallback
   if (typeof result === 'string') {
@@ -53,7 +55,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   
   // Initialize with Vietnamese messages immediately
   console.log('LanguageProvider: Initializing messages directly with viMessages');
-  const [messages, setMessages] = useState<Record<string, any>>(viMessages || {});
+  const [messages, setMessages] = useState<Record<string, unknown>>(viMessages || {});
   
   console.log('LanguageProvider: State initialized - currentLocale:', currentLocale, 'messages keys:', Object.keys(messages));
 

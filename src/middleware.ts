@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
 // No locale-based routing - Redux handles language state
-export function middleware(request: NextRequest) {
+export function middleware() {
   // Let all requests pass through without locale redirects
   return NextResponse.next();
 }

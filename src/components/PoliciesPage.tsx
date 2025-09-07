@@ -1,14 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import Link from 'next/link';
-import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
-  Truck, 
-  Menu, 
-  X,
   FileText,
   ChevronRight,
   Download,
@@ -21,7 +16,6 @@ import {
 } from 'lucide-react';
 
 const PoliciesPage: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('terms');
   const { t } = useTranslation();
 

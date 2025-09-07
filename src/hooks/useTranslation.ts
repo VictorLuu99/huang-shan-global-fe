@@ -3,8 +3,10 @@ import { RootState, AppDispatch } from '../store/store';
 import { setLocale, setMessages, Locale } from '../store/languageSlice';
 
 // Helper function to get nested translation
-function getNestedTranslation(obj: any, path: string): string {
-  const result = path.split('.').reduce((current, key) => current?.[key], obj);
+function getNestedTranslation(obj: Record<string, unknown>, path: string): string {
+  const result = path.split('.').reduce((current: unknown, key: string) => {
+    return (current as Record<string, unknown>)?.[key];
+  }, obj);
   
   // Always return a string - if result is an object or undefined, return the key as fallback
   if (typeof result === 'string') {
