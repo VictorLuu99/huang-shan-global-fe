@@ -411,6 +411,15 @@
       "saturday": "周六",
       "sunday": "周日",
       "closed": "休息"
+    },
+    "no_jobs": {
+      "title": "未找到工作",
+      "updating_message": "我们正在更新招聘信息，请稍后查看！",
+      "search_message": "尝试调整搜索条件以找到更多机会。"
+    },
+    "status": {
+      "submitting": "提交中...",
+      "submission_failed": "提交失败"
     }
   },
   "news": {
@@ -563,6 +572,12 @@
       "guidesPublished": "已发布指南",
       "usersHelped": "帮助的用户",
       "successRate": "成功率"
+    }
+  },
+  "common": {
+    "errors": {
+      "submission_failed": "提交失败",
+      "general_error": "发生错误，请重试。"
     }
   },
   "footer": {

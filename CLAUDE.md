@@ -6,13 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **multilingual logistics website** project for **Huang Shan Global** - a China-Vietnam logistics company. The project includes:
 1. A standalone logistics template (`template_website_logistics.ts`)
-2. A complete Next.js 15 application (`logistics-website/` directory)
+2. A complete Next.js 15 application (`website/` directory)
 
 The website features a modern, animated logistics platform with full internationalization support for Vietnamese (default), Chinese, and English. It includes a comprehensive company presentation with services, company information, and multi-page navigation.
 
 ## Essential Commands
 
-**Development (run from `logistics-website/` directory):**
+**Development (run from `website/` directory):**
 ```bash
 npm run dev        # Start development server at http://localhost:3000
 npm run build      # Create production build

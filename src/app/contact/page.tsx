@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ContactPage from '@/components/ContactPage';
+import ContactPageAPI from '@/components/ContactPageAPI';
 import { generateSEOMetadata } from '@/components/shared/SEO';
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -15,5 +15,5 @@ export const metadata: Metadata = generateSEOMetadata({
 });
 
 export default function Contact() {
-  return <ContactPage />;
+  return <ContactPageAPI />;
 }

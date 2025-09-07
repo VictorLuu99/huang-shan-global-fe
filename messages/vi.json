@@ -411,6 +411,15 @@
       "saturday": "Thứ 7",
       "sunday": "Chủ nhật",
       "closed": "Nghỉ"
+    },
+    "no_jobs": {
+      "title": "Không tìm thấy công việc",
+      "updating_message": "Chúng tôi đang cập nhật danh sách công việc. Vui lòng kiểm tra lại sau!",
+      "search_message": "Thử điều chỉnh tiêu chí tìm kiếm để tìm thêm cơ hội."
+    },
+    "status": {
+      "submitting": "Đang gửi...",
+      "submission_failed": "Gửi thất bại"
     }
   },
   "news": {
@@ -564,6 +573,12 @@
       "guidesPublished": "Tài liệu đã xuất bản",
       "usersHelped": "Người dùng được hỗ trợ",
       "successRate": "Tỷ lệ thành công"
+    }
+  },
+  "common": {
+    "errors": {
+      "submission_failed": "Gửi thất bại",
+      "general_error": "Đã xảy ra lỗi. Vui lòng thử lại."
     }
   },
   "footer": {

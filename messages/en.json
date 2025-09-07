@@ -411,6 +411,15 @@
       "saturday": "Saturday",
       "sunday": "Sunday",
       "closed": "Closed"
+    },
+    "no_jobs": {
+      "title": "No Jobs Found",
+      "updating_message": "We're currently updating our job listings. Please check back soon!",
+      "search_message": "Try adjusting your search criteria to find more opportunities."
+    },
+    "status": {
+      "submitting": "Submitting...",
+      "submission_failed": "Submission failed"
     }
   },
   "news": {
@@ -562,6 +571,12 @@
       "guidesPublished": "Guides Published",
       "usersHelped": "Users Helped",
       "successRate": "Success Rate"
+    }
+  },
+  "common": {
+    "errors": {
+      "submission_failed": "Submission failed",
+      "general_error": "An error occurred. Please try again."
     }
   },
   "footer": {

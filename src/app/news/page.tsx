@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import NewsPage from '@/components/NewsPage';
+import NewsPageAPI from '@/components/NewsPageAPI';
 import { generateSEOMetadata } from '@/components/shared/SEO';
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -16,5 +16,5 @@ export const metadata: Metadata = generateSEOMetadata({
 });
 
 export default function News() {
-  return <NewsPage />;
+  return <NewsPageAPI />;
 }

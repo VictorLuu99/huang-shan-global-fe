@@ -7,14 +7,14 @@ import viMessages from '../../messages/vi.json';
 import zhMessages from '../../messages/zh.json';
 import enMessages from '../../messages/en.json';
 
-console.log('LanguageContext: Static imports loaded:', {
-  vi: typeof viMessages,
-  zh: typeof zhMessages,
-  en: typeof enMessages,
-  viSample: viMessages?.hero?.title,
-  zhSample: zhMessages?.hero?.title,
-  enSample: enMessages?.hero?.title
-});
+// console.log('LanguageContext: Static imports loaded:', {
+//   vi: typeof viMessages,
+//   zh: typeof zhMessages,
+//   en: typeof enMessages,
+//   viSample: viMessages?.hero?.title,
+//   zhSample: zhMessages?.hero?.title,
+//   enSample: enMessages?.hero?.title
+// });
 
 export type Locale = 'vi' | 'zh' | 'en';
 
@@ -50,17 +50,12 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  console.log('LanguageProvider: Component rendered/re-rendered');
   const [currentLocale, setCurrentLocale] = useState<Locale>('vi');
   
   // Initialize with Vietnamese messages immediately
-  console.log('LanguageProvider: Initializing messages directly with viMessages');
   const [messages, setMessages] = useState<Record<string, unknown>>(viMessages || {});
-  
-  console.log('LanguageProvider: State initialized - currentLocale:', currentLocale, 'messages keys:', Object.keys(messages));
 
   const changeLanguage = (locale: Locale) => {
-    console.log(`LanguageProvider: Changing language to: ${locale}`);
     setCurrentLocale(locale);
     
     // Load messages immediately based on locale
@@ -72,17 +67,14 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     
     const localeMessages = messageMap[locale];
     if (localeMessages && typeof localeMessages === 'object') {
-      console.log('LanguageProvider: Switching messages for locale:', locale, 'keys:', Object.keys(localeMessages).slice(0, 10));
       setMessages(localeMessages);
     } else {
-      console.error(`LanguageProvider: No messages found for locale: ${locale}`);
       setMessages(viMessages || {});
     }
   };
 
   const t = (key: string): string => {
     if (Object.keys(messages).length === 0) {
-      console.log(`LanguageProvider: No messages loaded yet for key: ${key}`);
       return key;
     }
     return getNestedTranslation(messages, key);

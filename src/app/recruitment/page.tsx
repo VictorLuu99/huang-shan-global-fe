@@ -1,5 +1,5 @@
-import RecruitmentPage from '@/components/RecruitmentPage';
+import RecruitmentPageAPI from '@/components/RecruitmentPageAPI';
 
 export default function Recruitment() {
-  return <RecruitmentPage />;
+  return <RecruitmentPageAPI />;
 }

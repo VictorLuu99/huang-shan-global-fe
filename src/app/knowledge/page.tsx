@@ -1,5 +1,5 @@
-import KnowledgePage from '@/components/KnowledgePage';
+import KnowledgePageAPI from '@/components/KnowledgePageAPI';
 
 export default function Knowledge() {
-  return <KnowledgePage />;
+  return <KnowledgePageAPI />;
 }
