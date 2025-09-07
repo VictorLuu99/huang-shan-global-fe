@@ -139,6 +139,301 @@
       "thankYouMessage": "Chúng tôi đã nhận được tin nhắn của bạn và sẽ liên hệ lại trong vòng 24 giờ."
     }
   },
+  "policies": {
+    "title": "Chính Sách & Điều Khoản",
+    "subtitle": "Các chính sách và điều khoản sử dụng dịch vụ của Huang Shan Global",
+    "sections": {
+      "terms": "Điều khoản sử dụng",
+      "privacy": "Chính sách bảo mật",
+      "shipping": "Chính sách vận chuyển",
+      "refund": "Chính sách hoàn trả",
+      "insurance": "Chính sách bảo hiểm",
+      "compliance": "Quy định tuân thủ"
+    }
+  },
+  "recruitment": {
+    "hero": {
+      "title": "Tuyển Dụng",
+      "subtitle": "Tham gia đội ngũ chuyên nghiệp tại Huang Shan Global",
+      "view_jobs": "Xem Việc Làm",
+      "learn_more": "Tìm Hiểu Thêm"
+    },
+    "why_join": {
+      "title": "Tại sao chọn Huang Shan Global?",
+      "subtitle": "Chúng tôi cam kết tạo môi trường làm việc tốt nhất cho đội ngũ của mình"
+    },
+    "benefits": {
+      "team_work": {
+        "title": "Đội ngũ chuyên nghiệp",
+        "description": "Làm việc cùng đội ngũ giàu kinh nghiệm, nhiệt tình và tâm huyết"
+      },
+      "learning": {
+        "title": "Phát triển kỹ năng",
+        "description": "Cơ hội đào tạo và nâng cao chuyên môn liên tục"
+      },
+      "career": {
+        "title": "Thăng tiến rõ ràng",
+        "description": "Cơ hội phát triển sự nghiệp với lộ trình thăng tiến minh bạch"
+      },
+      "compensation": {
+        "title": "Thu nhập hấp dẫn",
+        "description": "Mức lương cạnh tranh cùng các chế độ đãi ngộ tốt"
+      }
+    },
+    "search": {
+      "title": "Tìm kiếm việc làm",
+      "placeholder": "Nhập từ khóa tìm kiếm...",
+      "button": "Tìm kiếm",
+      "results": "Tìm thấy {count} việc làm"
+    },
+    "filters": {
+      "all_departments": "Tất cả phòng ban",
+      "all_locations": "Tất cả địa điểm"
+    },
+    "departments": {
+      "logistics": "Logistics",
+      "operations": "Vận hành",
+      "customer_service": "Chăm sóc khách hàng",
+      "sales": "Kinh doanh",
+      "finance": "Tài chính",
+      "hr": "Nhân sự"
+    },
+    "locations": {
+      "hanoi": "Hà Nội",
+      "ho_chi_minh": "TP. Hồ Chí Minh",
+      "da_nang": "Đà Nẵng",
+      "hai_phong": "Hải Phòng"
+    },
+    "job_types": {
+      "full_time": "Toàn thời gian",
+      "part_time": "Bán thời gian",
+      "contract": "Hợp đồng"
+    },
+    "education": {
+      "bachelor": "Đại học",
+      "college": "Cao đẳng",
+      "high_school": "Trung học phổ thông"
+    },
+    "jobs": {
+      "logistics_coordinator": {
+        "title": "Điều phối viên Logistics",
+        "description": "Phụ trách điều phối vận chuyển hàng hóa Trung Quốc - Việt Nam, quản lý quy trình xuất nhập khẩu và làm việc với các đối tác logistics.",
+        "requirements": "Tốt nghiệp Đại học chuyên ngành Logistics/Thương mại|Ít nhất 2 năm kinh nghiệm trong lĩnh vực logistics|Tiếng Trung giao tiếp tốt|Kỹ năng tin học văn phòng thành thạo|Khả năng làm việc dưới áp lực",
+        "benefits": "Lương cơ bản + thưởng hiệu suất|Bảo hiểm đầy đủ theo quy định|Cơ hội học tập và phát triển|Môi trường làm việc năng động|Du lịch công ty hàng năm"
+      },
+      "warehouse_manager": {
+        "title": "Quản lý kho vận",
+        "description": "Quản lý toàn bộ hoạt động kho bãi, giám sát nhập/xuất kho, đảm bảo an toàn hàng hóa và tối ưu hóa quy trình kho vận.",
+        "requirements": "Kinh nghiệm 3-5 năm quản lý kho vận|Hiểu biết về quy trình xuất nhập khẩu|Kỹ năng quản lý đội nhóm tốt|Sử dụng thành thạo phần mềm quản lý kho|Khả năng phân tích và giải quyết vấn đề",
+        "benefits": "Mức lương cạnh tranh theo năng lực|Thưởng KPI hàng tháng/quý|Bảo hiểm sức khỏe cao cấp|Đào tạo chuyên môn định kỳ|Cơ hội thăng tiến nhanh"
+      },
+      "customer_service": {
+        "title": "Nhân viên Chăm sóc khách hàng",
+        "description": "Tư vấn và hỗ trợ khách hàng về các dịch vụ của công ty, xử lý khiếu nại và duy trì mối quan hệ tốt với khách hàng.",
+        "requirements": "Tốt nghiệp THPT trở lên|Có kinh nghiệm CSKH từ 1 năm|Kỹ năng giao tiếp và đàm phán tốt|Sử dụng máy tính cơ bản|Tính kiên nhẫn và thân thiện",
+        "benefits": "Mức lương ổn định + hoa hồng|Được đào tạo kỹ năng chuyên môn|Môi trường làm việc thân thiện|Cơ hội phát triển nghề nghiệp|Chế độ nghỉ phép linh hoạt"
+      },
+      "sales_executive": {
+        "title": "Nhân viên Kinh doanh",
+        "description": "Tìm kiếm và phát triển khách hàng mới, duy trì mối quan hệ với khách hàng cũ, đạt chỉ tiêu doanh số được giao.",
+        "requirements": "Tốt nghiệp Đại học các ngành liên quan|Kinh nghiệm bán hàng 2-4 năm|Kỹ năng bán hàng và đàm phán xuất sắc|Khả năng làm việc độc lập|Tiếng Trung là lợi thế",
+        "benefits": "Lương cơ bản + hoa hồng hấp dẫn|Thưởng đạt chỉ tiêu|Hỗ trợ chi phí đi lại|Đào tạo kỹ năng bán hàng|Chính sách thưởng cuối năm"
+      }
+    },
+    "job_details": {
+      "requirements": "Yêu cầu công việc",
+      "benefits": "Quyền lợi",
+      "deadline": "Hạn nộp"
+    },
+    "featured": "Nổi bật",
+    "apply_now": "Ứng tuyển ngay",
+    "application": {
+      "title": "Ứng tuyển vị trí",
+      "full_name": "Họ và tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "experience": "Kinh nghiệm",
+      "select_experience": "Chọn mức kinh nghiệm",
+      "cover_letter": "Thư xin việc",
+      "cover_letter_placeholder": "Giới thiệu bản thân và lý do ứng tuyển...",
+      "resume": "CV/Resume",
+      "upload_resume": "Tải lên CV (PDF, DOC, DOCX)",
+      "submit": "Gửi đơn",
+      "cancel": "Hủy"
+    },
+    "experience": {
+      "entry": "Mới tốt nghiệp (0-1 năm)",
+      "junior": "Nhân viên (1-3 năm)",
+      "mid": "Nhân viên trung cấp (3-5 năm)",
+      "senior": "Nhân viên cao cấp (5+ năm)"
+    },
+    "contact": {
+      "title": "Liên hệ phòng Nhân sự",
+      "subtitle": "Có câu hỏi về tuyển dụng? Hãy liên hệ với chúng tôi",
+      "hr_department": "Phòng Nhân sự",
+      "phone": "+84 38 959 1238",
+      "email": "hr@huangsanglobal.com",
+      "address": "C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội",
+      "office_hours": "Giờ làm việc",
+      "weekdays": "Thứ 2 - Thứ 6",
+      "saturday": "Thứ 7",
+      "sunday": "Chủ nhật",
+      "closed": "Nghỉ"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Tin Tức",
+      "subtitle": "Cập nhật tin tức mới nhất về hoạt động công ty và ngành logistics"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm tin tức..."
+    },
+    "categories": {
+      "all": "Tất cả tin tức",
+      "company": "Tin công ty",
+      "industry": "Tin ngành",
+      "regulations": "Quy định mới",
+      "events": "Sự kiện"
+    },
+    "featured": {
+      "title": "Tin nổi bật",
+      "badge": "Nổi bật"
+    },
+    "latest": {
+      "title": "Tin mới nhất"
+    },
+    "results": "Tìm thấy {count} bài viết",
+    "pagination": {
+      "previous": "Trước",
+      "next": "Sau"
+    },
+    "newsletter": {
+      "title": "Đăng ký nhận tin",
+      "subtitle": "Nhận thông tin tin tức mới nhất về logistics và hoạt động của công ty",
+      "placeholder": "Nhập email của bạn",
+      "subscribe": "Đăng ký"
+    },
+    "articles": {
+      "expansion": {
+        "title": "Huang Shan Global mở rộng mạng lưới vận chuyển tại miền Bắc",
+        "excerpt": "Công ty đã chính thức khai trương thêm 3 kho vận mới tại Hà Nội, Hải Phòng và Quảng Ninh, nâng tổng công suất xử lý hàng hóa lên 50% so với năm trước.",
+        "content": "Nhằm đáp ứng nhu cầu vận chuyển ngày càng tăng cao của khách hàng miền Bắc..."
+      },
+      "partnership": {
+        "title": "Ký kết hợp tác chiến lược với 5 đối tác logistics hàng đầu Trung Quốc",
+        "excerpt": "Thỏa thuận hợp tác sẽ giúp Huang Shan Global tối ưu hóa chi phí vận chuyển và rút ngắn thời gian giao hàng từ Trung Quốc về Việt Nam xuống còn 2-3 ngày.",
+        "content": "Trong buổi lễ ký kết diễn ra tại Thâm Quyến, Trung Quốc..."
+      },
+      "technology": {
+        "title": "Triển khai hệ thống AI để theo dõi và dự báo tình trạng hàng hóa",
+        "excerpt": "Hệ thống AI mới sẽ giúp khách hàng theo dõi hàng hóa real-time và nhận được thông báo tự động về tình trạng vận chuyển.",
+        "content": "Công nghệ trí tuệ nhân tạo được áp dụng trong logistics..."
+      },
+      "regulations": {
+        "title": "Cập nhật quy định mới về xuất nhập khẩu Việt Nam - Trung Quốc 2024",
+        "excerpt": "Chính phủ Việt Nam đã ban hành một số quy định mới về thủ tục hải quan và thuế xuất nhập khẩu có hiệu lực từ tháng 12/2024.",
+        "content": "Các quy định mới nhằm đơn giản hóa thủ tục và tăng cường kiểm soát chất lượng..."
+      },
+      "awards": {
+        "title": "Huang Shan Global được vinh danh 'Doanh nghiệp logistics xuất sắc 2024'",
+        "excerpt": "Giải thưởng được trao tại Lễ vinh danh các doanh nghiệp logistics tiêu biểu do Hiệp hội Logistics Việt Nam tổ chức.",
+        "content": "Đây là lần thứ ba liên tiếp công ty nhận được giải thưởng danh giá này..."
+      },
+      "market_analysis": {
+        "title": "Phân tích thị trường logistics Việt Nam - Trung Quốc quý IV/2024",
+        "excerpt": "Thị trường vận chuyển hàng hóa giữa hai nước tiếp tục tăng trưởng mạnh với mức tăng 25% so với cùng kỳ năm trước.",
+        "content": "Báo cáo chi tiết về xu hướng và cơ hội phát triển trong ngành logistics..."
+      }
+    },
+    "tags": {
+      "expansion": "Mở rộng",
+      "business": "Kinh doanh",
+      "partnership": "Hợp tác",
+      "logistics": "Logistics",
+      "technology": "Công nghệ",
+      "innovation": "Đổi mới",
+      "regulations": "Quy định",
+      "trade": "Thương mại",
+      "awards": "Giải thưởng",
+      "recognition": "Công nhận",
+      "market": "Thị trường",
+      "analysis": "Phân tích"
+    },
+    "readMore": "Xem thêm",
+    "publishedOn": "Đăng ngày",
+    "author": "Tác giả"
+  },
+  "knowledge": {
+    "title": "Kiến Thức Xuất Nhập Khẩu",
+    "subtitle": "Kho tài liệu và hướng dẫn xuất nhập khẩu Trung Quốc - Việt Nam",
+    "categories": {
+      "all": "Tất cả danh mục",
+      "procedures": "Thủ tục xuất nhập khẩu",
+      "regulations": "Quy định pháp lý",
+      "customs": "Thủ tục hải quan",
+      "taxes": "Thuế và phí",
+      "guides": "Hướng dẫn chi tiết",
+      "tips": "Mẹo và kinh nghiệm"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm tài liệu hướng dẫn...",
+      "button": "Tìm kiếm",
+      "results": "Tìm thấy {count} tài liệu",
+      "noResults": "Không tìm thấy tài liệu",
+      "tryDifferent": "Thử tìm kiếm với từ khóa khác"
+    },
+    "featured": {
+      "title": "Tài liệu nổi bật",
+      "subtitle": "Các hướng dẫn quan trọng và hữu ích nhất"
+    },
+    "allGuides": {
+      "title": "Tất cả tài liệu",
+      "subtitle": "Kho tài liệu hướng dẫn đầy đủ"
+    },
+    "difficulty": {
+      "beginner": "Cơ bản",
+      "intermediate": "Trung bình",
+      "advanced": "Nâng cao"
+    },
+    "downloadGuide": "Tải hướng dẫn",
+    "viewGuide": "Xem hướng dẫn",
+    "featured": "Nổi bật",
+    "readingTime": "phút đọc",
+    "guides": {
+      "customs_procedures": {
+        "title": "Hướng dẫn thủ tục hải quan xuất nhập khẩu",
+        "description": "Hướng dẫn chi tiết các bước làm thủ tục hải quan cho hàng hóa xuất nhập khẩu giữa Trung Quốc và Việt Nam, bao gồm giấy tờ cần thiết và quy trình."
+      },
+      "import_export_documents": {
+        "title": "Mẫu hồ sơ xuất nhập khẩu chuẩn",
+        "description": "Bộ mẫu hồ sơ hoàn chỉnh cho các giao dịch xuất nhập khẩu, giúp doanh nghiệp chuẩn bị đầy đủ giấy tờ pháp lý theo đúng quy định."
+      },
+      "tax_calculation": {
+        "title": "Cách tính thuế xuất nhập khẩu",
+        "description": "Hướng dẫn chi tiết cách tính thuế xuất khẩu, thuế nhập khẩu, thuế GTGT và các loại phí khác áp dụng cho hàng hóa Trung - Việt."
+      },
+      "shipping_insurance": {
+        "title": "Bảo hiểm hàng hóa và rủi ro vận chuyển",
+        "description": "Kiến thức về các loại bảo hiểm hàng hóa, cách lựa chọn gói bảo hiểm phù hợp và xử lý sự cố trong quá trình vận chuyển."
+      },
+      "warehouse_management": {
+        "title": "Quản lý kho bãi và logistics",
+        "description": "Hướng dẫn quản lý kho bãi hiệu quả, tối ưu hóa quy trình nhập xuất kho và quản lý hàng tồn kho cho doanh nghiệp xuất nhập khẩu."
+      },
+      "quality_control": {
+        "title": "Kiểm tra chất lượng và an toàn hàng hóa",
+        "description": "Quy trình kiểm tra chất lượng hàng hóa xuất nhập khẩu, các tiêu chuẩn an toàn và cách xử lý hàng hóa không đạt yêu cầu."
+      }
+    },
+    "stats": {
+      "title": "Thống kê kiến thức",
+      "subtitle": "Cam kết mang đến giá trị thông qua tri thức",
+      "guidesPublished": "Tài liệu đã xuất bản",
+      "usersHelped": "Người dùng được hỗ trợ",
+      "successRate": "Tỷ lệ thành công"
+    }
+  },
   "footer": {
     "companyName": "Huang Shan Global",
     "companyDescription": "CÔNG TY CỔ PHẦN THƯƠNG MẠI XUẤT NHẬP KHẨU HUANG SHAN GLOBAL",

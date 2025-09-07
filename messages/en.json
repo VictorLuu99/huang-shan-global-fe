@@ -83,9 +83,303 @@
       "thankYouMessage": "We've received your message and will get back to you within 24 hours."
     }
   },
+  "policies": {
+    "title": "Policies & Terms",
+    "subtitle": "Company policies and terms of service for Huang Shan Global",
+    "sections": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "shipping": "Shipping Policy",
+      "refund": "Refund Policy",
+      "insurance": "Insurance Policy",
+      "compliance": "Compliance Regulations"
+    }
+  },
+  "recruitment": {
+    "hero": {
+      "title": "Careers",
+      "subtitle": "Join the professional team at Huang Shan Global",
+      "view_jobs": "View Jobs",
+      "learn_more": "Learn More"
+    },
+    "why_join": {
+      "title": "Why choose Huang Shan Global?",
+      "subtitle": "We are committed to creating the best working environment for our team"
+    },
+    "benefits": {
+      "team_work": {
+        "title": "Professional Team",
+        "description": "Work with an experienced, enthusiastic and dedicated team"
+      },
+      "learning": {
+        "title": "Skill Development",
+        "description": "Continuous training and professional development opportunities"
+      },
+      "career": {
+        "title": "Clear Advancement",
+        "description": "Career development opportunities with transparent promotion pathways"
+      },
+      "compensation": {
+        "title": "Attractive Income",
+        "description": "Competitive salary with excellent benefits"
+      }
+    },
+    "search": {
+      "title": "Job Search",
+      "placeholder": "Enter search keywords...",
+      "button": "Search",
+      "results": "Found {count} jobs"
+    },
+    "filters": {
+      "all_departments": "All Departments",
+      "all_locations": "All Locations"
+    },
+    "departments": {
+      "logistics": "Logistics",
+      "operations": "Operations",
+      "customer_service": "Customer Service",
+      "sales": "Sales",
+      "finance": "Finance",
+      "hr": "Human Resources"
+    },
+    "locations": {
+      "hanoi": "Hanoi",
+      "ho_chi_minh": "Ho Chi Minh City",
+      "da_nang": "Da Nang",
+      "hai_phong": "Hai Phong"
+    },
+    "job_types": {
+      "full_time": "Full-time",
+      "part_time": "Part-time",
+      "contract": "Contract"
+    },
+    "education": {
+      "bachelor": "Bachelor's Degree",
+      "college": "College Degree",
+      "high_school": "High School"
+    },
+    "jobs": {
+      "logistics_coordinator": {
+        "title": "Logistics Coordinator",
+        "description": "Responsible for coordinating China-Vietnam freight transportation, managing import/export processes and working with logistics partners.",
+        "requirements": "University degree in Logistics/Commerce|At least 2 years experience in logistics|Good Chinese communication skills|Proficient in office software|Ability to work under pressure",
+        "benefits": "Basic salary + performance bonus|Full insurance coverage|Learning and development opportunities|Dynamic working environment|Annual company trips"
+      },
+      "warehouse_manager": {
+        "title": "Warehouse Manager",
+        "description": "Manage all warehouse operations, supervise inbound/outbound activities, ensure cargo safety and optimize warehouse processes.",
+        "requirements": "3-5 years warehouse management experience|Knowledge of import/export processes|Good team management skills|Proficient in warehouse management software|Problem analysis and solving abilities",
+        "benefits": "Competitive salary based on capacity|Monthly/quarterly KPI bonuses|Premium health insurance|Regular professional training|Fast promotion opportunities"
+      },
+      "customer_service": {
+        "title": "Customer Service Representative",
+        "description": "Advise and support customers about company services, handle complaints and maintain good customer relationships.",
+        "requirements": "High school graduate or above|1+ years customer service experience|Good communication and negotiation skills|Basic computer skills|Patient and friendly personality",
+        "benefits": "Stable salary + commission|Professional skills training|Friendly working environment|Career development opportunities|Flexible leave policy"
+      },
+      "sales_executive": {
+        "title": "Sales Executive",
+        "description": "Find and develop new customers, maintain relationships with existing customers, achieve assigned sales targets.",
+        "requirements": "University degree in related fields|2-4 years sales experience|Excellent sales and negotiation skills|Independent work ability|Chinese language is an advantage",
+        "benefits": "Basic salary + attractive commission|Target achievement bonuses|Travel expense support|Sales skills training|Year-end bonus policy"
+      }
+    },
+    "job_details": {
+      "requirements": "Job Requirements",
+      "benefits": "Benefits",
+      "deadline": "Application Deadline"
+    },
+    "featured": "Featured",
+    "apply_now": "Apply Now",
+    "application": {
+      "title": "Apply for Position",
+      "full_name": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "experience": "Experience",
+      "select_experience": "Select experience level",
+      "cover_letter": "Cover Letter",
+      "cover_letter_placeholder": "Introduce yourself and reason for application...",
+      "resume": "CV/Resume",
+      "upload_resume": "Upload CV (PDF, DOC, DOCX)",
+      "submit": "Submit Application",
+      "cancel": "Cancel"
+    },
+    "experience": {
+      "entry": "Fresh Graduate (0-1 years)",
+      "junior": "Junior (1-3 years)",
+      "mid": "Mid-level (3-5 years)",
+      "senior": "Senior (5+ years)"
+    },
+    "contact": {
+      "title": "Contact HR Department",
+      "subtitle": "Have questions about recruitment? Contact us",
+      "hr_department": "HR Department",
+      "phone": "+84 38 959 1238",
+      "email": "hr@huangsanglobal.com",
+      "address": "C38-30, Block C Geleximco, Duong Noi, Ha Dong, Hanoi",
+      "office_hours": "Office Hours",
+      "weekdays": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed"
+    }
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Latest updates on company activities and logistics industry",
+    "hero": {
+      "title": "Latest News",
+      "subtitle": "Stay updated with the latest news and insights from Huang Shan Global and the logistics industry"
+    },
+    "categories": {
+      "all": "All Categories",
+      "company": "Company News",
+      "industry": "Industry News",
+      "regulations": "New Regulations",
+      "events": "Events"
+    },
+    "search": {
+      "placeholder": "Search news articles...",
+      "button": "Search",
+      "results": "Found {count} articles",
+      "noResults": "No articles found"
+    },
+    "featured": {
+      "title": "Featured Articles",
+      "subtitle": "Most important news and updates"
+    },
+    "latest": {
+      "title": "Latest Articles",
+      "subtitle": "Recent news and updates"
+    },
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "author": "Author",
+    "readingTime": "min read",
+    "tags": "Tags",
+    "share": "Share this article",
+    "relatedArticles": "Related Articles",
+    "backToNews": "Back to News",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}"
+    },
+    "newsletter": {
+      "title": "Subscribe to Newsletter",
+      "subtitle": "Get the latest logistics news and insights delivered to your inbox",
+      "emailPlaceholder": "Enter your email address",
+      "subscribe": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Please enter a valid email address"
+    },
+    "articles": {
+      "new_logistics_center": {
+        "title": "Huang Shan Global Opens New Logistics Center in Hanoi",
+        "excerpt": "Our latest logistics facility in Hanoi strengthens the China-Vietnam trade route with advanced automation and 24/7 operations.",
+        "content": "We are pleased to announce the opening of our newest logistics center in Hanoi, marking a significant milestone in expanding our China-Vietnam trade operations. This state-of-the-art facility spans 10,000 square meters and features advanced warehouse management systems, automated sorting technology, and round-the-clock operations to better serve our growing customer base."
+      },
+      "trade_partnership": {
+        "title": "Strategic Partnership with Leading Chinese Manufacturers",
+        "excerpt": "New partnerships enable faster delivery times and reduced costs for import-export operations between China and Vietnam.",
+        "content": "Huang Shan Global has established strategic partnerships with three major Chinese manufacturers, creating a more efficient supply chain for our clients. These partnerships will reduce delivery times by up to 30% and lower shipping costs through optimized routing and consolidated shipments."
+      },
+      "digital_transformation": {
+        "title": "Digital Transformation: New Tracking System Launch",
+        "excerpt": "Our new real-time tracking system provides complete visibility throughout the entire shipping process from origin to destination.",
+        "content": "We have launched our advanced digital tracking system, offering customers unprecedented visibility into their shipments. The system provides real-time updates, estimated delivery times, and detailed tracking information accessible through our website and mobile app."
+      },
+      "sustainability_initiative": {
+        "title": "Green Logistics Initiative: Reducing Carbon Footprint",
+        "excerpt": "Huang Shan Global commits to sustainable logistics practices with new green transportation and packaging solutions.",
+        "content": "As part of our commitment to environmental responsibility, we have launched our Green Logistics Initiative. This comprehensive program includes electric vehicle adoption, sustainable packaging materials, and route optimization to reduce our carbon footprint by 40% over the next three years."
+      },
+      "trade_regulations_2024": {
+        "title": "New Trade Regulations Between China and Vietnam in 2024",
+        "excerpt": "Important updates on trade regulations affecting import-export operations and documentation requirements.",
+        "content": "The latest trade regulations between China and Vietnam introduce new documentation requirements and simplified customs procedures. Our team has prepared comprehensive guides to help clients navigate these changes effectively and maintain compliance with all regulatory requirements."
+      },
+      "logistics_awards": {
+        "title": "Huang Shan Global Receives Excellence in Logistics Award",
+        "excerpt": "Recognition for outstanding service quality and innovation in China-Vietnam logistics solutions.",
+        "content": "We are honored to receive the Excellence in Logistics Award from the Vietnam Logistics Business Association. This recognition acknowledges our commitment to service quality, technological innovation, and contribution to strengthening trade relationships between China and Vietnam."
+      }
+    }
+  },
+  "knowledge": {
+    "title": "Import-Export Knowledge",
+    "subtitle": "Documentation and guides for China-Vietnam import-export",
+    "categories": {
+      "all": "All Categories",
+      "procedures": "Import-Export Procedures",
+      "regulations": "Legal Regulations", 
+      "customs": "Customs Procedures",
+      "taxes": "Taxes and Fees",
+      "guides": "Detailed Guides",
+      "tips": "Tips and Experience"
+    },
+    "search": {
+      "placeholder": "Search knowledge guides...",
+      "button": "Search",
+      "results": "Found {count} guides",
+      "noResults": "No guides found",
+      "tryDifferent": "Try searching with different keywords"
+    },
+    "featured": {
+      "title": "Featured Guides",
+      "subtitle": "Most important and helpful guides"
+    },
+    "allGuides": {
+      "title": "All Guides",
+      "subtitle": "Complete knowledge base"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "downloadGuide": "Download Guide",
+    "viewGuide": "View Guide",
+    "featured": "Featured",
+    "readingTime": "min read",
+    "guides": {
+      "customs_procedures": {
+        "title": "Customs Procedures Guide for Import-Export",
+        "description": "Detailed guide on customs procedures for goods between China and Vietnam, including required documents and processes."
+      },
+      "import_export_documents": {
+        "title": "Standard Import-Export Document Templates",
+        "description": "Complete set of document templates for import-export transactions, helping businesses prepare all legal documents correctly."
+      },
+      "tax_calculation": {
+        "title": "How to Calculate Import-Export Taxes",
+        "description": "Detailed guide on calculating export tax, import tax, VAT and other fees applicable to China-Vietnam goods."
+      },
+      "shipping_insurance": {
+        "title": "Cargo Insurance and Shipping Risks",
+        "description": "Knowledge about cargo insurance types, how to choose suitable insurance packages and handle incidents during transportation."
+      },
+      "warehouse_management": {
+        "title": "Warehouse Management and Logistics",
+        "description": "Guide to efficient warehouse management, optimizing import-export processes and inventory management for import-export businesses."
+      },
+      "quality_control": {
+        "title": "Quality Control and Cargo Safety",
+        "description": "Quality control processes for import-export goods, safety standards and how to handle goods that don't meet requirements."
+      }
+    },
+    "stats": {
+      "title": "Knowledge Statistics",
+      "subtitle": "Committed to delivering value through knowledge",
+      "guidesPublished": "Guides Published",
+      "usersHelped": "Users Helped",
+      "successRate": "Success Rate"
+    }
+  },
   "footer": {
-    "companyName": "LogisticsPro",
-    "companyDescription": "Your trusted partner for global logistics solutions.",
+    "companyName": "Huang Shan Global",
+    "companyDescription": "HUANG SHAN GLOBAL IMPORT-EXPORT TRADING JOINT STOCK COMPANY",
     "services": "Services",
     "company": "Company",
     "support": "Support",
@@ -97,6 +391,6 @@
     "trackPackage": "Track Package",
     "shippingCalculator": "Shipping Calculator",
     "documentation": "Documentation",
-    "copyright": "© 2024 LogisticsPro. All rights reserved."
+    "copyright": "© 2024 Huang Shan Global. All rights reserved."
   }
 }

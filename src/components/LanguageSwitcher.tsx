@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useState, useTransition } from "react";
+import { useState, useTransition, memo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
 
@@ -11,14 +11,14 @@ const languages = [
   { code: "en", name: "English", flag: "🇺🇸" },
 ];
 
-export default function LanguageSwitcher() {
+const LanguageSwitcher = memo(() => {
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
 
   const currentLanguage = languages.find(lang => lang.code === locale);
 
-  const handleLanguageChange = (newLocale: string) => {
+  const handleLanguageChange = useCallback((newLocale: string) => {
     startTransition(() => {
       // Set cookie for locale
       document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=lax`;
@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
       window.location.reload();
       setIsOpen(false);
     });
-  };
+  }, []);
 
   return (
     <div className="relative">
@@ -83,4 +83,8 @@ export default function LanguageSwitcher() {
       )}
     </div>
   );
-}
+});
+
+LanguageSwitcher.displayName = 'LanguageSwitcher';
+
+export default LanguageSwitcher;

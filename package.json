@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "type-check": "tsc --noEmit",
+    "export": "next build && next export",
+    "analyze": "cross-env ANALYZE=true next build",
+    "clean": "rm -rf .next out node_modules/.cache"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",

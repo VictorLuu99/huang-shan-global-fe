@@ -83,9 +83,303 @@
       "thankYouMessage": "我们已收到您的消息，将在24小时内回复您。"
     }
   },
+  "policies": {
+    "title": "政策条款",
+    "subtitle": "黄山环球服务政策和使用条款",
+    "sections": {
+      "terms": "服务条款",
+      "privacy": "隐私政策",
+      "shipping": "运输政策",
+      "refund": "退款政策",
+      "insurance": "保险政策",
+      "compliance": "合规规定"
+    }
+  },
+  "recruitment": {
+    "hero": {
+      "title": "招聘",
+      "subtitle": "加入黄山环球专业团队",
+      "view_jobs": "查看职位",
+      "learn_more": "了解更多"
+    },
+    "why_join": {
+      "title": "为什么选择黄山环球？",
+      "subtitle": "我们致力于为团队成员创造最佳工作环境"
+    },
+    "benefits": {
+      "team_work": {
+        "title": "专业团队",
+        "description": "与经验丰富、热情敬业的团队一起工作"
+      },
+      "learning": {
+        "title": "技能发展",
+        "description": "持续培训和专业发展机会"
+      },
+      "career": {
+        "title": "晋升明确",
+        "description": "透明的晋升途径和职业发展机会"
+      },
+      "compensation": {
+        "title": "丰厚收入",
+        "description": "有竞争力的薪酬和优秀的福利待遇"
+      }
+    },
+    "search": {
+      "title": "职位搜索",
+      "placeholder": "输入关键词搜索...",
+      "button": "搜索",
+      "results": "找到 {count} 个职位"
+    },
+    "filters": {
+      "all_departments": "所有部门",
+      "all_locations": "所有地点"
+    },
+    "departments": {
+      "logistics": "物流",
+      "operations": "运营",
+      "customer_service": "客户服务",
+      "sales": "销售",
+      "finance": "财务",
+      "hr": "人力资源"
+    },
+    "locations": {
+      "hanoi": "河内",
+      "ho_chi_minh": "胡志明市",
+      "da_nang": "岘港",
+      "hai_phong": "海防"
+    },
+    "job_types": {
+      "full_time": "全职",
+      "part_time": "兼职",
+      "contract": "合同"
+    },
+    "education": {
+      "bachelor": "本科学历",
+      "college": "专科学历",
+      "high_school": "高中学历"
+    },
+    "jobs": {
+      "logistics_coordinator": {
+        "title": "物流协调员",
+        "description": "负责协调中越货运物流，管理进出口流程，与物流合作伙伴合作。",
+        "requirements": "物流/贸易专业大学毕业|至少2年物流经验|良好的中文沟通能力|熟练使用办公软件|能承受工作压力",
+        "benefits": "基本工资+绩效奖金|全面保险保障|学习发展机会|活力工作环境|年度公司旅游"
+      },
+      "warehouse_manager": {
+        "title": "仓库经理",
+        "description": "管理所有仓库运营，监督进出库活动，确保货物安全并优化仓库流程。",
+        "requirements": "3-5年仓库管理经验|了解进出口流程|良好的团队管理技能|熟练使用仓库管理软件|问题分析和解决能力",
+        "benefits": "根据能力的竞争性薪酬|月度/季度KPI奖金|高级健康保险|定期专业培训|快速晋升机会"
+      },
+      "customer_service": {
+        "title": "客户服务代表",
+        "description": "为客户提供公司服务咨询和支持，处理投诉并维护良好的客户关系。",
+        "requirements": "高中毕业或以上|1年以上客服经验|良好的沟通和谈判技巧|基本计算机技能|耐心友善的性格",
+        "benefits": "稳定工资+佣金|专业技能培训|友好工作环境|职业发展机会|灵活休假政策"
+      },
+      "sales_executive": {
+        "title": "销售主管",
+        "description": "寻找和开发新客户，维护现有客户关系，实现分配的销售目标。",
+        "requirements": "相关专业大学学历|2-4年销售经验|出色的销售和谈判技能|独立工作能力|中文能力优先",
+        "benefits": "基本工资+丰厚佣金|目标达成奖金|差旅费支持|销售技能培训|年终奖金政策"
+      }
+    },
+    "job_details": {
+      "requirements": "职位要求",
+      "benefits": "福利待遇",
+      "deadline": "申请截止日期"
+    },
+    "featured": "推荐",
+    "apply_now": "立即申请",
+    "application": {
+      "title": "职位申请",
+      "full_name": "全名",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "experience": "工作经验",
+      "select_experience": "选择经验水平",
+      "cover_letter": "求职信",
+      "cover_letter_placeholder": "介绍自己和申请原因...",
+      "resume": "简历",
+      "upload_resume": "上传简历 (PDF, DOC, DOCX)",
+      "submit": "提交申请",
+      "cancel": "取消"
+    },
+    "experience": {
+      "entry": "应届毕业生 (0-1年)",
+      "junior": "初级 (1-3年)",
+      "mid": "中级 (3-5年)",
+      "senior": "高级 (5年以上)"
+    },
+    "contact": {
+      "title": "联系人力资源部",
+      "subtitle": "有关招聘的问题？请联系我们",
+      "hr_department": "人力资源部",
+      "phone": "+84 38 959 1238",
+      "email": "hr@huangsanglobal.com",
+      "address": "河内市河东区阳内Geleximco小区C区C38-30号",
+      "office_hours": "办公时间",
+      "weekdays": "周一 - 周五",
+      "saturday": "周六",
+      "sunday": "周日",
+      "closed": "休息"
+    }
+  },
+  "news": {
+    "title": "新闻",
+    "subtitle": "公司活动和物流行业最新动态",
+    "hero": {
+      "title": "最新新闻",
+      "subtitle": "了解黄山环球和物流行业的最新消息和见解"
+    },
+    "categories": {
+      "all": "全部分类",
+      "company": "公司新闻",
+      "industry": "行业新闻",
+      "regulations": "新规定",
+      "events": "活动"
+    },
+    "search": {
+      "placeholder": "搜索新闻文章...",
+      "button": "搜索",
+      "results": "找到 {count} 篇文章",
+      "noResults": "未找到文章"
+    },
+    "featured": {
+      "title": "热门文章",
+      "subtitle": "最重要的新闻和更新"
+    },
+    "latest": {
+      "title": "最新文章",
+      "subtitle": "最新新闻和动态"
+    },
+    "readMore": "阅读更多",
+    "publishedOn": "发布于",
+    "author": "作者",
+    "readingTime": "分钟阅读",
+    "tags": "标签",
+    "share": "分享这篇文章",
+    "relatedArticles": "相关文章",
+    "backToNews": "返回新闻",
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第 {current} 页，共 {total} 页"
+    },
+    "newsletter": {
+      "title": "订阅新闻通讯",
+      "subtitle": "将最新的物流新闻和见解直接发送到您的邮箱",
+      "emailPlaceholder": "请输入您的邮箱地址",
+      "subscribe": "订阅",
+      "success": "感谢您的订阅！",
+      "error": "请输入有效的邮箱地址"
+    },
+    "articles": {
+      "new_logistics_center": {
+        "title": "黄山环球在河内开设新物流中心",
+        "excerpt": "我们在河内的最新物流设施通过先进的自动化和24/7运营加强了中越贸易路线。",
+        "content": "我们很高兴宣布在河内开设我们最新的物流中心，这标志着扩展中越贸易运营的重要里程碑。这个最先进的设施占地10,000平方米，配备先进的仓库管理系统、自动化分拣技术和24小时运营，以更好地为我们不断增长的客户群服务。"
+      },
+      "trade_partnership": {
+        "title": "与中国领先制造商建立战略伙伴关系",
+        "excerpt": "新的合作伙伴关系使中越进出口业务的交货时间更快，成本更低。",
+        "content": "黄山环球与三家主要的中国制造商建立了战略伙伴关系，为我们的客户创造了更高效的供应链。这些合作伙伴关系将通过优化路线和合并发货，将交货时间缩短高达30%，并降低运输成本。"
+      },
+      "digital_transformation": {
+        "title": "数字化转型：新跟踪系统上线",
+        "excerpt": "我们的新实时跟踪系统提供从起点到目的地整个运输过程的完整可见性。",
+        "content": "我们推出了先进的数字跟踪系统，为客户提供对其货物前所未有的可见性。该系统提供实时更新、预计交货时间和详细的跟踪信息，可通过我们的网站和移动应用程序访问。"
+      },
+      "sustainability_initiative": {
+        "title": "绿色物流倡议：减少碳足迹",
+        "excerpt": "黄山环球致力于可持续物流实践，推出新的绿色运输和包装解决方案。",
+        "content": "作为我们对环境责任承诺的一部分，我们启动了绿色物流倡议。这个综合项目包括电动车辆采用、可持续包装材料和路线优化，以在未来三年内减少40%的碳足迹。"
+      },
+      "trade_regulations_2024": {
+        "title": "2024年中越新贸易法规",
+        "excerpt": "影响进出口业务和文档要求的贸易法规重要更新。",
+        "content": "中越之间最新的贸易法规引入了新的文档要求和简化的海关程序。我们的团队已准备了全面的指南，帮助客户有效应对这些变化并保持所有法规要求的合规性。"
+      },
+      "logistics_awards": {
+        "title": "黄山环球获得物流卓越奖",
+        "excerpt": "因在中越物流解决方案方面的出色服务质量和创新而获得认可。",
+        "content": "我们很荣幸获得越南物流商业协会颁发的物流卓越奖。这一认可表彰了我们对服务质量、技术创新和加强中越贸易关系贡献的承诺。"
+      }
+    }
+  },
+  "knowledge": {
+    "title": "进出口知识",
+    "subtitle": "中越进出口文档和指南",
+    "categories": {
+      "all": "全部类别",
+      "procedures": "进出口程序",
+      "regulations": "法规条例",
+      "customs": "海关手续", 
+      "taxes": "税费",
+      "guides": "详细指南",
+      "tips": "技巧经验"
+    },
+    "search": {
+      "placeholder": "搜索知识指南...",
+      "button": "搜索",
+      "results": "找到 {count} 个指南",
+      "noResults": "未找到指南",
+      "tryDifferent": "尝试使用不同的关键词搜索"
+    },
+    "featured": {
+      "title": "精选指南",
+      "subtitle": "最重要和最有帮助的指南"
+    },
+    "allGuides": {
+      "title": "所有指南",
+      "subtitle": "完整的知识库"
+    },
+    "difficulty": {
+      "beginner": "初级",
+      "intermediate": "中级",
+      "advanced": "高级"
+    },
+    "downloadGuide": "下载指南",
+    "viewGuide": "查看指南",
+    "featured": "精选",
+    "readingTime": "分钟阅读",
+    "guides": {
+      "customs_procedures": {
+        "title": "进出口海关手续指南",
+        "description": "中越货物海关手续详细指南，包括所需文件和流程。"
+      },
+      "import_export_documents": {
+        "title": "标准进出口文件模板",
+        "description": "进出口交易的完整文件模板集，帮助企业正确准备所有法律文件。"
+      },
+      "tax_calculation": {
+        "title": "如何计算进出口税费",
+        "description": "详细指南，包括出口税、进口税、增值税和其他适用于中越货物的费用计算方法。"
+      },
+      "shipping_insurance": {
+        "title": "货物保险和运输风险",
+        "description": "关于货物保险类型的知识，如何选择合适的保险方案以及处理运输过程中的事故。"
+      },
+      "warehouse_management": {
+        "title": "仓库管理和物流",
+        "description": "高效仓库管理指南，优化进出口流程和进出口企业的库存管理。"
+      },
+      "quality_control": {
+        "title": "质量控制和货物安全",
+        "description": "进出口货物质量控制流程、安全标准以及如何处理不符合要求的货物。"
+      }
+    },
+    "stats": {
+      "title": "知识统计",
+      "subtitle": "致力于通过知识创造价值",
+      "guidesPublished": "已发布指南",
+      "usersHelped": "帮助的用户",
+      "successRate": "成功率"
+    }
+  },
   "footer": {
-    "companyName": "LogisticsPro",
-    "companyDescription": "您值得信赖的全球物流解决方案合作伙伴。",
+    "companyName": "黄山环球",
+    "companyDescription": "黄山环球进出口贸易股份有限公司",
     "services": "服务",
     "company": "公司",
     "support": "支持",
@@ -97,6 +391,6 @@
     "trackPackage": "跟踪包裹",
     "shippingCalculator": "运费计算器",
     "documentation": "文档",
-    "copyright": "© 2024 LogisticsPro. 版权所有。"
+    "copyright": "© 2024 黄山环球. 版权所有。"
   }
 }

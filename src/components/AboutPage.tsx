@@ -1,21 +1,15 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { 
   Truck, 
-  Globe, 
   Shield, 
-  Clock, 
-  Package, 
-  Plane, 
-  Ship, 
   MapPin,
   Phone,
-  Mail,
-  CheckCircle,
   Users,
   TrendingUp,
   Menu,
@@ -23,12 +17,9 @@ import {
   Target,
   Eye,
   Star,
-  Building2,
   FileText,
   User
 } from "lucide-react";
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 
 const AboutPage: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -83,14 +74,14 @@ const AboutPage: React.FC = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="/#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</a>
-              <a href="/about" className="text-sm font-medium text-primary">{t('nav.about')}</a>
-              <a href="/#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</a>
-              <a href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</a>
-              <a href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</a>
-              <a href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</a>
-              <a href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</a>
-              <a href="/#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</a>
+              <Link href="/#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
+              <Link href="/about" className="text-sm font-medium text-primary">{t('nav.about')}</Link>
+              <Link href="/#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
+              <Link href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
+              <Link href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</Link>
+              <Link href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
+              <Link href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
+              <Link href="/#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
             </nav>
 
             {/* Language Switcher and Mobile Menu */}
@@ -117,14 +108,14 @@ const AboutPage: React.FC = () => {
                 className="lg:hidden border-t border-border mt-1"
               >
                 <nav className="py-4 space-y-2">
-                  <a href="/#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</a>
-                  <a href="/about" className="block px-4 py-2 text-sm font-medium bg-muted rounded-lg text-primary" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</a>
-                  <a href="/#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</a>
-                  <a href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</a>
-                  <a href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</a>
-                  <a href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</a>
-                  <a href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</a>
-                  <a href="/#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</a>
+                  <Link href="/#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</Link>
+                  <Link href="/about" className="block px-4 py-2 text-sm font-medium bg-muted rounded-lg text-primary" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</Link>
+                  <Link href="/#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</Link>
+                  <Link href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</Link>
+                  <Link href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</Link>
+                  <Link href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</Link>
+                  <Link href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</Link>
+                  <Link href="/#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</Link>
                 </nav>
               </motion.div>
             )}

@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { 
   Truck, 
@@ -452,14 +453,14 @@ const LogisticsLandingPage: React.FC = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</a>
-              <a href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</a>
-              <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</a>
-              <a href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</a>
-              <a href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</a>
-              <a href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</a>
-              <a href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</a>
-              <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</a>
+              <Link href="#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
+              <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</Link>
+              <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
+              <Link href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
+              <Link href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</Link>
+              <Link href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
+              <Link href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
+              <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
             </nav>
 
             {/* Language Switcher and Mobile Menu */}
@@ -486,14 +487,14 @@ const LogisticsLandingPage: React.FC = () => {
                 className="lg:hidden border-t border-border mt-1"
               >
                 <nav className="py-4 space-y-2">
-                  <a href="#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</a>
-                  <a href="/about" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</a>
-                  <a href="#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</a>
-                  <a href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</a>
-                  <a href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</a>
-                  <a href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</a>
-                  <a href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</a>
-                  <a href="#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</a>
+                  <Link href="#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</Link>
+                  <Link href="/about" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</Link>
+                  <Link href="#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</Link>
+                  <Link href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</Link>
+                  <Link href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</Link>
+                  <Link href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</Link>
+                  <Link href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</Link>
+                  <Link href="#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</Link>
                 </nav>
               </motion.div>
             )}
@@ -800,54 +801,6 @@ const LogisticsLandingPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-background border-t border-border py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">{t('footer.companyName')}</h3>
-              <p className="text-muted-foreground">
-                {t('footer.companyDescription')}
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.services')}</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>{t('services.groundTransportation.title')}</li>
-                <li>{t('services.airFreight.title')}</li>
-                <li>{t('services.oceanFreight.title')}</li>
-                <li>{t('services.warehousing.title')}</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.company')}</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>{t('footer.aboutUs')}</li>
-                <li>{t('footer.careers')}</li>
-                <li>{t('footer.news')}</li>
-                <li>{t('footer.contact')}</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.support')}</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>{t('footer.helpCenter')}</li>
-                <li>{t('footer.trackPackage')}</li>
-                <li>{t('footer.shippingCalculator')}</li>
-                <li>{t('footer.documentation')}</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p>{t('footer.copyright')}</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
