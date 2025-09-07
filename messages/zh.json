@@ -149,6 +149,138 @@
       "refund": "退款政策",
       "insurance": "保险政策",
       "compliance": "合规规定"
+    },
+    "content": {
+      "terms": {
+        "title": "服务使用条款",
+        "download": "下载PDF",
+        "note": "这些政策自2024年01月01日起生效，可能会更新。客户应定期查看以了解最新变化。",
+        "contact": "如需了解更多详细信息，请联系：",
+        "phone": "038.959.1238",
+        "email": "huangshanglobal@gmail.com",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "适用范围",
+            "content": "本条款适用于所有使用黄山环球运输和物流服务的客户。"
+          },
+          {
+            "number": "2", 
+            "heading": "客户权利和义务",
+            "content": "客户有责任提供准确的货物信息、收发地址，并遵守进出口相关规定。"
+          },
+          {
+            "number": "3",
+            "heading": "黄山环球的责任", 
+            "content": "我们承诺安全运输货物，按时交付，并提供24/7客户服务。"
+          }
+        ]
+      },
+      "privacy": {
+        "title": "信息隐私政策",
+        "download": "下载PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "信息收集",
+            "content": "我们仅收集提供物流服务和客户支持所必需的信息。"
+          },
+          {
+            "number": "2",
+            "heading": "信息使用", 
+            "content": "客户信息用于处理订单、联系沟通和改善服务质量。"
+          },
+          {
+            "number": "3",
+            "heading": "数据安全",
+            "content": "我们采用现代安全措施保护客户信息免受未经授权的访问。"
+          }
+        ]
+      },
+      "shipping": {
+        "title": "运输政策",
+        "download": "下载PDF", 
+        "sections": [
+          {
+            "number": "1",
+            "heading": "运输时间",
+            "content": "陆路运输：2-3个工作日。海路运输：7-15天，具体取决于路线。"
+          },
+          {
+            "number": "2",
+            "heading": "货物包装",
+            "content": "货物需按国际标准包装，以确保运输过程中的安全。"
+          },
+          {
+            "number": "3",
+            "heading": "货物收发",
+            "content": "我们根据客户要求提供上门提货或仓库自提服务。"
+          }
+        ]
+      },
+      "refund": {
+        "title": "退款政策",
+        "download": "下载PDF",
+        "sections": [
+          {
+            "number": "1", 
+            "heading": "退款条件",
+            "content": "当我们未能履行承诺时，客户可以申请服务费退款。"
+          },
+          {
+            "number": "2",
+            "heading": "退款流程",
+            "content": "退款申请需在问题发生后7天内提交。"
+          },
+          {
+            "number": "3",
+            "heading": "处理时间",
+            "content": "我们将在收到申请后15个工作日内处理退款请求。"
+          }
+        ]
+      },
+      "insurance": {
+        "title": "货物保险政策",
+        "download": "下载PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "保险范围",
+            "content": "货物在从出发仓库到交货地点运输过程中的全险保障。"
+          },
+          {
+            "number": "2", 
+            "heading": "保险费率",
+            "content": "保险费按货物价值百分比计算，具体取决于货物类型和运输路线。"
+          },
+          {
+            "number": "3",
+            "heading": "理赔流程",
+            "content": "客户需立即报告事故并提供完整文件以获得赔偿处理。"
+          }
+        ]
+      },
+      "compliance": {
+        "title": "合规和法律规定",
+        "download": "下载PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "法律合规",
+            "content": "黄山环球的所有活动均严格遵守越南法律和国际规定。"
+          },
+          {
+            "number": "2",
+            "heading": "禁运货物",
+            "content": "我们不运输法律法规和主管部门禁止的物品。"
+          },
+          {
+            "number": "3", 
+            "heading": "海关手续",
+            "content": "协助客户按规定完成海关手续和相关文件。"
+          }
+        ]
+      }
     }
   },
   "recruitment": {

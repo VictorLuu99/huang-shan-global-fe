@@ -149,6 +149,138 @@
       "refund": "Chính sách hoàn trả",
       "insurance": "Chính sách bảo hiểm",
       "compliance": "Quy định tuân thủ"
+    },
+    "content": {
+      "terms": {
+        "title": "Điều khoản sử dụng dịch vụ",
+        "download": "Tải xuống PDF",
+        "note": "Các chính sách này có hiệu lực từ ngày 01/01/2024 và có thể được cập nhật. Khách hàng nên thường xuyên kiểm tra để nắm bắt những thay đổi mới nhất.",
+        "contact": "Để biết thêm thông tin chi tiết, vui lòng liên hệ:",
+        "phone": "038.959.1238",
+        "email": "huangshanglobal@gmail.com",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Phạm vi áp dụng",
+            "content": "Điều khoản này áp dụng cho tất cả khách hàng sử dụng dịch vụ vận chuyển và logistics của Huang Shan Global."
+          },
+          {
+            "number": "2", 
+            "heading": "Quyền và nghĩa vụ của khách hàng",
+            "content": "Khách hàng có trách nhiệm cung cấp thông tin chính xác về hàng hóa, địa chỉ giao nhận và tuân thủ các quy định về xuất nhập khẩu."
+          },
+          {
+            "number": "3",
+            "heading": "Trách nhiệm của Huang Shan Global", 
+            "content": "Chúng tôi cam kết vận chuyển hàng hóa an toàn, đúng thời gian và cung cấp dịch vụ chăm sóc khách hàng 24/7."
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Chính sách bảo mật thông tin",
+        "download": "Tải xuống PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Thu thập thông tin",
+            "content": "Chúng tôi chỉ thu thập thông tin cần thiết để cung cấp dịch vụ logistics và hỗ trợ khách hàng."
+          },
+          {
+            "number": "2",
+            "heading": "Sử dụng thông tin", 
+            "content": "Thông tin khách hàng được sử dụng để xử lý đơn hàng, liên lạc và cải thiện chất lượng dịch vụ."
+          },
+          {
+            "number": "3",
+            "heading": "Bảo mật dữ liệu",
+            "content": "Chúng tôi áp dụng các biện pháp bảo mật hiện đại để bảo vệ thông tin khách hàng khỏi truy cập trái phép."
+          }
+        ]
+      },
+      "shipping": {
+        "title": "Chính sách vận chuyển",
+        "download": "Tải xuống PDF", 
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Thời gian vận chuyển",
+            "content": "Vận chuyển đường bộ: 2-3 ngày làm việc. Vận chuyển đường biển: 7-15 ngày tùy tuyến đường."
+          },
+          {
+            "number": "2",
+            "heading": "Đóng gói hàng hóa",
+            "content": "Hàng hóa cần được đóng gói theo tiêu chuẩn quốc tế để đảm bảo an toàn trong quá trình vận chuyển."
+          },
+          {
+            "number": "3",
+            "heading": "Giao nhận hàng",
+            "content": "Chúng tôi cung cấp dịch vụ giao hàng tận nơi hoặc nhận hàng tại kho theo yêu cầu khách hàng."
+          }
+        ]
+      },
+      "refund": {
+        "title": "Chính sách hoàn trả",
+        "download": "Tải xuống PDF",
+        "sections": [
+          {
+            "number": "1", 
+            "heading": "Điều kiện hoàn trả",
+            "content": "Khách hàng có thể yêu cầu hoàn trả phí dịch vụ trong trường hợp chúng tôi không hoàn thành cam kết."
+          },
+          {
+            "number": "2",
+            "heading": "Quy trình hoàn trả",
+            "content": "Yêu cầu hoàn trả cần được gửi trong vòng 7 ngày kể từ khi phát sinh vấn đề."
+          },
+          {
+            "number": "3",
+            "heading": "Thời gian xử lý",
+            "content": "Chúng tôi sẽ xử lý yêu cầu hoàn trả trong vòng 15 ngày làm việc kể từ khi nhận được đơn."
+          }
+        ]
+      },
+      "insurance": {
+        "title": "Chính sách bảo hiểm hàng hóa",
+        "download": "Tải xuống PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Phạm vi bảo hiểm",
+            "content": "Bảo hiểm toàn rủi ro cho hàng hóa trong quá trình vận chuyển từ kho xuất phát đến điểm giao hàng."
+          },
+          {
+            "number": "2", 
+            "heading": "Mức phí bảo hiểm",
+            "content": "Phí bảo hiểm tính theo tỷ lệ % giá trị hàng hóa, tùy thuộc vào loại hàng và tuyến đường vận chuyển."
+          },
+          {
+            "number": "3",
+            "heading": "Quy trình bồi thường",
+            "content": "Khách hàng cần báo cáo sự cố ngay lập tức và cung cấp đầy đủ hồ sơ để được xử lý bồi thường."
+          }
+        ]
+      },
+      "compliance": {
+        "title": "Quy định tuân thủ và pháp lý",
+        "download": "Tải xuống PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Tuân thủ pháp luật",
+            "content": "Mọi hoạt động của Huang Shan Global đều tuân thủ nghiêm ngặt pháp luật Việt Nam và các quy định quốc tế."
+          },
+          {
+            "number": "2",
+            "heading": "Hàng hóa cấm",
+            "content": "Chúng tôi không vận chuyển các mặt hàng bị cấm theo quy định của pháp luật và các cơ quan chức năng."
+          },
+          {
+            "number": "3", 
+            "heading": "Thủ tục hải quan",
+            "content": "Hỗ trợ khách hàng hoàn thành đầy đủ thủ tục hải quan và các giấy tờ liên quan theo quy định."
+          }
+        ]
+      }
     }
   },
   "recruitment": {

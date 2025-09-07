@@ -8,7 +8,6 @@ import {
   ChevronRight,
   Download,
   Shield,
-  Scale,
   Package,
   RefreshCw,
   CreditCard,
@@ -17,12 +16,12 @@ import {
 
 const PoliciesPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('terms');
-  const { t } = useTranslation();
+  const { t, messages } = useTranslation();
 
   const policyTypes = [
     {
       id: 'terms',
-      icon: Scale,
+      icon: FileText,
       title: t('policies.sections.terms'),
       description: 'Điều khoản và điều kiện sử dụng dịch vụ',
       color: 'bg-blue-500'
@@ -31,21 +30,21 @@ const PoliciesPage: React.FC = () => {
       id: 'privacy',
       icon: Shield,
       title: t('policies.sections.privacy'),
-      description: 'Chính sách bảo vệ thông tin khách hàng',
+      description: 'Bảo mật và xử lý thông tin khách hàng',
       color: 'bg-green-500'
     },
     {
       id: 'shipping',
       icon: Package,
       title: t('policies.sections.shipping'),
-      description: 'Chính sách vận chuyển và giao nhận',
+      description: 'Quy định về vận chuyển hàng hóa',
       color: 'bg-orange-500'
     },
     {
       id: 'refund',
       icon: RefreshCw,
       title: t('policies.sections.refund'),
-      description: 'Chính sách hoàn trả và đổi hàng',
+      description: 'Chính sách hoàn tiền và đền bù',
       color: 'bg-purple-500'
     },
     {
@@ -65,132 +64,44 @@ const PoliciesPage: React.FC = () => {
   ];
 
   const getPolicyContent = (sectionId: string) => {
-    const policies = {
-      terms: {
-        title: 'Điều khoản sử dụng dịch vụ',
-        content: [
-          {
-            heading: '1. Phạm vi áp dụng',
-            text: 'Điều khoản này áp dụng cho tất cả khách hàng sử dụng dịch vụ vận chuyển và logistics của Huang Shan Global.'
-          },
-          {
-            heading: '2. Quyền và nghĩa vụ của khách hàng',
-            text: 'Khách hàng có trách nhiệm cung cấp thông tin chính xác về hàng hóa, địa chỉ giao nhận và tuân thủ các quy định về xuất nhập khẩu.'
-          },
-          {
-            heading: '3. Trách nhiệm của Huang Shan Global',
-            text: 'Chúng tôi cam kết vận chuyển hàng hóa an toàn, đúng thời gian và cung cấp dịch vụ chăm sóc khách hàng 24/7.'
-          }
-        ]
-      },
-      privacy: {
-        title: 'Chính sách bảo mật thông tin',
-        content: [
-          {
-            heading: '1. Thu thập thông tin',
-            text: 'Chúng tôi chỉ thu thập thông tin cần thiết để cung cấp dịch vụ logistics và hỗ trợ khách hàng.'
-          },
-          {
-            heading: '2. Sử dụng thông tin',
-            text: 'Thông tin khách hàng được sử dụng để xử lý đơn hàng, liên lạc và cải thiện chất lượng dịch vụ.'
-          },
-          {
-            heading: '3. Bảo mật dữ liệu',
-            text: 'Chúng tôi áp dụng các biện pháp bảo mật hiện đại để bảo vệ thông tin khách hàng khỏi truy cập trái phép.'
-          }
-        ]
-      },
-      shipping: {
-        title: 'Chính sách vận chuyển',
-        content: [
-          {
-            heading: '1. Thời gian vận chuyển',
-            text: 'Vận chuyển đường bộ: 2-3 ngày làm việc. Vận chuyển đường biển: 7-15 ngày tùy tuyến đường.'
-          },
-          {
-            heading: '2. Đóng gói hàng hóa',
-            text: 'Hàng hóa cần được đóng gói theo tiêu chuẩn quốc tế để đảm bảo an toàn trong quá trình vận chuyển.'
-          },
-          {
-            heading: '3. Giao nhận hàng',
-            text: 'Chúng tôi cung cấp dịch vụ giao hàng tận nơi hoặc nhận hàng tại kho theo yêu cầu khách hàng.'
-          }
-        ]
-      },
-      refund: {
-        title: 'Chính sách hoàn trả',
-        content: [
-          {
-            heading: '1. Điều kiện hoàn trả',
-            text: 'Khách hàng có thể yêu cầu hoàn trả phí dịch vụ trong trường hợp chúng tôi không hoàn thành cam kết.'
-          },
-          {
-            heading: '2. Quy trình hoàn trả',
-            text: 'Yêu cầu hoàn trả cần được gửi trong vòng 7 ngày kể từ khi phát sinh vấn đề.'
-          },
-          {
-            heading: '3. Thời gian xử lý',
-            text: 'Chúng tôi cam kết xử lý yêu cầu hoàn trả trong vòng 5-7 ngày làm việc.'
-          }
-        ]
-      },
-      insurance: {
-        title: 'Chính sách bảo hiểm',
-        content: [
-          {
-            heading: '1. Bảo hiểm hàng hóa',
-            text: 'Khách hàng có thể mua bảo hiểm với mức phí 5% giá trị hàng hóa để được bồi thường 100% khi có rủi ro.'
-          },
-          {
-            heading: '2. Phạm vi bảo hiểm',
-            text: 'Bảo hiểm bao gồm: mất mát, hư hỏng, cháy nổ và các rủi ro khác trong quá trình vận chuyển.'
-          },
-          {
-            heading: '3. Quy trình bồi thường',
-            text: 'Khi có sự cố, khách hàng cần báo ngay và cung cấp đầy đủ chứng từ để được bồi thường.'
-          }
-        ]
-      },
-      compliance: {
-        title: 'Quy định tuân thủ',
-        content: [
-          {
-            heading: '1. Quy định pháp luật',
-            text: 'Tất cả hoạt động vận chuyển tuân thủ nghiêm ngặt quy định pháp luật Việt Nam và Trung Quốc.'
-          },
-          {
-            heading: '2. Hàng cấm vận chuyển',
-            text: 'Chúng tôi không vận chuyển hàng cấm, hàng nguy hiểm và hàng hóa vi phạm pháp luật.'
-          },
-          {
-            heading: '3. Thủ tục hải quan',
-            text: 'Khách hàng có trách nhiệm cung cấp đầy đủ giấy tờ và thủ tục hải quan theo quy định.'
-          }
-        ]
-      }
-    };
+    const policyContentKey = `policies.content.${sectionId}`;
+    
+    // Navigate through the nested object structure
+    const policyContent = policyContentKey.split('.').reduce((obj: Record<string, unknown>, key: string) => {
+      return obj && typeof obj[key] === 'object' && obj[key] !== null ? obj[key] as Record<string, unknown> : {};
+    }, messages as Record<string, unknown>);
 
-    return policies[sectionId as keyof typeof policies] || policies.terms;
+    if (policyContent && Array.isArray((policyContent as { sections?: unknown[] }).sections)) {
+      const content = policyContent as { title?: string; sections: Array<{ number: string; heading: string; content: string; }> };
+      return {
+        title: content.title || '',
+        sections: content.sections || []
+      };
+    }
+
+    // Fallback to default structure
+    return {
+      title: t(`policies.content.${sectionId}.title`),
+      sections: []
+    };
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
           <div className="container mx-auto px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center"
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl mx-auto"
             >
-              <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-6">
-                <FileText className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
                 {t('policies.title')}
               </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 {t('policies.subtitle')}
               </p>
             </motion.div>
@@ -242,12 +153,12 @@ const PoliciesPage: React.FC = () => {
                 </h2>
                 <button className="flex items-center space-x-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg transition-colors">
                   <Download className="w-4 h-4" />
-                  <span className="hidden sm:inline">Tải xuống PDF</span>
+                  <span className="hidden sm:inline">{t(`policies.content.${activeSection}.download`)}</span>
                 </button>
               </div>
 
               <div className="space-y-8">
-                {getPolicyContent(activeSection).content.map((section, index) => (
+                {getPolicyContent(activeSection).sections.map((section, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -256,10 +167,10 @@ const PoliciesPage: React.FC = () => {
                     className="border-l-4 border-primary pl-6"
                   >
                     <h3 className="text-xl font-semibold mb-3 text-primary">
-                      {section.heading}
+                      {section.number}. {section.heading}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      {section.text}
+                      {section.content}
                     </p>
                   </motion.div>
                 ))}
@@ -267,13 +178,12 @@ const PoliciesPage: React.FC = () => {
 
               <div className="mt-12 p-6 bg-muted/50 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  <strong>Lưu ý:</strong> Các chính sách này có hiệu lực từ ngày 01/01/2024 và có thể được cập nhật. 
-                  Khách hàng nên thường xuyên kiểm tra để nắm bắt những thay đổi mới nhất.
+                  <strong>Lưu ý:</strong> {t(`policies.content.terms.note`)}
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Để biết thêm thông tin chi tiết, vui lòng liên hệ: 
-                  <a href="tel:0389591238" className="font-bold hover:text-primary transition-colors"> 038.959.1238</a> hoặc email: 
-                  <a href="mailto:huangshanglobal@gmail.com" className="font-bold hover:text-primary transition-colors"> huangshanglobal@gmail.com</a>
+                  {t(`policies.content.terms.contact`)}
+                  <a href={`tel:${t('policies.content.terms.phone')}`} className="font-bold hover:text-primary transition-colors"> {t('policies.content.terms.phone')}</a> hoặc email: 
+                  <a href={`mailto:${t('policies.content.terms.email')}`} className="font-bold hover:text-primary transition-colors"> {t('policies.content.terms.email')}</a>
                 </p>
               </div>
             </motion.div>

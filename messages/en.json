@@ -149,6 +149,138 @@
       "refund": "Refund Policy",
       "insurance": "Insurance Policy",
       "compliance": "Compliance Regulations"
+    },
+    "content": {
+      "terms": {
+        "title": "Terms of Service",
+        "download": "Download PDF",
+        "note": "These policies are effective from January 1, 2024 and may be updated. Customers should regularly check to understand the latest changes.",
+        "contact": "For more detailed information, please contact:",
+        "phone": "038.959.1238",
+        "email": "huangshanglobal@gmail.com",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Scope of Application",
+            "content": "These terms apply to all customers using Huang Shan Global's transportation and logistics services."
+          },
+          {
+            "number": "2", 
+            "heading": "Customer Rights and Obligations",
+            "content": "Customers are responsible for providing accurate information about goods, delivery addresses, and complying with import-export regulations."
+          },
+          {
+            "number": "3",
+            "heading": "Huang Shan Global's Responsibilities", 
+            "content": "We are committed to transporting goods safely, on time, and providing 24/7 customer service."
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "download": "Download PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Information Collection",
+            "content": "We only collect information necessary to provide logistics services and customer support."
+          },
+          {
+            "number": "2",
+            "heading": "Information Usage", 
+            "content": "Customer information is used to process orders, communication, and improve service quality."
+          },
+          {
+            "number": "3",
+            "heading": "Data Security",
+            "content": "We apply modern security measures to protect customer information from unauthorized access."
+          }
+        ]
+      },
+      "shipping": {
+        "title": "Shipping Policy",
+        "download": "Download PDF", 
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Shipping Time",
+            "content": "Ground transportation: 2-3 working days. Sea transportation: 7-15 days depending on the route."
+          },
+          {
+            "number": "2",
+            "heading": "Goods Packaging",
+            "content": "Goods need to be packaged according to international standards to ensure safety during transportation."
+          },
+          {
+            "number": "3",
+            "heading": "Goods Delivery",
+            "content": "We provide door-to-door delivery or warehouse pickup services according to customer requirements."
+          }
+        ]
+      },
+      "refund": {
+        "title": "Refund Policy",
+        "download": "Download PDF",
+        "sections": [
+          {
+            "number": "1", 
+            "heading": "Refund Conditions",
+            "content": "Customers can request a service fee refund when we fail to fulfill our commitments."
+          },
+          {
+            "number": "2",
+            "heading": "Refund Process",
+            "content": "Refund requests need to be submitted within 7 days of the problem occurrence."
+          },
+          {
+            "number": "3",
+            "heading": "Processing Time",
+            "content": "We will process refund requests within 15 working days of receiving the application."
+          }
+        ]
+      },
+      "insurance": {
+        "title": "Goods Insurance Policy",
+        "download": "Download PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Insurance Coverage",
+            "content": "Comprehensive insurance coverage for goods during transportation from origin warehouse to delivery point."
+          },
+          {
+            "number": "2", 
+            "heading": "Insurance Rate",
+            "content": "Insurance fee calculated as a percentage of goods value, depending on cargo type and transportation route."
+          },
+          {
+            "number": "3",
+            "heading": "Claims Process",
+            "content": "Customers need to report incidents immediately and provide complete documentation for claim processing."
+          }
+        ]
+      },
+      "compliance": {
+        "title": "Compliance and Legal Regulations",
+        "download": "Download PDF",
+        "sections": [
+          {
+            "number": "1",
+            "heading": "Legal Compliance",
+            "content": "All activities of Huang Shan Global strictly comply with Vietnamese law and international regulations."
+          },
+          {
+            "number": "2",
+            "heading": "Prohibited Goods",
+            "content": "We do not transport items prohibited by law and relevant authorities."
+          },
+          {
+            "number": "3", 
+            "heading": "Customs Procedures",
+            "content": "Assist customers in completing customs procedures and related documents as required."
+          }
+        ]
+      }
     }
   },
   "recruitment": {
