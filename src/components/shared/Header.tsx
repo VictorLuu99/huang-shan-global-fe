@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import LanguageSwitcher from '../LanguageSwitcher';
-import { Truck, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,8 +37,16 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <Truck className="w-6 h-6 text-primary-foreground" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <div 
+                className="w-full h-full"
+                style={{
+                  backgroundImage: 'url(/images/logo.jpg)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+                aria-label="Huang Shan Global Logo"
+              />
             </div>
             <span className="text-xl font-bold text-primary">Huang Shan Global</span>
           </Link>

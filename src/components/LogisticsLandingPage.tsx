@@ -3,8 +3,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { 
   Truck, 
   Globe, 
@@ -19,8 +17,6 @@ import {
   CheckCircle,
   Users,
   TrendingUp,
-  Menu,
-  X
 } from "lucide-react";
 
 // Count Up Component
@@ -69,119 +65,6 @@ const CountUp: React.FC<CountUpProps> = ({
   return <span className={className} ref={ref} />;
 };
 
-// Animated Grid Pattern Component
-interface AnimatedGridPatternProps {
-  width?: number;
-  height?: number;
-  numSquares?: number;
-  className?: string;
-  maxOpacity?: number;
-  duration?: number;
-}
-
-const AnimatedGridPattern: React.FC<AnimatedGridPatternProps> = ({
-  width = 40,
-  height = 40,
-  numSquares = 50,
-  className = "",
-  maxOpacity = 0.5,
-  duration = 4,
-}) => {
-  const containerRef = useRef<SVGSVGElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [squares, setSquares] = useState<Array<{ id: number; pos: [number, number] }>>([]);
-
-  const getPos = (): [number, number] => [
-    Math.floor((Math.random() * dimensions.width) / width),
-    Math.floor((Math.random() * dimensions.height) / height),
-  ];
-
-  const generateSquares = (count: number) => {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
-  };
-
-  const updateSquarePosition = (id: number) => {
-    setSquares((currentSquares) =>
-      currentSquares.map((sq) =>
-        sq.id === id ? { ...sq, pos: getPos() } : sq
-      )
-    );
-  };
-
-  useEffect(() => {
-    if (dimensions.width && dimensions.height) {
-      setSquares(generateSquares(numSquares));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dimensions, numSquares]);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-        });
-      }
-    });
-
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      resizeObserver.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        resizeObserver.unobserve(currentRef);
-      }
-    };
-  }, []);
-
-  return (
-    <svg
-      ref={containerRef}
-      aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 h-full w-full fill-sage-400/30 stroke-sage-400/30 ${className}`}
-    >
-      <defs>
-        <pattern
-          id="grid-pattern"
-          width={width}
-          height={height}
-          patternUnits="userSpaceOnUse"
-        >
-          <path d={`M.5 ${height}V.5H${width}`} fill="none" strokeDasharray={0} />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-      <svg className="overflow-visible">
-        {squares.map(({ pos: [x, y], id }, index) => (
-          <motion.rect
-            key={`${x}-${y}-${index}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: maxOpacity }}
-            transition={{
-              duration,
-              repeat: 1,
-              delay: index * 0.1,
-              repeatType: "reverse",
-            }}
-            onAnimationComplete={() => updateSquarePosition(id)}
-            width={width - 1}
-            height={height - 1}
-            x={x * width + 1}
-            y={y * height + 1}
-            fill="currentColor"
-            strokeWidth="0"
-          />
-        ))}
-      </svg>
-    </svg>
-  );
-};
 
 // Logo Carousel Component
 interface Logo {
@@ -355,7 +238,6 @@ const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const LogisticsLandingPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Get translations
   const t = useTranslations();
@@ -439,77 +321,20 @@ const LogisticsLandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo and Company Name */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-primary">Huang Shan Global</span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              <Link href="#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
-              <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</Link>
-              <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
-              <Link href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
-              <Link href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</Link>
-              <Link href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
-              <Link href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
-              <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
-            </nav>
-
-            {/* Language Switcher and Mobile Menu */}
-            <div className="flex items-center space-x-4">
-              <LanguageSwitcher />
-              
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden border-t border-border mt-1"
-              >
-                <nav className="py-4 space-y-2">
-                  <Link href="#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</Link>
-                  <Link href="/about" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</Link>
-                  <Link href="#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</Link>
-                  <Link href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</Link>
-                  <Link href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</Link>
-                  <Link href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</Link>
-                  <Link href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</Link>
-                  <Link href="#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</Link>
-                </nav>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <AnimatedGridPattern
-          numSquares={30}
-          maxOpacity={0.1}
-          duration={3}
-          className="[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/images/background_home_pages.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
         />
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-[1]" />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
@@ -518,10 +343,10 @@ const LogisticsLandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary-500 via-secondary-500 to-primary-700 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl shadow-black">
               {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-lg">
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

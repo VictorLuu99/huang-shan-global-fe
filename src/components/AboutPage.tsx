@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { 
-  Truck, 
   Shield, 
   MapPin,
   Phone,
@@ -60,69 +59,6 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo and Company Name */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-primary">Huang Shan Global</span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
-              <Link href="/#home" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
-              <Link href="/about" className="text-sm font-medium text-primary">{t('nav.about')}</Link>
-              <Link href="/#services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
-              <Link href="#policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
-              <Link href="#recruitment" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.recruitment')}</Link>
-              <Link href="#news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
-              <Link href="#complaints" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
-              <Link href="/#contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
-            </nav>
-
-            {/* Language Switcher and Mobile Menu */}
-            <div className="flex items-center space-x-4">
-              <LanguageSwitcher />
-              
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden border-t border-border mt-1"
-              >
-                <nav className="py-4 space-y-2">
-                  <Link href="/#home" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.home')}</Link>
-                  <Link href="/about" className="block px-4 py-2 text-sm font-medium bg-muted rounded-lg text-primary" onClick={() => setMobileMenuOpen(false)}>{t('nav.about')}</Link>
-                  <Link href="/#services" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.services')}</Link>
-                  <Link href="#policies" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.policies')}</Link>
-                  <Link href="#recruitment" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.recruitment')}</Link>
-                  <Link href="#news" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.news')}</Link>
-                  <Link href="#complaints" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.complaints')}</Link>
-                  <Link href="/#contact" className="block px-4 py-2 text-sm font-medium hover:bg-muted rounded-lg transition-colors" onClick={() => setMobileMenuOpen(false)}>{t('nav.contact')}</Link>
-                </nav>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4">
@@ -307,8 +243,16 @@ const AboutPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <Truck className="w-7 h-7 text-primary-foreground" />
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <div 
+                  className="w-full h-full"
+                  style={{
+                    backgroundImage: 'url(/images/logo.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                  aria-label="Huang Shan Global Logo"
+                />
               </div>
               <span className="text-2xl font-bold text-primary">Huang Shan Global</span>
             </div>

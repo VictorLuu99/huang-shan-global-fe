@@ -36,7 +36,7 @@ const LanguageSwitcher = memo(() => {
         className="flex items-center space-x-2 px-4 py-2 bg-background border border-border rounded-lg hover:bg-muted transition-colors"
         disabled={isPending}
       >
-        <Globe className="w-4 h-4 text-primary" />
+        {/* <Globe className="w-4 h-4 text-primary" /> */}
         <span className="text-sm font-medium">{currentLanguage?.flag}</span>
         <span className="text-sm font-medium">{currentLanguage?.name}</span>
         <ChevronDown 

@@ -168,65 +168,6 @@ export default function RecruitmentPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-primary">Huang Shan Global</span>
-            </Link>
-
-            <nav className="hidden lg:flex items-center space-x-8">
-              <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
-              <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</Link>
-              <Link href="/services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
-              <Link href="/policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
-              <Link href="/recruitment" className="text-sm font-medium text-primary">{t('nav.recruitment')}</Link>
-              <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
-              <Link href="/knowledge" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
-              <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <LanguageSwitcher />
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-              >
-                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-background border-t border-border"
-            >
-              <div className="container mx-auto px-4 py-4">
-                <nav className="flex flex-col space-y-4">
-                  <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</Link>
-                  <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.about')}</Link>
-                  <Link href="/services" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.services')}</Link>
-                  <Link href="/policies" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.policies')}</Link>
-                  <Link href="/recruitment" className="text-sm font-medium text-primary">{t('nav.recruitment')}</Link>
-                  <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.news')}</Link>
-                  <Link href="/knowledge" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.complaints')}</Link>
-                  <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contact')}</Link>
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-r from-blue-900 to-green-800 text-white overflow-hidden">

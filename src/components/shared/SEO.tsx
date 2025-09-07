@@ -90,7 +90,7 @@ export function generateStructuredData(type: 'Organization' | 'WebSite' | 'Artic
         name: 'Huang Shan Global',
         alternateName: 'HUANG SHAN GLOBAL IMPORT-EXPORT TRADING JOINT STOCK COMPANY',
         url: baseUrl,
-        logo: `${baseUrl}/images/logo.png`,
+        logo: `${baseUrl}/images/logo.jpg`,
         description: 'Leading logistics and import-export company specializing in China-Vietnam trade',
         address: {
           '@type': 'PostalAddress',
@@ -135,7 +135,7 @@ export function generateStructuredData(type: 'Organization' | 'WebSite' | 'Artic
         publisher: {
           '@type': 'Organization',
           name: 'Huang Shan Global',
-          logo: `${baseUrl}/images/logo.png`
+          logo: `${baseUrl}/images/logo.jpg`
         },
         ...data
       };
