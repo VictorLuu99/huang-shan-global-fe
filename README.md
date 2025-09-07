@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Huang Shan Global - Logistics Website
+
+This is a multilingual logistics website for Huang Shan Global, a China-Vietnam logistics company built with Next.js 15.
+
+## Contact Information
+
+- **Facebook Fanpage**: https://www.facebook.com/profile.php?id=61573060290311
+- **Facebook Chat**: https://www.facebook.com/profile.php?id=61573060290311
+- **Zalo**: https://zalo.me/0389591238
+- **Address/Google Maps**: https://maps.app.goo.gl/tYXyBhZNtMHchAFV6
+- **Phone**: 038.959.1238 or 058.585.1999
 
 ## Getting Started
 

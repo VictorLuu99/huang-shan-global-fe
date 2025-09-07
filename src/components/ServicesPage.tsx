@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
   Truck, 
   Menu, 
@@ -278,10 +278,10 @@ const ServicesPage: React.FC = () => {
                 Liên hệ ngay để nhận tư vấn miễn phí và báo giá tốt nhất cho nhu cầu vận chuyển của bạn
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-colors flex items-center justify-center">
+                <a href="tel:0389591238" className="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-colors flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-2" />
                   Gọi ngay: 038.959.1238
-                </button>
+                </a>
                 <Link href="/contact" className="bg-transparent border-2 border-white hover:bg-white hover:text-primary font-bold py-4 px-8 rounded-lg transition-colors flex items-center justify-center">
                   Nhận báo giá miễn phí
                   <ArrowRight className="w-5 h-5 ml-2" />

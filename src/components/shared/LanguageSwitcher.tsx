@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { useState, useTransition, memo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 const languages = [
   { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
@@ -13,21 +14,25 @@ const languages = [
 
 const LanguageSwitcher = memo(() => {
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
 
   const currentLanguage = languages.find(lang => lang.code === locale);
 
   const handleLanguageChange = useCallback((newLocale: string) => {
+    setIsOpen(false);
     startTransition(() => {
-      // Set cookie for locale
-      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=lax`;
+      // Extract the pathname without the current locale prefix
+      const segments = pathname.split('/');
+      const pathWithoutLocale = segments.slice(2).join('/');
+      const newPath = `/${newLocale}${pathWithoutLocale ? `/${pathWithoutLocale}` : ''}`;
       
-      // Reload page to apply new locale
-      window.location.reload();
-      setIsOpen(false);
+      // Navigate to the same page with the new locale
+      router.push(newPath);
     });
-  }, []);
+  }, [router, pathname]);
 
   return (
     <div className="relative">

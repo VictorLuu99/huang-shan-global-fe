@@ -38,9 +38,43 @@ export default function Footer() {
               {t('companyDescription')}
             </p>
             <div className="space-y-2 text-sm text-gray-400">
-              <p>Điện thoại: 038.959.1238 - 058.585.1999</p>
-              <p>Email: info@huangshanglobal.com</p>
-              <p>Địa chỉ: C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội</p>
+              <p>
+                Điện thoại: 
+                <a href="tel:0389591238" className="hover:text-primary transition-colors ml-1">038.959.1238</a>
+                {' - '}
+                <a href="tel:0585851999" className="hover:text-primary transition-colors">058.585.1999</a>
+              </p>
+              <p>
+                Email: <a href="mailto:huangshanglobal@gmail.com" className="hover:text-primary transition-colors">huangshanglobal@gmail.com</a>
+              </p>
+              <p>
+                Địa chỉ: <a 
+                  href="https://maps.app.goo.gl/tYXyBhZNtMHchAFV6" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-primary transition-colors"
+                >
+                  C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội
+                </a>
+              </p>
+              <div className="flex space-x-4 mt-4">
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61573060290311" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Facebook
+                </a>
+                <a 
+                  href="https://zalo.me/0389591238" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Zalo
+                </a>
+              </div>
             </div>
           </motion.div>
 

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
   Truck, 
   Menu, 

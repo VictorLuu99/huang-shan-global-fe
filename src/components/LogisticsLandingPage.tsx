@@ -1,16 +1,22 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useSpring,
+  AnimatePresence,
+} from "framer-motion";
 import { useTranslations } from "next-intl";
-import { 
-  Truck, 
-  Globe, 
-  Shield, 
-  Clock, 
-  Package, 
-  Plane, 
-  Ship, 
+import {
+  Truck,
+  Globe,
+  Shield,
+  Clock,
+  Package,
+  Plane,
+  Ship,
   MapPin,
   Phone,
   Mail,
@@ -65,7 +71,6 @@ const CountUp: React.FC<CountUpProps> = ({
   return <span className={className} ref={ref} />;
 };
 
-
 // Logo Carousel Component
 interface Logo {
   name: string;
@@ -107,7 +112,8 @@ const LogoColumn: React.FC<{
 }> = React.memo(function LogoColumn({ logos, index, currentTime }) {
   const cycleInterval = 2000;
   const columnDelay = index * 200;
-  const adjustedTime = (currentTime + columnDelay) % (cycleInterval * logos.length);
+  const adjustedTime =
+    (currentTime + columnDelay) % (cycleInterval * logos.length);
   const currentIndex = Math.floor(adjustedTime / cycleInterval);
   const CurrentLogo = logos[currentIndex].img;
 
@@ -194,43 +200,97 @@ const LogoCarousel: React.FC<{
 // Sample Logo Components
 const FedExIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#4B0082" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">FedEx</text>
+    <rect width="100" height="40" fill="#4B0082" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="white"
+      fontSize="12"
+      fontWeight="bold"
+    >
+      FedEx
+    </text>
   </svg>
 );
 
 const DHLIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FFCC00" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="#D40511" fontSize="12" fontWeight="bold">DHL</text>
+    <rect width="100" height="40" fill="#FFCC00" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="#D40511"
+      fontSize="12"
+      fontWeight="bold"
+    >
+      DHL
+    </text>
   </svg>
 );
 
 const UPSIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#8B4513" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">UPS</text>
+    <rect width="100" height="40" fill="#8B4513" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="white"
+      fontSize="12"
+      fontWeight="bold"
+    >
+      UPS
+    </text>
   </svg>
 );
 
 const AmazonIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FF9900" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Amazon</text>
+    <rect width="100" height="40" fill="#FF9900" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="white"
+      fontSize="10"
+      fontWeight="bold"
+    >
+      Amazon
+    </text>
   </svg>
 );
 
 const MaerskIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#0066CC" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Maersk</text>
+    <rect width="100" height="40" fill="#0066CC" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="white"
+      fontSize="10"
+      fontWeight="bold"
+    >
+      Maersk
+    </text>
   </svg>
 );
 
 const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FF6600" rx="4"/>
-    <text x="50" y="25" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">TNT</text>
+    <rect width="100" height="40" fill="#FF6600" rx="4" />
+    <text
+      x="50"
+      y="25"
+      textAnchor="middle"
+      fill="white"
+      fontSize="12"
+      fontWeight="bold"
+    >
+      TNT
+    </text>
   </svg>
 );
 
@@ -238,7 +298,7 @@ const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const LogisticsLandingPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  
+
   // Get translations
   const t = useTranslations();
 
@@ -254,64 +314,64 @@ const LogisticsLandingPage: React.FC = () => {
   const services = [
     {
       icon: Truck,
-      title: t('services.groundTransportation.title'),
-      description: t('services.groundTransportation.description')
+      title: t("services.groundTransportation.title"),
+      description: t("services.groundTransportation.description"),
     },
     {
       icon: Plane,
-      title: t('services.airFreight.title'),
-      description: t('services.airFreight.description')
+      title: t("services.airFreight.title"),
+      description: t("services.airFreight.description"),
     },
     {
       icon: Ship,
-      title: t('services.oceanFreight.title'),
-      description: t('services.oceanFreight.description')
+      title: t("services.oceanFreight.title"),
+      description: t("services.oceanFreight.description"),
     },
     {
       icon: Package,
-      title: t('services.warehousing.title'),
-      description: t('services.warehousing.description')
+      title: t("services.warehousing.title"),
+      description: t("services.warehousing.description"),
     },
     {
       icon: Globe,
-      title: t('services.globalNetwork.title'),
-      description: t('services.globalNetwork.description')
+      title: t("services.globalNetwork.title"),
+      description: t("services.globalNetwork.description"),
     },
     {
       icon: Shield,
-      title: t('services.insurance.title'),
-      description: t('services.insurance.description')
-    }
+      title: t("services.insurance.title"),
+      description: t("services.insurance.description"),
+    },
   ];
 
   const stats = [
-    { number: 20000, label: t('stats.shipmentsDelivered'), suffix: "+" },
-    { number: 1500, label: t('stats.countriesServed'), suffix: "+" },
-    { number: 1000, label: t('stats.onTimeDelivery'), suffix: "+" },
-    { number: 300, label: t('stats.customerSupport'), suffix: "+" }
+    { number: 20000, label: t("stats.shipmentsDelivered"), suffix: "+" },
+    { number: 1500, label: t("stats.countriesServed"), suffix: "+" },
+    { number: 1000, label: t("stats.onTimeDelivery"), suffix: "+" },
+    { number: 300, label: t("stats.customerSupport"), suffix: "+" },
   ];
 
   const whyChooseUs = [
     {
       icon: Clock,
-      title: t('whyChooseUs.fastDelivery.title'),
-      description: t('whyChooseUs.fastDelivery.description')
+      title: t("whyChooseUs.fastDelivery.title"),
+      description: t("whyChooseUs.fastDelivery.description"),
     },
     {
       icon: Shield,
-      title: t('whyChooseUs.secureHandling.title'),
-      description: t('whyChooseUs.secureHandling.description')
+      title: t("whyChooseUs.secureHandling.title"),
+      description: t("whyChooseUs.secureHandling.description"),
     },
     {
       icon: TrendingUp,
-      title: t('whyChooseUs.costEffective.title'),
-      description: t('whyChooseUs.costEffective.description')
+      title: t("whyChooseUs.costEffective.title"),
+      description: t("whyChooseUs.costEffective.description"),
     },
     {
       icon: Users,
-      title: t('whyChooseUs.expertSupport.title'),
-      description: t('whyChooseUs.expertSupport.description')
-    }
+      title: t("whyChooseUs.expertSupport.title"),
+      description: t("whyChooseUs.expertSupport.description"),
+    },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -322,20 +382,28 @@ const LogisticsLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      >
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/images/background_home_pages.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            // backgroundImage: "url(/images/112113799_loai-hinh-logistics.jpg)",
+            // backgroundImage: "url(/images/137121254-the-world-logistics-there-are-world-map-with-logistic-network-distribution-on-background-and.jpg)",
+            // backgroundImage: "url(/images/logistics.jpg)",
+            backgroundImage: "url(/images/background_images.png)",
+            // backgroundImage: "url(/images/pngtree-d-rendering-of-a-logistics-company-s-import-export-shipping-operations-image_3817708.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 1,
           }}
         />
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-black/40 z-[1]" />
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -343,19 +411,22 @@ const LogisticsLandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl shadow-black">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-lg">
-              {t('hero.subtitle')}
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto drop-shadow-lg whitespace-nowrap">
+              {t("hero.subtitle")}
             </p>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl shadow-black">
+              {t("hero.title")}
+            </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors">
-                {t('hero.getQuote')}
+                {t("hero.getQuote")}
               </button>
-              <button className="px-8 py-4 border border-border rounded-lg text-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-colors">
+              <button className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors">
+                {t("hero.trackShipment")}
+              </button>
+              {/* <button className="px-8 py-4 border border-border rounded-lg text-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-colors">
                 {t('hero.trackShipment')}
-              </button>
+              </button> */}
             </div>
           </motion.div>
         </div>
@@ -371,9 +442,11 @@ const LogisticsLandingPage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('services.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {t("services.title")}
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('services.subtitle')}
+              {t("services.subtitle")}
             </p>
           </motion.div>
 
@@ -406,9 +479,11 @@ const LogisticsLandingPage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('stats.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {t("stats.title")}
+            </h2>
             <p className="text-xl text-muted-foreground">
-              {t('stats.subtitle')}
+              {t("stats.subtitle")}
             </p>
           </motion.div>
 
@@ -443,9 +518,11 @@ const LogisticsLandingPage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('partners.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {t("partners.title")}
+            </h2>
             <p className="text-xl text-muted-foreground">
-              {t('partners.subtitle')}
+              {t("partners.subtitle")}
             </p>
           </motion.div>
 
@@ -463,9 +540,11 @@ const LogisticsLandingPage: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('whyChooseUs.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {t("whyChooseUs.title")}
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('whyChooseUs.subtitle')}
+              {t("whyChooseUs.subtitle")}
             </p>
           </motion.div>
 
@@ -501,9 +580,11 @@ const LogisticsLandingPage: React.FC = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('contact.title')}</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                {t("contact.title")}
+              </h2>
               <p className="text-xl text-muted-foreground">
-                {t('contact.subtitle')}
+                {t("contact.subtitle")}
               </p>
             </motion.div>
 
@@ -521,28 +602,47 @@ const LogisticsLandingPage: React.FC = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t('contact.phone')}</h3>
-                    <p className="text-muted-foreground">038.959.1238 - 058.585.1999</p>
+                    <h3 className="font-semibold">{t("contact.phone")}</h3>
+                    <div className="text-muted-foreground space-y-1">
+                      <a href="tel:0389591238" className="block hover:text-primary transition-colors">
+                        038.959.1238
+                      </a>
+                      <a href="tel:0585851999" className="block hover:text-primary transition-colors">
+                        058.585.1999
+                      </a>
+                    </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t('contact.email')}</h3>
-<p className="text-muted-foreground">huangshanglobal@gmail.com</p>
+                    <h3 className="font-semibold">{t("contact.email")}</h3>
+                    <a 
+                      href="mailto:huangshanglobal@gmail.com" 
+                      className="text-muted-foreground hover:text-primary transition-colors block"
+                    >
+                      huangshanglobal@gmail.com
+                    </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t('contact.address')}</h3>
-                    <p className="text-muted-foreground">C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội</p>
+                    <h3 className="font-semibold">{t("contact.address")}</h3>
+                    <a 
+                      href="https://maps.app.goo.gl/tYXyBhZNtMHchAFV6" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors block"
+                    >
+                      C38-30, Khu C Geleximco, Dương Nội, Hà Đông, Hà Nội
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -559,7 +659,9 @@ const LogisticsLandingPage: React.FC = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium mb-2">{t('contact.form.firstName')}</label>
+                        <label className="block text-sm font-medium mb-2">
+                          {t("contact.form.firstName")}
+                        </label>
                         <input
                           type="text"
                           className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
@@ -567,7 +669,9 @@ const LogisticsLandingPage: React.FC = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">{t('contact.form.lastName')}</label>
+                        <label className="block text-sm font-medium mb-2">
+                          {t("contact.form.lastName")}
+                        </label>
                         <input
                           type="text"
                           className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
@@ -575,9 +679,11 @@ const LogisticsLandingPage: React.FC = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <label className="block text-sm font-medium mb-2">{t('contact.form.email')}</label>
+                      <label className="block text-sm font-medium mb-2">
+                        {t("contact.form.email")}
+                      </label>
                       <input
                         type="email"
                         value={email}
@@ -586,38 +692,44 @@ const LogisticsLandingPage: React.FC = () => {
                         required
                       />
                     </div>
-                    
+
                     <div>
-                      <label className="block text-sm font-medium mb-2">{t('contact.form.company')}</label>
+                      <label className="block text-sm font-medium mb-2">
+                        {t("contact.form.company")}
+                      </label>
                       <input
                         type="text"
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                       />
                     </div>
-                    
+
                     <div>
-                      <label className="block text-sm font-medium mb-2">{t('contact.form.message')}</label>
+                      <label className="block text-sm font-medium mb-2">
+                        {t("contact.form.message")}
+                      </label>
                       <textarea
                         rows={4}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background resize-none"
-                        placeholder={t('contact.form.messagePlaceholder')}
+                        placeholder={t("contact.form.messagePlaceholder")}
                         required
                       ></textarea>
                     </div>
-                    
+
                     <button
                       type="submit"
                       className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-600 transition-colors"
                     >
-                      {t('contact.form.sendMessage')}
+                      {t("contact.form.sendMessage")}
                     </button>
                   </form>
                 ) : (
                   <div className="text-center py-8">
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-semibold mb-2">{t('contact.form.thankYou')}</h3>
+                    <h3 className="text-2xl font-semibold mb-2">
+                      {t("contact.form.thankYou")}
+                    </h3>
                     <p className="text-muted-foreground">
-                      {t('contact.form.thankYouMessage')}
+                      {t("contact.form.thankYouMessage")}
                     </p>
                   </div>
                 )}

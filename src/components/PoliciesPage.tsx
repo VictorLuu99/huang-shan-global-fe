@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
   Truck, 
   Menu, 
@@ -278,8 +278,8 @@ const PoliciesPage: React.FC = () => {
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   Để biết thêm thông tin chi tiết, vui lòng liên hệ: 
-                  <strong> 038.959.1238</strong> hoặc email: 
-                  <strong> info@huangshanglobal.com</strong>
+                  <a href="tel:0389591238" className="font-bold hover:text-primary transition-colors"> 038.959.1238</a> hoặc email: 
+                  <a href="mailto:huangshanglobal@gmail.com" className="font-bold hover:text-primary transition-colors"> huangshanglobal@gmail.com</a>
                 </p>
               </div>
             </motion.div>

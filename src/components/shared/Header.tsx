@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import LanguageSwitcher from '../LanguageSwitcher';
+import LanguageSwitcher from './LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {

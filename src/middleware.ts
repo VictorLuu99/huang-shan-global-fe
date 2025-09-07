@@ -3,10 +3,13 @@ import {locales, defaultLocale} from './i18n';
 
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: [...locales],
+  locales,
 
   // Used when no locale matches
-  defaultLocale: defaultLocale
+  defaultLocale,
+  
+  // Always prefix with locale
+  localePrefix: 'as-needed'
 });
 
 export const config = {

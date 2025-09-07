@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './shared/LanguageSwitcher';
 import { 
   Truck,
   Menu, 
@@ -328,8 +328,8 @@ const ContactPage: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{t('contact.info.phone')}</h4>
-                        <p className="text-muted-foreground text-sm">038.959.1238</p>
-                        <p className="text-muted-foreground text-sm">058.585.1999</p>
+                        <a href="tel:0389591238" className="text-muted-foreground text-sm hover:text-primary transition-colors block">038.959.1238</a>
+                        <a href="tel:0585851999" className="text-muted-foreground text-sm hover:text-primary transition-colors block">058.585.1999</a>
                       </div>
                     </div>
                     
@@ -350,10 +350,15 @@ const ContactPage: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">{t('contact.info.address')}</h4>
-                        <p className="text-muted-foreground text-sm">
+                        <a 
+                          href="https://maps.app.goo.gl/tYXyBhZNtMHchAFV6" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground text-sm hover:text-primary transition-colors block"
+                        >
                           C38-30, Block C Geleximco<br />
                           Duong Noi, Ha Dong, Hanoi
-                        </p>
+                        </a>
                       </div>
                     </div>
                   </div>
