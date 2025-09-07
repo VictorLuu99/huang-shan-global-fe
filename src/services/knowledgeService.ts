@@ -32,7 +32,7 @@ export class KnowledgeService {
   static async getKnowledge(params: SearchParams = {}): Promise<ApiResponse<KnowledgePost[]>> {
     const queryParams: Record<string, string | number> = {};
     
-    // if (params.lang) queryParams.lang = params.lang;
+    if (params.lang) queryParams.lang = params.lang;
     if (params.page) queryParams.page = params.page;
     if (params.limit) queryParams.limit = params.limit;
     if (params.category && params.category !== 'all') queryParams.category = params.category;

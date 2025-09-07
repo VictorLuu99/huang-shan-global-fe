@@ -22,7 +22,7 @@ const LanguageInitializer = () => {
         // Fallback to Vietnamese
         try {
           console.log('LanguageInitializer: Loading fallback messages for vi');
-          const fallbackMessages = await import(`../../messages/vi.json`);
+          const fallbackMessages = await import(`../../messages/vn.json`);
           console.log('LanguageInitializer: Fallback messages loaded:', fallbackMessages);
           dispatch(setMessages(fallbackMessages.default));
         } catch (fallbackError) {

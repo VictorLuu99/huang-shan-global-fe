@@ -6,8 +6,8 @@ import { ChevronDown } from "lucide-react";
 import { useTranslation } from "../../contexts/LanguageContext";
 
 const languages = [
-  { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
-  { code: "zh", name: "中文", flag: "🇨🇳" },
+  { code: "vn", name: "Tiếng Việt", flag: "🇻🇳" },
+  { code: "cn", name: "中文", flag: "🇨🇳" },
   { code: "en", name: "English", flag: "🇺🇸" },
 ];
 
@@ -19,7 +19,7 @@ const LanguageSwitcher = memo(() => {
 
   const handleLanguageChange = useCallback((newLocale: string) => {
     setIsOpen(false);
-    changeLanguage(newLocale as 'vi' | 'zh' | 'en');
+    changeLanguage(newLocale as 'vn' | 'cn' | 'en');
   }, [changeLanguage]);
 
   return (

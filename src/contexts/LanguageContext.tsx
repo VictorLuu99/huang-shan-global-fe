@@ -3,8 +3,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Import translation files
-import viMessages from '../../messages/vi.json';
-import zhMessages from '../../messages/zh.json';
+import vnMessages from '../../messages/vn.json';
+import cnMessages from '../../messages/cn.json';
 import enMessages from '../../messages/en.json';
 
 // console.log('LanguageContext: Static imports loaded:', {
@@ -16,7 +16,7 @@ import enMessages from '../../messages/en.json';
 //   enSample: enMessages?.hero?.title
 // });
 
-export type Locale = 'vi' | 'zh' | 'en';
+export type Locale = 'vn' | 'cn' | 'en';
 
 interface LanguageContextType {
   currentLocale: Locale;
@@ -50,18 +50,18 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [currentLocale, setCurrentLocale] = useState<Locale>('vi');
+  const [currentLocale, setCurrentLocale] = useState<Locale>('vn');
   
   // Initialize with Vietnamese messages immediately
-  const [messages, setMessages] = useState<Record<string, unknown>>(viMessages || {});
+  const [messages, setMessages] = useState<Record<string, unknown>>(vnMessages || {});
 
   const changeLanguage = (locale: Locale) => {
     setCurrentLocale(locale);
     
     // Load messages immediately based on locale
     const messageMap = {
-      vi: viMessages,
-      zh: zhMessages,
+      vn: vnMessages,
+      cn: cnMessages,
       en: enMessages,
     };
     
@@ -69,7 +69,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     if (localeMessages && typeof localeMessages === 'object') {
       setMessages(localeMessages);
     } else {
-      setMessages(viMessages || {});
+      setMessages(vnMessages || {});
     }
   };
 

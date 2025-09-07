@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import viMessages from '../../messages/vi.json';
+import vnMessages from '../../messages/vn.json';
 
-export type Locale = 'vi' | 'zh' | 'en';
+export type Locale = 'vn' | 'cn' | 'en';
 
 interface LanguageState {
   currentLocale: Locale;
@@ -9,8 +9,8 @@ interface LanguageState {
 }
 
 const initialState: LanguageState = {
-  currentLocale: 'vi',
-  messages: viMessages,
+  currentLocale: 'vn',
+  messages: vnMessages,
 };
 
 const languageSlice = createSlice({
