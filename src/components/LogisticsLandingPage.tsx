@@ -382,50 +382,13 @@ const LogisticsLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
-      >
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            // backgroundImage: "url(/images/112113799_loai-hinh-logistics.jpg)",
-            // backgroundImage: "url(/images/137121254-the-world-logistics-there-are-world-map-with-logistic-network-distribution-on-background-and.jpg)",
-            // backgroundImage: "url(/images/logistics.jpg)",
-            backgroundImage: "url(/images/background_home.jpg)",
-            // backgroundImage: "url(/images/pngtree-d-rendering-of-a-logistics-company-s-import-export-shipping-operations-image_3817708.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            opacity: 1,
-          }}
-        />
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
-
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto drop-shadow-lg whitespace-nowrap">
-              {t("hero.subtitle")}
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-2xl shadow-black">
-              {t("hero.title")}
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors">
-                {t("hero.getQuote")}
-              </button>
-              <button className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors">
-                {t("hero.trackShipment")}
-              </button>
-            </div>
-          </motion.div>
+      <section id="home" className="pt-16">
+        <div className="container mx-auto px-4">
+          <img
+            src="/images/background_home.jpg"
+            alt="Huang Shan Global Logistics"
+            className="w-full h-auto object-contain rounded-lg"
+          />
         </div>
       </section>
 
