@@ -92,16 +92,21 @@ export class ContactService {
     return emailRegex.test(email);
   }
 
-  /**
-   * Validate phone format (basic validation)
-   */
-  static isValidPhone(phone: string): boolean {
-    // Allow various international formats
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
-    return phoneRegex.test(cleanPhone) && cleanPhone.length >= 10;
-  }
+/**
+ * Validate phone format (Vietnam local + international basic check)
+ */
+static isValidPhone(phone: string): boolean {
+  // Remove spaces, dashes, parentheses
+  const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
 
+  // Local format: starts with 0, 10–11 digits
+  const localRegex = /^0\d{9,10}$/;
+
+  // International format: +, then 10–15 digits
+  const intlRegex = /^\+?[1-9]\d{9,14}$/;
+
+  return localRegex.test(cleanPhone) || intlRegex.test(cleanPhone);
+}
   /**
    * Validate form data
    */

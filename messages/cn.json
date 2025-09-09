@@ -123,20 +123,90 @@
   },
   "contact": {
     "title": "联系我们",
-    "subtitle": "准备优化您的物流？今天就联系我们",
-    "phone": "电话",
-    "email": "邮箱",
-    "address": "地址",
+    "subtitle": "获得免费咨询和报价",
+    "benefits": {
+      "fast_response": "24小时内快速响应",
+      "expert_advice": "专家专业咨询",
+      "free_quote": "免费具竞争力报价"
+    },
     "form": {
-      "firstName": "名字",
-      "lastName": "姓氏",
+      "title": "发送咨询请求",
+      "subtitle": "请填写以下信息，获得我们专家的咨询",
+      "personal_info": "个人信息",
+      "first_name": "名字",
+      "last_name": "姓氏",
       "email": "邮箱",
+      "phone": "电话号码",
       "company": "公司",
-      "message": "消息",
-      "messagePlaceholder": "告诉我们您的物流需求...",
-      "sendMessage": "发送消息",
-      "thankYou": "谢谢您！",
-      "thankYouMessage": "我们已收到您的消息，将在24小时内回复您。"
+      "service_type": "感兴趣的服务类型",
+      "priority": "优先级",
+      "priority_levels": {
+        "low": "低",
+        "normal": "普通",
+        "high": "高",
+        "urgent": "紧急"
+      },
+      "subject": "标题",
+      "subject_placeholder": "输入您的咨询请求标题",
+      "message": "详细内容",
+      "message_placeholder": "详细描述您的物流需求，货物类型，运输路线，预期时间...",
+      "send_message": "发送请求",
+      "sending": "正在发送...",
+      "error_title": "发生错误",
+      "validation_error": "验证错误",
+      "success": {
+        "title": "发送成功！",
+        "message": "我们已收到您的请求，将在24个工作小时内联系您。"
+      }
+    },
+    "services": {
+      "ground_transport": "陆路运输",
+      "air_freight": "航空货运",
+      "ocean_freight": "海运",
+      "warehousing": "仓储服务",
+      "consultation": "物流咨询",
+      "other": "其他服务"
+    },
+    "info": {
+      "title": "联系信息",
+      "phone": "电话",
+      "email": "邮箱",
+      "address": "地址"
+    },
+    "hours": {
+      "title": "营业时间",
+      "weekdays": "周一至周五",
+      "saturday": "周六",
+      "sunday": "周日",
+      "closed": "休息"
+    },
+    "response": {
+      "title": "响应时间",
+      "phone": "电话：30分钟内（办公时间）",
+      "email": "邮箱：2-4小时内",
+      "quote": "报价：24小时内"
+    },
+    "faq": {
+      "title": "常见问题",
+      "subtitle": "关于我们服务的常见问题",
+      "questions": {
+        "q1": {
+          "question": "从中国到越南的运输时间需要多久？",
+          "answer": "陆路运输：2-3天。海运：7-15天，具体看路线。航空运输：1-2天。"
+        },
+        "q2": {
+          "question": "运输费用如何计算？",
+          "answer": "费用根据重量、体积、路线和服务类型计算。我们提供免费且最具竞争力的报价。"
+        },
+        "q3": {
+          "question": "如何追踪货物运输过程？",
+          "answer": "您将获得追踪码，可通过我们的网站或应用程序24/7追踪货物。"
+        },
+        "q4": {
+          "question": "公司是否协助办理海关手续？",
+          "answer": "是的，我们协助办理所有进出口、海关和相关文件手续。"
+        }
+      }
     }
   },
   "policies": {

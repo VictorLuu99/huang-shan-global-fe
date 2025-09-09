@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { ToastProvider } from '@/contexts/ToastContext';
 import { generateSEOMetadata, generateStructuredData } from '@/components/shared/SEO';
 
 const inter = Inter({
@@ -52,11 +53,13 @@ export default function RootLayout({ children }: Props) {
       </head>
       <body className={`${inter.variable} antialiased`}>
         <LanguageProvider>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
+          <ToastProvider>
+            <Header />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </ToastProvider>
         </LanguageProvider>
       </body>
     </html>

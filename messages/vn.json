@@ -124,19 +124,89 @@
   "contact": {
     "title": "LIÊN HỆ VỚI CHÚNG TÔI",
     "subtitle": "NHẬN TƯ VẤN VÀ BÁO GIÁ MIỄN PHÍ",
-    "phone": "Điện Thoại",
-    "email": "Email",
-    "address": "Địa Chỉ",
+    "benefits": {
+      "fast_response": "Phản hồi nhanh chóng trong 24h",
+      "expert_advice": "Tư vấn chuyên môn từ chuyên gia",
+      "free_quote": "Báo giá miễn phí và cạnh tranh"
+    },
     "form": {
-      "firstName": "Tên",
-      "lastName": "Họ",
+      "title": "Gửi yêu cầu tư vấn",
+      "subtitle": "Điền thông tin bên dưới để nhận tư vấn từ chuyên gia của chúng tôi",
+      "personal_info": "Thông tin cá nhân",
+      "first_name": "Tên",
+      "last_name": "Họ",
       "email": "Email",
-      "company": "Công Ty",
-      "message": "Tin Nhắn",
-      "messagePlaceholder": "Hãy cho chúng tôi biết về nhu cầu logistics của bạn...",
-      "sendMessage": "Gửi Tin Nhắn",
-      "thankYou": "Cảm Ơn Bạn!",
-      "thankYouMessage": "Chúng tôi đã nhận được tin nhắn của bạn và sẽ liên hệ lại trong vòng 24 giờ."
+      "phone": "Số điện thoại",
+      "company": "Công ty",
+      "service_type": "Loại dịch vụ quan tâm",
+      "priority": "Mức độ ưu tiên",
+      "priority_levels": {
+        "low": "Thấp",
+        "normal": "Bình thường",
+        "high": "Cao",
+        "urgent": "Khẩn cấp"
+      },
+      "subject": "Tiêu đề",
+      "subject_placeholder": "Nhập tiêu đề yêu cầu tư vấn của bạn",
+      "message": "Nội dung chi tiết",
+      "message_placeholder": "Mô tả chi tiết về nhu cầu logistics của bạn, loại hàng hóa, tuyến đường vận chuyển, thời gian dự kiến...",
+      "send_message": "Gửi yêu cầu",
+      "sending": "Đang gửi...",
+      "error_title": "Có lỗi xảy ra",
+      "validation_error": "Lỗi xác thực",
+      "success": {
+        "title": "Gửi thành công!",
+        "message": "Chúng tôi đã nhận được yêu cầu của bạn và sẽ liên hệ lại trong vòng 24 giờ làm việc."
+      }
+    },
+    "services": {
+      "ground_transport": "Vận tải đường bộ",
+      "air_freight": "Vận tải hàng không",
+      "ocean_freight": "Vận tải đường biển",
+      "warehousing": "Dịch vụ kho bãi",
+      "consultation": "Tư vấn logistics",
+      "other": "Dịch vụ khác"
+    },
+    "info": {
+      "title": "Thông tin liên hệ",
+      "phone": "Điện thoại",
+      "email": "Email",
+      "address": "Địa chỉ"
+    },
+    "hours": {
+      "title": "Giờ làm việc",
+      "weekdays": "Thứ 2 - Thứ 6",
+      "saturday": "Thứ 7",
+      "sunday": "Chủ nhật",
+      "closed": "Nghỉ"
+    },
+    "response": {
+      "title": "Thời gian phản hồi",
+      "phone": "Điện thoại: Trong 30 phút (giờ hành chính)",
+      "email": "Email: Trong vòng 2-4 tiếng",
+      "quote": "Báo giá: Trong vòng 24 tiếng"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Những thắc mắc phổ biến về dịch vụ của chúng tôi",
+      "questions": {
+        "q1": {
+          "question": "Thời gian vận chuyển từ Trung Quốc về Việt Nam mất bao lâu?",
+          "answer": "Vận chuyển đường bộ: 2-3 ngày. Vận chuyển đường biển: 7-15 ngày tùy tuyến đường. Vận chuyển hàng không: 1-2 ngày."
+        },
+        "q2": {
+          "question": "Chi phí vận chuyển được tính như thế nào?",
+          "answer": "Chi phí được tính dựa trên trọng lượng, thể tích, tuyến đường và loại dịch vụ. Chúng tôi cung cấp báo giá miễn phí và cạnh tranh nhất."
+        },
+        "q3": {
+          "question": "Làm sao để theo dõi hàng hóa trong quá trình vận chuyển?",
+          "answer": "Bạn sẽ được cung cấp mã tracking để theo dõi hàng 24/7 qua website hoặc ứng dụng của chúng tôi."
+        },
+        "q4": {
+          "question": "Công ty có hỗ trợ làm thủ tục hải quan không?",
+          "answer": "Có, chúng tôi hỗ trợ đầy đủ thủ tục xuất nhập khẩu, hải quan và các giấy tờ cần thiết theo quy định."
+        }
+      }
     }
   },
   "policies": {
