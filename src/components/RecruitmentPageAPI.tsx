@@ -153,9 +153,6 @@ export default function RecruitmentPageAPI() {
     return t("recruitment.salary_negotiable");
   };
 
-  const formatEmploymentType = (type: string) => {
-    return type.replace("_", " ").toUpperCase();
-  };
 
   const formatDepartment = (dept: string) => {
     return dept.replace("_", " ").toUpperCase();
@@ -163,11 +160,15 @@ export default function RecruitmentPageAPI() {
 
   const handleApplicationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("comin here1");
+    
     if (!showApplication) return;
+    console.log("comin here2");
 
     try {
       setSubmitting(true);
       setError(null);
+console.log("applicationData: ", applicationData);
 
       // Validate required fields
       if (
@@ -183,18 +184,34 @@ export default function RecruitmentPageAPI() {
         );
       }
 
-      // Transform data to match service interface
+      // Transform data to match backend API contract
       const serviceData = {
-        full_name:
-          `${applicationData.first_name} ${applicationData.last_name}`.trim(),
+        first_name: applicationData.first_name!,
+        last_name: applicationData.last_name!,
         email: applicationData.email!,
         phone: applicationData.phone!,
         current_position: applicationData.current_position,
-        experience_years: Number(applicationData.experience_years) || 0,
+        years_experience: Number(applicationData.experience_years) || 0,
         cover_letter: applicationData.cover_letter || "",
-        cv_url: applicationData.cv_file_url,
+        cv_file_url: applicationData.cv_file_url!,
+        cv_file_name: applicationData.cv_file_name!,
+        cv_file_size: applicationData.cv_file_size,
+        skills: applicationData.skills,
+        languages: applicationData.languages || "Vietnamese,English",
+        country: applicationData.country || "Vietnam",
+        address: applicationData.address,
+        city: applicationData.city,
+        date_of_birth: applicationData.date_of_birth,
+        gender: applicationData.gender,
+        nationality: applicationData.nationality || "Vietnamese",
+        education_level: applicationData.education_level,
+        expected_salary: applicationData.expected_salary,
+        available_date: applicationData.available_date,
+        portfolio_url: applicationData.portfolio_url,
+        linkedin_url: applicationData.linkedin_url,
       };
-
+      console.log("serviceData: ", serviceData);
+      
       const result = await recruitmentService.submitApplication(
         String(showApplication),
         serviceData

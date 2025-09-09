@@ -20,16 +20,29 @@ export interface JobListing {
 
 export interface JobApplication {
   job_id: string;
-  full_name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   phone: string;
   current_position?: string;
-  experience_years?: number;
-  education?: string;
-  skills?: string[];
+  years_experience?: number;
+  education_level?: string;
+  skills?: string;
+  languages?: string;
   cover_letter: string;
-  cv_url?: string;
-  language?: string;
+  cv_file_url: string;
+  cv_file_name: string;
+  cv_file_size?: number;
+  country?: string;
+  address?: string;
+  city?: string;
+  date_of_birth?: string;
+  gender?: string;
+  nationality?: string;
+  expected_salary?: number;
+  available_date?: string;
+  portfolio_url?: string;
+  linkedin_url?: string;
   status?: string;
 }
 
@@ -112,13 +125,7 @@ export class RecruitmentService {
     jobId: string, 
     applicationData: Omit<JobApplication, 'job_id'>
   ): Promise<ApiResponse<ApplicationResponse>> {
-    const submitData: JobApplication = {
-      job_id: jobId,
-      ...applicationData,
-      status: 'submitted'
-    };
-
-    return await apiClient.post<ApplicationResponse>(`/api/cv/apply/${jobId}`, submitData);
+    return await apiClient.post<ApplicationResponse>(`/api/cv/apply/${jobId}`, applicationData);
   }
 
   /**
@@ -130,8 +137,12 @@ export class RecruitmentService {
   } {
     const errors: string[] = [];
 
-    if (!data.full_name?.trim()) {
-      errors.push('Full name is required');
+    if (!data.first_name?.trim()) {
+      errors.push('First name is required');
+    }
+
+    if (!data.last_name?.trim()) {
+      errors.push('Last name is required');
     }
 
     if (!data.email?.trim()) {
@@ -144,13 +155,21 @@ export class RecruitmentService {
       errors.push('Phone number is required');
     }
 
+    if (!data.cv_file_url?.trim()) {
+      errors.push('CV file is required');
+    }
+
+    if (!data.cv_file_name?.trim()) {
+      errors.push('CV file name is required');
+    }
+
     if (!data.cover_letter?.trim()) {
       errors.push('Cover letter is required');
     } else if (data.cover_letter.trim().length < 50) {
       errors.push('Cover letter must be at least 50 characters long');
     }
 
-    if (data.experience_years !== undefined && (data.experience_years < 0 || data.experience_years > 50)) {
+    if (data.years_experience !== undefined && (data.years_experience < 0 || data.years_experience > 50)) {
       errors.push('Please enter a valid number of years of experience');
     }
 

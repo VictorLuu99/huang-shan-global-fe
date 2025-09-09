@@ -64,8 +64,8 @@ export class UploadService {
 
       // Upload to API using the centralized client
       const response = await apiClient.post<{
-        fileUrl: string;
-        fileName: string;
+        url: string;
+        filename: string;
       }>('/api/upload', formData, {
         headers: {
           'X-File-Name': encodeURIComponent(file.name),
@@ -75,8 +75,8 @@ export class UploadService {
       if (response.success && response.data) {
         return {
           success: true,
-          fileUrl: response.data.fileUrl,
-          fileName: response.data.fileName || file.name,
+          fileUrl: response.data.url,
+          fileName: response.data.filename || file.name,
           fileSize: file.size
         };
       } else {
