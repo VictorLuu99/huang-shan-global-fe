@@ -19,22 +19,23 @@ export interface ApiError {
 }
 
 export class ApiClient {
-  private static readonly DEFAULT_API_URL = 'https://huangshan-api.xox-labs-server.workers.dev';
-  
+  private static readonly DEFAULT_API_URL =
+    "https://huangshan-api.xox-labs-server.workers.dev";
+
   private readonly baseUrl: string;
-  
+
   constructor() {
     // Use environment variable with fallback to default production URL
     this.baseUrl = process.env.NEXT_PUBLIC_API_URL || ApiClient.DEFAULT_API_URL;
   }
 
   private async handleResponse<T>(response: Response): Promise<ApiResponse<T>> {
-    const contentType = response.headers.get('content-type');
-    const isJson = contentType?.includes('application/json');
+    const contentType = response.headers.get("content-type");
+    const isJson = contentType?.includes("application/json");
 
     if (!response.ok) {
       let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-      
+
       if (isJson) {
         try {
           const errorData = await response.json();
@@ -54,14 +55,17 @@ export class ApiClient {
     // For non-JSON responses, wrap in standard format
     return {
       success: true,
-      data: await response.text() as T
+      data: (await response.text()) as T,
     };
   }
 
-  async get<T>(endpoint: string, params?: Record<string, string | number>): Promise<ApiResponse<T>> {
+  async get<T>(
+    endpoint: string,
+    params?: Record<string, string | number>
+  ): Promise<ApiResponse<T>> {
     try {
       const url = new URL(`${this.baseUrl}${endpoint}`);
-      
+
       if (params) {
         Object.entries(params).forEach(([key, value]) => {
           if (value !== undefined && value !== null) {
@@ -71,9 +75,9 @@ export class ApiClient {
       }
 
       const response = await fetch(url.toString(), {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -84,18 +88,24 @@ export class ApiClient {
     }
   }
 
-  async post<T>(endpoint: string, data?: unknown, options?: RequestInit): Promise<ApiResponse<T>> {
+  async post<T>(
+    endpoint: string,
+    data?: unknown,
+    options?: RequestInit
+  ): Promise<ApiResponse<T>> {
     try {
       const isFormData = data instanceof FormData;
+      console.log("isFormData: ", isFormData);
       
+
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
-        method: 'POST',
+        method: "POST",
+        ...options, // spread first
         headers: {
-          ...(!isFormData && { 'Content-Type': 'application/json' }),
-          ...options?.headers,
+          ...options?.headers, // merge headers from optios
+          ...(!isFormData ? { "Content-Type": "application/json" } : {}),
         },
         body: isFormData ? data : JSON.stringify(data),
-        ...options,
       });
 
       return await this.handleResponse<T>(response);
@@ -108,9 +118,9 @@ export class ApiClient {
   async put<T>(endpoint: string, data?: unknown): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -125,9 +135,9 @@ export class ApiClient {
   async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -164,9 +174,9 @@ export const handleApiError = (error: unknown): string => {
   if (error instanceof Error) {
     return error.message;
   }
-  return 'An unexpected error occurred. Please try again.';
+  return "An unexpected error occurred. Please try again.";
 };
 
 export const isApiError = (error: unknown): error is ApiError => {
-  return typeof error === 'object' && error !== null && 'message' in error;
+  return typeof error === "object" && error !== null && "message" in error;
 };

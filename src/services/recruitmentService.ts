@@ -11,8 +11,8 @@ export interface JobListing {
   description: string;
   requirements: string[];
   benefits: string[];
-  posted_date: string;
-  deadline?: string;
+  created_at: string;
+  application_deadline?: string;
   status: string; // active, closed, draft
   featured?: boolean;
   language?: string;
