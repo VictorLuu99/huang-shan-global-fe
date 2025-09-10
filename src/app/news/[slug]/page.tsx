@@ -107,26 +107,6 @@ export async function generateMetadata({
   }
 }
 
-// Generate static params for better performance (optional)
-export async function generateStaticParams() {
-  try {
-    // Fetch all news articles to pre-generate slug-based routes
-    const response = await newsService.getNews({ limit: 100 });
-    
-    if (response.success && response.data) {
-      // Only return posts that have slugs (filter out null/undefined slugs)
-      return response.data
-        .filter((post) => post.slug && typeof post.slug === 'string')
-        .map((post) => ({
-          slug: post.slug,
-        }));
-    }
-  } catch (error) {
-    console.error('Error generating static params for news posts:', error);
-  }
-  
-  return [];
-}
 
 export default async function NewsDetailPageRoute({ 
   params, 
@@ -152,4 +132,4 @@ export default async function NewsDetailPageRoute({
   }
 }
 
-// export const runtime = 'edge';
+export const runtime = 'edge';
