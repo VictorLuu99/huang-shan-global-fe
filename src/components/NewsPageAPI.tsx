@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useTranslation } from "../contexts/LanguageContext";
 import { newsService, NewsArticle, Category } from "../services/newsService";
 import { handleApiError } from "../services/api";
@@ -298,13 +299,16 @@ export default function NewsPageAPI() {
                   {featuredArticles.map((article, index) => (
                     <motion.div
                       key={article.id}
-                      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       whileHover={{ y: -5 }}
                     >
+                      <Link
+                        href={`/news/${article.slug || article.id}`}
+                        className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
+                      >
                       <div className="relative overflow-hidden">
                         {article.image_url ? (
                           <div
@@ -367,6 +371,7 @@ export default function NewsPageAPI() {
                           </span>
                         </div>
                       </div>
+                      </Link>
                     </motion.div>
                   ))}
                 </div>
@@ -401,13 +406,16 @@ export default function NewsPageAPI() {
                     {regularArticles.map((article, index) => (
                       <motion.div
                         key={article.id}
-                        className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                         whileHover={{ y: -5 }}
                       >
+                        <Link
+                          href={`/news/${article.slug || article.id}`}
+                          className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
+                        >
                         <div className="relative overflow-hidden">
                           {article.image_url ? (
                             <div
@@ -467,6 +475,7 @@ export default function NewsPageAPI() {
                             </div>
                           </div>
                         </div>
+                        </Link>
                       </motion.div>
                     ))}
                   </div>

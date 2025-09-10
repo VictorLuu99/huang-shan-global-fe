@@ -124,6 +124,35 @@ export function formatKnowledgeContent(content: string | null | undefined): stri
 }
 
 /**
+ * Format content specifically for news articles
+ * Optimized for news content with quotes, dates, and citations
+ */
+export function formatNewsContent(content: string | null | undefined): string {
+  if (!content) return '';
+
+  let formatted = formatContent(content, {
+    preserveLineBreaks: true,
+    preserveIndentation: false, // News articles typically don't need indentation preservation
+    convertUrls: true,
+    allowBasicMarkdown: true
+  });
+
+  // News-specific formatting improvements
+  formatted = formatted
+    // Format quotes with proper styling
+    .replace(/^"(.*)"$/gm, '<blockquote class="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">"$1"</blockquote>')
+    // Format date references (e.g., "Ngày 15/12/2024")
+    .replace(/\b(Ngày|Date|日期)\s+(\d{1,2}\/\d{1,2}\/\d{4})\b/g, '<strong>$1 $2</strong>')
+    // Format company/organization names in caps
+    .replace(/\b([A-Z][A-Z\s&]{2,})\b/g, '<strong>$1</strong>')
+    // Format citations or sources at the end
+    .replace(/^\s*[-–—]\s*(.+)$/gm, '<cite class="text-sm text-muted-foreground block mt-4 border-t pt-2">— $1</cite>');
+
+  // Wrap in a container optimized for news reading
+  return `<div class="news-content space-y-6 leading-relaxed text-justify">${formatted}</div>`;
+}
+
+/**
  * Sanitize content to prevent XSS while preserving formatting
  */
 export function sanitizeHtml(html: string): string {
