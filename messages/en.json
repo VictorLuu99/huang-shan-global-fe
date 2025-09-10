@@ -133,6 +133,8 @@
       "title": "Send consultation request",
       "subtitle": "Fill out the information below to receive consultation from our experts",
       "personal_info": "Personal information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
       "first_name": "First Name",
       "last_name": "Last Name",
       "email": "Email",
@@ -149,11 +151,15 @@
       "subject": "Subject",
       "subject_placeholder": "Enter your consultation request subject",
       "message": "Detailed content",
+      "messagePlaceholder": "Describe in detail your logistics needs, type of goods, shipping routes, expected timeline...",
       "message_placeholder": "Describe in detail your logistics needs, type of goods, shipping routes, expected timeline...",
+      "sendMessage": "Send request",
       "send_message": "Send request",
       "sending": "Sending...",
       "error_title": "An error occurred",
       "validation_error": "Validation Error",
+      "thankYou": "Thank you!",
+      "thankYouMessage": "We have received your request and will contact you within 24 working hours.",
       "success": {
         "title": "Successfully sent!",
         "message": "We have received your request and will contact you within 24 working hours."
@@ -575,8 +581,8 @@
     }
   },
   "knowledge": {
-    "title": "Import-Export Knowledge",
-    "subtitle": "Documentation and guides for China-Vietnam import-export",
+    "title": "Import-Export Knowledge Center",
+    "subtitle": "Professional learning platform with practical guides for China-Vietnam import-export business",
     "categories": {
       "all": "All Categories",
       "procedures": "Import-Export Procedures",
@@ -595,11 +601,11 @@
     },
     "featured": {
       "title": "Featured Guides",
-      "subtitle": "Most important and helpful guides"
+      "subtitle": "Essential knowledge to help you succeed in China-Vietnam import-export business"
     },
     "allGuides": {
-      "title": "All Guides",
-      "subtitle": "Complete knowledge base"
+      "title": "Comprehensive Knowledge Library",
+      "subtitle": "Professional resource center with 100+ detailed import-export guides"
     },
     "difficulty": {
       "beginner": "Beginner",

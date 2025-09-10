@@ -133,6 +133,8 @@
       "title": "发送咨询请求",
       "subtitle": "请填写以下信息，获得我们专家的咨询",
       "personal_info": "个人信息",
+      "firstName": "名字",
+      "lastName": "姓氏",
       "first_name": "名字",
       "last_name": "姓氏",
       "email": "邮箱",
@@ -149,11 +151,15 @@
       "subject": "标题",
       "subject_placeholder": "输入您的咨询请求标题",
       "message": "详细内容",
+      "messagePlaceholder": "详细描述您的物流需求，货物类型，运输路线，预期时间...",
       "message_placeholder": "详细描述您的物流需求，货物类型，运输路线，预期时间...",
+      "sendMessage": "发送请求",
       "send_message": "发送请求",
       "sending": "正在发送...",
       "error_title": "发生错误",
       "validation_error": "验证错误",
+      "thankYou": "谢谢您！",
+      "thankYouMessage": "我们已收到您的请求，将在24个工作小时内联系您。",
       "success": {
         "title": "发送成功！",
         "message": "我们已收到您的请求，将在24个工作小时内联系您。"
@@ -575,8 +581,8 @@
     }
   },
   "knowledge": {
-    "title": "进出口知识",
-    "subtitle": "中越进出口文档和指南",
+    "title": "进出口知识中心",
+    "subtitle": "专业学习平台，提供中越进出口业务实用指南",
     "categories": {
       "all": "全部类别",
       "procedures": "进出口程序",
@@ -595,11 +601,11 @@
     },
     "featured": {
       "title": "精选指南",
-      "subtitle": "最重要和最有帮助的指南"
+      "subtitle": "帮助您在中越进出口业务中取得成功的核心知识"
     },
     "allGuides": {
-      "title": "所有指南",
-      "subtitle": "完整的知识库"
+      "title": "全面知识文库",
+      "subtitle": "专业资源中心，提供100+份详细的进出口指南"
     },
     "difficulty": {
       "beginner": "初级",
@@ -608,7 +614,6 @@
     },
     "downloadGuide": "下载指南",
     "viewGuide": "查看指南",
-    "featured": "精选",
     "readingTime": "分钟阅读",
     "guides": {
       "customs_procedures": {

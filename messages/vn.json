@@ -133,6 +133,8 @@
       "title": "Gửi yêu cầu tư vấn",
       "subtitle": "Điền thông tin bên dưới để nhận tư vấn từ chuyên gia của chúng tôi",
       "personal_info": "Thông tin cá nhân",
+      "firstName": "Tên",
+      "lastName": "Họ",
       "first_name": "Tên",
       "last_name": "Họ",
       "email": "Email",
@@ -149,11 +151,15 @@
       "subject": "Tiêu đề",
       "subject_placeholder": "Nhập tiêu đề yêu cầu tư vấn của bạn",
       "message": "Nội dung chi tiết",
+      "messagePlaceholder": "Mô tả chi tiết về nhu cầu logistics của bạn, loại hàng hóa, tuyến đường vận chuyển, thời gian dự kiến...",
       "message_placeholder": "Mô tả chi tiết về nhu cầu logistics của bạn, loại hàng hóa, tuyến đường vận chuyển, thời gian dự kiến...",
+      "sendMessage": "Gửi yêu cầu",
       "send_message": "Gửi yêu cầu",
       "sending": "Đang gửi...",
       "error_title": "Có lỗi xảy ra",
       "validation_error": "Lỗi xác thực",
+      "thankYou": "Cảm ơn bạn!",
+      "thankYouMessage": "Chúng tôi đã nhận được yêu cầu của bạn và sẽ liên hệ lại trong vòng 24 giờ làm việc.",
       "success": {
         "title": "Gửi thành công!",
         "message": "Chúng tôi đã nhận được yêu cầu của bạn và sẽ liên hệ lại trong vòng 24 giờ làm việc."
@@ -576,8 +582,8 @@
     "author": "Tác giả"
   },
   "knowledge": {
-    "title": "Kiến Thức Xuất Nhập Khẩu",
-    "subtitle": "Kho tài liệu và hướng dẫn xuất nhập khẩu Trung Quốc - Việt Nam",
+    "title": "Trung tâm kiến thức xuất nhập khẩu",
+    "subtitle": "Nền tảng học hỏi chuyên sâu với các hướng dẫn thực tế về xuất nhập khẩu Trung Quốc - Việt Nam",
     "categories": {
       "all": "Tất cả danh mục",
       "procedures": "Thủ tục xuất nhập khẩu",
@@ -594,13 +600,13 @@
       "noResults": "Không tìm thấy tài liệu",
       "tryDifferent": "Thử tìm kiếm với từ khóa khác"
     },
-    "featured": {
+    "featuredSection": {
       "title": "Tài liệu nổi bật",
-      "subtitle": "Các hướng dẫn quan trọng và hữu ích nhất"
+      "subtitle": "Những kiến thức thiết yếu giúp bạn thành công trong hoạt động xuất nhập khẩu Trung - Việt"
     },
     "allGuides": {
-      "title": "Tất cả tài liệu",
-      "subtitle": "Kho tài liệu hướng dẫn đầy đủ"
+      "title": "Thư viện kiến thức toàn diện",
+      "subtitle": "Kho tài liệu chuyên nghiệp với hơn 100+ hướng dẫn chi tiết về xuất nhập khẩu"
     },
     "difficulty": {
       "beginner": "Cơ bản",

@@ -82,7 +82,6 @@ const ContactPageAPI: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("comin here: ", formData);
     setSubmission({ isLoading: true, isSubmitted: false, error: null });
     try {
       const submitData = {
@@ -97,11 +96,9 @@ const ContactPageAPI: React.FC = () => {
         language: currentLocale,
         status: "pending",
       };
-      console.log("submitData: ", submitData);
 
       // Validate form data
       const validation = contactService.validateContactForm(submitData);
-      console.log("validation: ", validation);
       
       if (!validation.isValid) {
         const errorMessage = validation.errors.join(", ");

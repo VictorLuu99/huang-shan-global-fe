@@ -22,7 +22,7 @@ interface LanguageContextType {
   currentLocale: Locale;
   messages: Record<string, unknown>;
   changeLanguage: (locale: Locale) => void;
-  t: (key: string) => string;
+  t: (key: string, values?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -73,11 +73,22 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
   };
 
-  const t = (key: string): string => {
+  const t = (key: string, values?: Record<string, string | number>): string => {
     if (Object.keys(messages).length === 0) {
       return key;
     }
-    return getNestedTranslation(messages, key);
+    
+    let translation = getNestedTranslation(messages, key);
+    
+    // Handle interpolation if values are provided
+    if (values) {
+      Object.keys(values).forEach(valueKey => {
+        const placeholder = `{${valueKey}}`;
+        translation = translation.replace(new RegExp(placeholder, 'g'), String(values[valueKey]));
+      });
+    }
+    
+    return translation;
   };
 
   return (

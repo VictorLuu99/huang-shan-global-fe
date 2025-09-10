@@ -105,7 +105,6 @@ export default function RecruitmentPageAPI() {
         const response = await recruitmentService.getJobs({
           lang: currentLocale,
         });
-        console.log("response: ", response);
 
         if (response && response.data) {
           setJobs(response.data);
@@ -519,7 +518,7 @@ console.log("applicationData: ", applicationData);
               </div>
 
               <p className="text-gray-600 text-center">
-                {filteredJobs.length} {t("recruitment.search.results")}
+                {t("recruitment.search.results", { count: filteredJobs.length })}
               </p>
             </motion.div>
           </div>

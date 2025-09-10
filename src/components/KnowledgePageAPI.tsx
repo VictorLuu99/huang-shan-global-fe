@@ -233,8 +233,8 @@ const KnowledgePageAPI: React.FC = () => {
                 transition={{ delay: 0.3 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-bold mb-4">{t('knowledge.featured.title')}</h2>
-                <p className="text-muted-foreground">{t('knowledge.featured.subtitle')}</p>
+                <h2 className="text-3xl font-bold mb-4">{t('knowledge.featuredSection.title')}</h2>
+                <p className="text-muted-foreground">{t('knowledge.featuredSection.subtitle')}</p>
               </motion.div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -298,8 +298,8 @@ const KnowledgePageAPI: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                           <div className="flex items-center space-x-1">
-                            <Download className="w-4 h-4" />
-                            <span>{getDownloads()}</span>
+                            {/* <Download className="w-4 h-4" />
+                            <span>{getDownloads()}</span> */}
                           </div>
                         </div>
                         <div className="flex space-x-2">
@@ -307,9 +307,9 @@ const KnowledgePageAPI: React.FC = () => {
                             <Eye className="w-4 h-4" />
                             <span>{t('knowledge.viewGuide')}</span>
                           </button>
-                          <button className="px-3 py-2 bg-muted text-muted-foreground rounded-lg hover:bg-muted/80 transition-colors">
+                          {/* <button className="px-3 py-2 bg-muted text-muted-foreground rounded-lg hover:bg-muted/80 transition-colors">
                             <Download className="w-4 h-4" />
-                          </button>
+                          </button> */}
                         </div>
                       </div>
                     </div>
@@ -333,7 +333,7 @@ const KnowledgePageAPI: React.FC = () => {
               >
                 <h2 className="text-3xl font-bold mb-4">{t('knowledge.allGuides.title')}</h2>
                 <p className="text-muted-foreground">
-                  {`${guides.length} ${t('knowledge.search.results')}`}
+                  {`${t('knowledge.search.results', {count: guides.length})}`}
                 </p>
               </motion.div>
 
@@ -387,17 +387,17 @@ const KnowledgePageAPI: React.FC = () => {
                         </p>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-                            <Download className="w-4 h-4" />
-                            <span>{getDownloads()}</span>
+                            {/* <Download className="w-4 h-4" /> */}
+                            {/* <span>{getDownloads()}</span> */}
                           </div>
                           <div className="flex space-x-2">
                             <button className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/80 transition-colors flex items-center space-x-1">
                               <Eye className="w-4 h-4" />
                               <span>{t('knowledge.viewGuide')}</span>
                             </button>
-                            <button className="px-2 py-1.5 bg-muted text-muted-foreground text-sm rounded-lg hover:bg-muted/80 transition-colors">
+                            {/* <button className="px-2 py-1.5 bg-muted text-muted-foreground text-sm rounded-lg hover:bg-muted/80 transition-colors">
                               <Download className="w-4 h-4" />
-                            </button>
+                            </button> */}
                           </div>
                         </div>
                       </div>

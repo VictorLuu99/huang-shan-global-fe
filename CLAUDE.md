@@ -25,6 +25,11 @@ npm run lint       # Check code quality with ESLint
 2. Run `npm run build` to verify production build works
 3. Test `npm run dev` starts successfully
 
+**Development Server Notes:**
+- If port 3000 shows "EADDRINUSE" error, the development server is already running
+- No need to start a new server on a different port - just use the existing one
+- Check http://localhost:3000 to verify main website is working
+
 ## Architecture & Structure
 
 **Technology Stack:**

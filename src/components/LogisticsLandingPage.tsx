@@ -10,6 +10,8 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useTranslation } from "../contexts/LanguageContext";
+import { contactService } from "../services/contactService";
+import { handleApiError } from "../services/api";
 import {
   Truck,
   Globe,
@@ -24,7 +26,9 @@ import {
   CheckCircle,
   Users,
   TrendingUp,
+  Loader2,
 } from "lucide-react";
+import { useToast } from "@/contexts/ToastContext";
 
 // Count Up Component
 interface CountUpProps {
@@ -297,11 +301,17 @@ const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 // Main Logistics Landing Page Component
 const LogisticsLandingPage: React.FC = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { addToast } = useToast();
 
   // Get translations
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
 
   const partnerLogos: Logo[] = [
     { name: "FedEx", id: 1, img: FedExIcon },
@@ -375,9 +385,67 @@ const LogisticsLandingPage: React.FC = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    setIsLoading(true);
+    
+    try {
+      // Prepare data for API
+      const submitData = {
+        full_name: `${firstName} ${lastName}`.trim(),
+        email: email,
+        phone: '', // Home form doesn't have phone, set as empty
+        company: company,
+        subject: 'Contact Form Submission - Home Page',
+        message: message,
+        priority: 'normal',
+        language: currentLocale,
+        status: 'pending'
+      };
+      
+      // Validate form data
+      const validation = contactService.validateContactForm(submitData);
+      
+      if (!validation.isValid) {
+        const errorMessage = validation.errors.join(", ");
+        addToast({
+          type: "error",
+          title: t("contact.form.validation_error"),
+          message: errorMessage,
+        });
+        return;
+      }
+      
+      // Submit to API
+      const result = await contactService.submitContact(submitData);
+      
+      if (result.success) {
+        // Show success message
+        setSubmitted(true);
+        
+        // Reset form after successful submission
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setCompany("");
+        setMessage("");
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      const errorMessage = handleApiError(error);
+      console.error('Contact form submission error:', errorMessage);
+      // You can add toast notification here if you have a toast context
+      alert(errorMessage); // Temporary error display
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -628,7 +696,10 @@ const LogisticsLandingPage: React.FC = () => {
                         </label>
                         <input
                           type="text"
-                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          disabled={isLoading}
+                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
                           required
                         />
                       </div>
@@ -638,7 +709,10 @@ const LogisticsLandingPage: React.FC = () => {
                         </label>
                         <input
                           type="text"
-                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                          disabled={isLoading}
+                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
                           required
                         />
                       </div>
@@ -652,7 +726,8 @@ const LogisticsLandingPage: React.FC = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                        disabled={isLoading}
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
                         required
                       />
                     </div>
@@ -663,7 +738,10 @@ const LogisticsLandingPage: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        disabled={isLoading}
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
                       />
                     </div>
 
@@ -673,7 +751,10 @@ const LogisticsLandingPage: React.FC = () => {
                       </label>
                       <textarea
                         rows={4}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background resize-none"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        disabled={isLoading}
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background resize-none disabled:opacity-50"
                         placeholder={t("contact.form.messagePlaceholder")}
                         required
                       ></textarea>
@@ -681,9 +762,17 @@ const LogisticsLandingPage: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-600 transition-colors"
+                      disabled={isLoading}
+                      className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                     >
-                      {t("contact.form.sendMessage")}
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          <span>{t("contact.form.sending")}</span>
+                        </>
+                      ) : (
+                        <span>{t("contact.form.sendMessage")}</span>
+                      )}
                     </button>
                   </form>
                 ) : (
