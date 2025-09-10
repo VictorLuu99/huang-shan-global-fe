@@ -11,7 +11,6 @@ import {
   User,
   ChevronLeft,
   ChevronRight,
-  Eye,
   Tag,
   TrendingUp,
   Building,
@@ -110,7 +109,7 @@ export default function NewsPageAPI() {
     };
 
     fetchCategories();
-  }, []);
+  }, [currentLocale]);
 
   // Map categories to include icons (keeping icon mapping for UI)
   const getCategoryIcon = (slug: string) => {
@@ -151,9 +150,6 @@ export default function NewsPageAPI() {
     return `${minutes} phút`;
   };
 
-  const getViews = (article: NewsArticle) => {
-    return article.views || Math.floor(Math.random() * 1000) + 100;
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -322,7 +318,7 @@ export default function NewsPageAPI() {
                           </span>
                           <span className="flex items-center">
                             <Calendar className="w-4 h-4 mr-1" />
-                            {formatDate(article.published_at)}
+                            {formatDate(article.created_at)}
                           </span>
                           {/* <span className="flex items-center">
                             <Eye className="w-4 h-4 mr-1" />
@@ -412,7 +408,7 @@ export default function NewsPageAPI() {
                             </span>
                             <span className="flex items-center">
                               <Calendar className="w-4 h-4 mr-1" />
-                              {formatDate(article.published_at)}
+                              {formatDate(article.created_at)}
                             </span>
                           </div>
 

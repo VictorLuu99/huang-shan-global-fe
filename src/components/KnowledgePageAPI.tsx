@@ -56,7 +56,7 @@ const KnowledgePageAPI: React.FC = () => {
             total: number
           };
           success: boolean,
-          error: any
+          error: string | null
         };
         
         if (response.success && response.data) {
@@ -87,7 +87,6 @@ const KnowledgePageAPI: React.FC = () => {
       setCategoriesLoading(true);
       try {
         const response = await knowledgeService.getCategories(currentLocale);
-        console.log("totalResults: ", totalResults);
         
         if (Array.isArray(response)) {
           // Add "all" category at the beginning with count
@@ -108,7 +107,7 @@ const KnowledgePageAPI: React.FC = () => {
     };
     
     fetchCategories();
-  }, []);
+  }, [currentLocale]);
 
   const featuredGuides = guides.slice(0, 3); // Show first 3 guides as featured
 

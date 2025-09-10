@@ -7,13 +7,13 @@ export interface NewsArticle {
   content: string;
   category: string;
   author: string;
-  published_at: string;
   read_time?: string;
   views?: number;
   featured: boolean;
   image_url?: string;
   tags?: string[];
   slug?: string;
+  created_at: string
 }
 
 export interface NewsListResponse {

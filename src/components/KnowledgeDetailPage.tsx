@@ -10,12 +10,8 @@ import {
   Tag, 
   Share2, 
   BookOpen, 
-  ChevronRight,
   Star,
-  Download,
-  Eye,
-  ThumbsUp,
-  MessageCircle
+  Eye
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { KnowledgePost, knowledgeService } from '@/services/knowledgeService';
@@ -66,7 +62,6 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
   }, []);
 
   // Generate breadcrumb
-  const breadcrumb = knowledgeService.generateBreadcrumb(post);
 
   // Get reading time
   const getReadingTime = () => {
