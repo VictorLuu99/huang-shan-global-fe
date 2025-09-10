@@ -579,7 +579,13 @@
     },
     "readMore": "Xem thêm",
     "publishedOn": "Đăng ngày",
-    "author": "Tác giả"
+    "author": "Tác giả",
+    "minuteRead": "phút đọc",
+    "views": "lượt xem",
+    "share": "Chia sẻ",
+    "backToNews": "Về trang tin tức",
+    "relatedArticles": "Bài viết liên quan",
+    "viewAllArticles": "Xem tất cả bài viết"
   },
   "knowledge": {
     "title": "Trung tâm kiến thức xuất nhập khẩu",

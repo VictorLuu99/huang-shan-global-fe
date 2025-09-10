@@ -1,12 +1,16 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useTranslation } from '../contexts/LanguageContext';
-import { knowledgeService, KnowledgePost, Category } from '../services/knowledgeService';
-import { handleApiError } from '../services/api';
-import { 
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useTranslation } from "../contexts/LanguageContext";
+import {
+  knowledgeService,
+  KnowledgePost,
+  Category,
+} from "../services/knowledgeService";
+import { handleApiError } from "../services/api";
+import {
   BookOpen,
   Search,
   Eye,
@@ -17,12 +21,19 @@ import {
   Users,
   TrendingUp,
   Shield,
-  Loader2
-} from 'lucide-react';
+  Loader2,
+} from "lucide-react";
 
 const KnowledgePageAPI: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  // Initialize selectedCategory from URL parameter
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("category") || "all";
+    }
+    return "all";
+  });
+  const [searchQuery, setSearchQuery] = useState("");
   const [guides, setGuides] = useState<KnowledgePost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,46 +45,98 @@ const KnowledgePageAPI: React.FC = () => {
 
   const itemsPerPage = 12;
 
+  // Handle URL parameters for category filtering (only for browser navigation)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get("category");
+
+    if (categoryParam && categoryParam !== selectedCategory) {
+      setSelectedCategory(categoryParam);
+    }
+  }, []); // Only run once on mount
+
+  // Update URL when category changes
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const urlParams = new URLSearchParams(url.search);
+    const currentUrlCategory = urlParams.get("category");
+
+    // Only update URL if the category has actually changed
+    if (currentUrlCategory !== selectedCategory) {
+      if (selectedCategory === "all") {
+        // Remove category parameter from URL
+        urlParams.delete("category");
+      } else {
+        // Add category parameter to URL
+        urlParams.set("category", selectedCategory);
+      }
+
+      // Update URL without page reload
+      const newUrl = `${url.pathname}${
+        urlParams.toString() ? "?" + urlParams.toString() : ""
+      }`;
+      window.history.replaceState({}, "", newUrl);
+    }
+  }, [selectedCategory]);
+
   // Fetch knowledge guides from API
   useEffect(() => {
+    const abortController = new AbortController();
+    let isCancelled = false;
+    
     const fetchGuides = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const response = (await knowledgeService.getKnowledge({
           lang: currentLocale,
           page: currentPage,
           limit: itemsPerPage,
-          category: selectedCategory !== 'all' ? selectedCategory : undefined,
-          search: searchQuery || undefined
+          category: selectedCategory !== "all" ? selectedCategory : undefined,
+          search: searchQuery || undefined,
         })) as unknown as {
           data: KnowledgePost[];
           pagination: {
-            limit: number,
-            page: number,
-            pages: number,
-            total: number
+            limit: number;
+            page: number;
+            pages: number;
+            total: number;
           };
-          success: boolean,
-          error: string | null
+          success: boolean;
+          error: string | null;
         };
-        
-        if (response.success && response.data) {
-          setGuides(response.data);
-          setTotalResults(response.pagination.total || 0);
-        } else {
-          throw new Error(response.error || 'Failed to fetch knowledge guides');
+
+        // Only update state if this request hasn't been cancelled
+        if (!isCancelled && !abortController.signal.aborted) {
+          if (response.success && response.data) {
+            setGuides(response.data);
+            setTotalResults(response.pagination.total || 0);
+          } else {
+            throw new Error(response.error || "Failed to fetch knowledge guides");
+          }
         }
       } catch (err) {
-        setError(handleApiError(err));
-        setGuides([]);
+        // Only update error state if this request hasn't been cancelled and it's not an abort error
+        if (!isCancelled && !abortController.signal.aborted && (err as Error).name !== 'AbortError') {
+          setError(handleApiError(err));
+          setGuides([]);
+        }
       } finally {
-        setLoading(false);
+        // Only update loading state if this request hasn't been cancelled
+        if (!isCancelled && !abortController.signal.aborted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchGuides();
+
+    // Cleanup function to cancel the request if component unmounts or dependencies change
+    return () => {
+      isCancelled = true;
+      abortController.abort();
+    };
   }, [currentLocale, currentPage, selectedCategory, searchQuery]);
 
   // Reset page when filters change
@@ -87,25 +150,27 @@ const KnowledgePageAPI: React.FC = () => {
       setCategoriesLoading(true);
       try {
         const response = await knowledgeService.getCategories(currentLocale);
-        
+
         if (Array.isArray(response)) {
           // Add "all" category at the beginning with count
           const allCategories = [
-            { id: 'all', name: t('knowledge.categories.all'), slug: 'all' },
-            ...response.map(cat => ({ ...cat }))
+            { id: "all", name: t("knowledge.categories.all"), slug: "all" },
+            ...response.map((cat) => ({ ...cat })),
           ];
           setCategories(allCategories);
         } else {
-          throw new Error(response.error || 'Failed to fetch categories');
+          throw new Error(response.error || "Failed to fetch categories");
         }
       } catch (err) {
-        console.error('Failed to fetch categories:', err);
-        setCategories([{ id: 'all', name: t('knowledge.categories.all'), slug: 'all' }]);
+        console.error("Failed to fetch categories:", err);
+        setCategories([
+          { id: "all", name: t("knowledge.categories.all"), slug: "all" },
+        ]);
       } finally {
         setCategoriesLoading(false);
       }
     };
-    
+
     fetchCategories();
   }, [currentLocale]);
 
@@ -113,41 +178,53 @@ const KnowledgePageAPI: React.FC = () => {
 
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty) {
-      case 'beginner': return 'text-green-600 bg-green-100';
-      case 'intermediate': return 'text-yellow-600 bg-yellow-100';
-      case 'advanced': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case "beginner":
+        return "text-green-600 bg-green-100";
+      case "intermediate":
+        return "text-yellow-600 bg-yellow-100";
+      case "advanced":
+        return "text-red-600 bg-red-100";
+      default:
+        return "text-gray-600 bg-gray-100";
     }
   };
 
   const getTypeIcon = (type?: string) => {
     switch (type) {
-      case 'guide': return <BookOpen className="w-4 h-4" />;
-      case 'template': return <FileText className="w-4 h-4" />;
-      case 'checklist': return <Shield className="w-4 h-4" />;
-      default: return <BookOpen className="w-4 h-4" />;
+      case "guide":
+        return <BookOpen className="w-4 h-4" />;
+      case "template":
+        return <FileText className="w-4 h-4" />;
+      case "checklist":
+        return <Shield className="w-4 h-4" />;
+      default:
+        return <BookOpen className="w-4 h-4" />;
     }
   };
 
   const getReadingTime = (guide: KnowledgePost) => {
-    if (guide.read_time) return parseInt(guide.read_time.replace(' phút', ''));
+    if (guide.read_time) return parseInt(guide.read_time.replace(" phút", ""));
     // Estimate reading time based on content length
     const wordsPerMinute = 200;
-    const wordCount = guide.content.split(' ').length;
+    const wordCount = guide.content.split(" ").length;
     return Math.ceil(wordCount / wordsPerMinute);
   };
-
 
   const getRating = () => {
     return 4.5 + Math.random() * 0.5;
   };
 
   const getDifficulty = () => {
-    return (['beginner', 'intermediate', 'advanced'][Math.floor(Math.random() * 3)] as 'beginner' | 'intermediate' | 'advanced');
+    return ["beginner", "intermediate", "advanced"][
+      Math.floor(Math.random() * 3)
+    ] as "beginner" | "intermediate" | "advanced";
   };
 
   const getType = () => {
-    return (['guide', 'template', 'checklist'][Math.floor(Math.random() * 3)] as 'guide' | 'template' | 'checklist');
+    return ["guide", "template", "checklist"][Math.floor(Math.random() * 3)] as
+      | "guide"
+      | "template"
+      | "checklist";
   };
 
   return (
@@ -165,10 +242,10 @@ const KnowledgePageAPI: React.FC = () => {
                 <BookOpen className="w-8 h-8 text-primary-foreground" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {t('knowledge.title')}
+                {t("knowledge.title")}
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                {t('knowledge.subtitle')}
+                {t("knowledge.subtitle")}
               </p>
             </motion.div>
           </div>
@@ -188,7 +265,7 @@ const KnowledgePageAPI: React.FC = () => {
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                 <input
                   type="text"
-                  placeholder={t('knowledge.search.placeholder')}
+                  placeholder={t("knowledge.search.placeholder")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
@@ -206,7 +283,9 @@ const KnowledgePageAPI: React.FC = () => {
               {categoriesLoading ? (
                 <div className="flex items-center justify-center py-4">
                   <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
-                  <span className="ml-2 text-gray-600">Loading categories...</span>
+                  <span className="ml-2 text-gray-600">
+                    Loading categories...
+                  </span>
                 </div>
               ) : (
                 categories.map((category) => {
@@ -217,11 +296,11 @@ const KnowledgePageAPI: React.FC = () => {
                       onClick={() => setSelectedCategory(categorySlug)}
                       className={`px-6 py-3 rounded-lg font-medium transition-all ${
                         selectedCategory === categorySlug
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80"
                       }`}
                     >
-                      {category.name} {category.id === 'all'}
+                      {category.name} {category.id === "all"}
                     </button>
                   );
                 })
@@ -270,8 +349,12 @@ const KnowledgePageAPI: React.FC = () => {
                 transition={{ delay: 0.3 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-bold mb-4">{t('knowledge.featuredSection.title')}</h2>
-                <p className="text-muted-foreground">{t('knowledge.featuredSection.subtitle')}</p>
+                <h2 className="text-3xl font-bold mb-4">
+                  {t("knowledge.featuredSection.title")}
+                </h2>
+                <p className="text-muted-foreground">
+                  {t("knowledge.featuredSection.subtitle")}
+                </p>
               </motion.div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -283,73 +366,89 @@ const KnowledgePageAPI: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 * index }}
                   >
-                    <Link 
+                    <Link
                       href={`/knowledge/${guide.slug}`}
                       className="block group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                     >
-                    <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                        {getTypeIcon(getType())}
-                      </div>
-                      <div className="absolute top-4 left-4">
-                        <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
-                          {t('knowledge.featured')}
-                        </span>
-                      </div>
-                      <div className="absolute top-4 right-4">
-                        <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
-                          <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                          <span className="text-xs font-medium">{getRating().toFixed(1)}</span>
+                      <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                          {getTypeIcon(getType())}
                         </div>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(getDifficulty())}`}>
-                          {t(`knowledge.difficulty.${getDifficulty()}`)}
-                        </span>
-                        <div className="flex items-center space-x-1 text-muted-foreground">
-                          <Clock className="w-4 h-4" />
-                          <span className="text-sm">{getReadingTime(guide)} {t('knowledge.readingTime')}</span>
-                        </div>
-                      </div>
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {guide.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
-                        {guide.excerpt}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {guide.tags?.slice(0, 3).map((tag) => (
-                          <span key={tag} className="inline-flex items-center px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
-                            <Tag className="w-3 h-3 mr-1" />
-                            {tag}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+                            {t("knowledge.featured")}
                           </span>
-                        )) || (
-                          // Default tags if none provided
-                          [guide.category, getType(), getDifficulty()].slice(0, 3).map((tag) => (
-                            <span key={tag} className="inline-flex items-center px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                            <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                            <span className="text-xs font-medium">
+                              {getRating().toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <span
+                            className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(
+                              getDifficulty()
+                            )}`}
+                          >
+                            {t(`knowledge.difficulty.${getDifficulty()}`)}
+                          </span>
+                          <div className="flex items-center space-x-1 text-muted-foreground">
+                            <Clock className="w-4 h-4" />
+                            <span className="text-sm">
+                              {getReadingTime(guide)}{" "}
+                              {t("knowledge.readingTime")}
+                            </span>
+                          </div>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                          {guide.title}
+                        </h3>
+                        <p className="text-muted-foreground mb-4 line-clamp-3">
+                          {guide.excerpt}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {guide.tags?.slice(0, 3).map((tag) => (
+                            <span
+                              key={tag}
+                              className="inline-flex items-center px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full"
+                            >
                               <Tag className="w-3 h-3 mr-1" />
                               {tag}
                             </span>
-                          ))
-                        )}
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                          <div className="flex items-center space-x-1">
-                            {/* <Download className="w-4 h-4" />
+                          )) ||
+                            // Default tags if none provided
+                            [guide.category, getType(), getDifficulty()]
+                              .slice(0, 3)
+                              .map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="inline-flex items-center px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full"
+                                >
+                                  <Tag className="w-3 h-3 mr-1" />
+                                  {tag}
+                                </span>
+                              ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                            <div className="flex items-center space-x-1">
+                              {/* <Download className="w-4 h-4" />
                             <span>{getDownloads()}</span> */}
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex space-x-2">
-                          <div className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
-                            <Eye className="w-4 h-4" />
-                            <span>{t('knowledge.viewGuide')}</span>
+                          <div className="flex space-x-2">
+                            <div className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
+                              <Eye className="w-4 h-4" />
+                              <span>{t("knowledge.viewGuide")}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     </Link>
                   </motion.div>
                 ))}
@@ -369,9 +468,11 @@ const KnowledgePageAPI: React.FC = () => {
                 transition={{ delay: 0.4 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-bold mb-4">{t('knowledge.allGuides.title')}</h2>
+                <h2 className="text-3xl font-bold mb-4">
+                  {t("knowledge.allGuides.title")}
+                </h2>
                 <p className="text-muted-foreground">
-                  {`${t('knowledge.search.results', {count: guides.length})}`}
+                  {`${t("knowledge.search.results", { count: guides.length })}`}
                 </p>
               </motion.div>
 
@@ -382,8 +483,12 @@ const KnowledgePageAPI: React.FC = () => {
                   className="text-center py-16"
                 >
                   <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{t('knowledge.search.noResults')}</h3>
-                  <p className="text-muted-foreground">{t('knowledge.search.tryDifferent')}</p>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {t("knowledge.search.noResults")}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {t("knowledge.search.tryDifferent")}
+                  </p>
                 </motion.div>
               ) : (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -395,50 +500,59 @@ const KnowledgePageAPI: React.FC = () => {
                       viewport={{ once: true }}
                       transition={{ delay: 0.05 * index }}
                     >
-                      <Link 
+                      <Link
                         href={`/knowledge/${guide.slug}`}
                         className="block group bg-background border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                       >
-                      <div className="relative h-40 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                          {getTypeIcon(getType())}
-                        </div>
-                        <div className="absolute top-3 right-3">
-                          <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
-                            <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                            <span className="text-xs font-medium">{getRating().toFixed(1)}</span>
+                        <div className="relative h-40 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            {getTypeIcon(getType())}
                           </div>
-                        </div>
-                      </div>
-                      <div className="p-5">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(getDifficulty())}`}>
-                            {t(`knowledge.difficulty.${getDifficulty()}`)}
-                          </span>
-                          <div className="flex items-center space-x-1 text-muted-foreground">
-                            <Clock className="w-4 h-4" />
-                            <span className="text-sm">{getReadingTime(guide)} {t('knowledge.readingTime')}</span>
-                          </div>
-                        </div>
-                        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                          {guide.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                          {guide.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-                            {/* <Download className="w-4 h-4" /> */}
-                            {/* <span>{getDownloads()}</span> */}
-                          </div>
-                          <div className="flex space-x-2">
-                            <div className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-1">
-                              <Eye className="w-4 h-4" />
-                              <span>{t('knowledge.viewGuide')}</span>
+                          <div className="absolute top-3 right-3">
+                            <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                              <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                              <span className="text-xs font-medium">
+                                {getRating().toFixed(1)}
+                              </span>
                             </div>
                           </div>
                         </div>
-                      </div>
+                        <div className="p-5">
+                          <div className="flex items-center justify-between mb-3">
+                            <span
+                              className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(
+                                getDifficulty()
+                              )}`}
+                            >
+                              {t(`knowledge.difficulty.${getDifficulty()}`)}
+                            </span>
+                            <div className="flex items-center space-x-1 text-muted-foreground">
+                              <Clock className="w-4 h-4" />
+                              <span className="text-sm">
+                                {getReadingTime(guide)}{" "}
+                                {t("knowledge.readingTime")}
+                              </span>
+                            </div>
+                          </div>
+                          <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                            {guide.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                            {guide.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                              {/* <Download className="w-4 h-4" /> */}
+                              {/* <span>{getDownloads()}</span> */}
+                            </div>
+                            <div className="flex space-x-2">
+                              <div className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-1">
+                                <Eye className="w-4 h-4" />
+                                <span>{t("knowledge.viewGuide")}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </Link>
                     </motion.div>
                   ))}
@@ -458,8 +572,12 @@ const KnowledgePageAPI: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl font-bold mb-4">{t('knowledge.stats.title')}</h2>
-              <p className="text-muted-foreground">{t('knowledge.stats.subtitle')}</p>
+              <h2 className="text-3xl font-bold mb-4">
+                {t("knowledge.stats.title")}
+              </h2>
+              <p className="text-muted-foreground">
+                {t("knowledge.stats.subtitle")}
+              </p>
             </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -473,8 +591,12 @@ const KnowledgePageAPI: React.FC = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <BookOpen className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-3xl font-bold text-primary mb-2">{totalResults || '50+'}+</h3>
-                <p className="text-muted-foreground">{t('knowledge.stats.guidesPublished')}</p>
+                <h3 className="text-3xl font-bold text-primary mb-2">
+                  {totalResults || "50+"}+
+                </h3>
+                <p className="text-muted-foreground">
+                  {t("knowledge.stats.guidesPublished")}
+                </p>
               </motion.div>
 
               <motion.div
@@ -488,7 +610,9 @@ const KnowledgePageAPI: React.FC = () => {
                   <Users className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-3xl font-bold text-primary mb-2">10K+</h3>
-                <p className="text-muted-foreground">{t('knowledge.stats.usersHelped')}</p>
+                <p className="text-muted-foreground">
+                  {t("knowledge.stats.usersHelped")}
+                </p>
               </motion.div>
 
               <motion.div
@@ -502,7 +626,9 @@ const KnowledgePageAPI: React.FC = () => {
                   <TrendingUp className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-3xl font-bold text-primary mb-2">95%</h3>
-                <p className="text-muted-foreground">{t('knowledge.stats.successRate')}</p>
+                <p className="text-muted-foreground">
+                  {t("knowledge.stats.successRate")}
+                </p>
               </motion.div>
             </div>
           </div>

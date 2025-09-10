@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../../contexts/LanguageContext';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 
@@ -12,6 +12,7 @@ const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
   const pathname = usePathname();
+  const router = useRouter();
 
   const navigationItems = [
     { href: '/', label: t('nav.home') },
@@ -23,6 +24,21 @@ const Header: React.FC = () => {
     { href: '/knowledge', label: t('nav.complaints') },
     { href: '/contact', label: t('nav.contact') }
   ];
+
+  const handleNavigation = (href: string) => {
+    // For news and knowledge pages, remove category parameter
+    if (href === '/news' || href === '/knowledge') {
+      const url = new URL(window.location.href);
+      const urlParams = new URLSearchParams(url.search);
+      
+      // Remove category parameter
+      urlParams.delete('category');
+      
+      // Update URL without page reload
+      const newUrl = `${href}${urlParams.toString() ? '?' + urlParams.toString() : ''}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+  };
 
   const isActiveLink = (href: string) => {
     if (href === '/') {
@@ -36,7 +52,11 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link 
+            href="/" 
+            className="flex items-center space-x-3"
+            onClick={(e) => handleNavigation('/')}
+          >
             <div className="w-10 h-10 rounded-lg overflow-hidden">
               <div 
                 className="w-full h-full"
@@ -57,6 +77,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavigation(item.href)}
                 className={`text-sm font-medium transition-colors relative ${
                   isActiveLink(item.href)
                     ? 'text-primary'
@@ -111,7 +132,10 @@ const Header: React.FC = () => {
                         ? 'text-primary'
                         : 'text-foreground hover:text-primary'
                     }`}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      handleNavigation(item.href);
+                      setMobileMenuOpen(false);
+                    }}
                   >
                     {item.label}
                   </Link>

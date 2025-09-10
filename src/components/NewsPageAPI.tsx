@@ -22,7 +22,14 @@ import {
 } from "lucide-react";
 
 export default function NewsPageAPI() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  // Initialize selectedCategory from URL parameter
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("category") || "all";
+    }
+    return "all";
+  });
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -34,10 +41,45 @@ export default function NewsPageAPI() {
   const [categoriesLoading, setCategoriesLoading] = useState(true);
   const { t, currentLocale } = useTranslation();
 
-  const articlesPerPage = 9;
+
+  // Handle URL parameters for category filtering (only for browser navigation)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get("category");
+
+    if (categoryParam && categoryParam !== selectedCategory) {
+      setSelectedCategory(categoryParam);
+    }
+  }, []); // Only run once on mount
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const urlParams = new URLSearchParams(url.search);
+    const currentUrlCategory = urlParams.get("category");
+
+    // Only update URL if the category has actually changed
+    if (currentUrlCategory !== selectedCategory) {
+      if (selectedCategory === "all") {
+        // Remove category parameter from URL
+        urlParams.delete("category");
+      } else {
+        // Add category parameter to URL
+        urlParams.set("category", selectedCategory);
+      }
+
+      // Update URL without page reload
+      const newUrl = `${url.pathname}${
+        urlParams.toString() ? "?" + urlParams.toString() : ""
+      }`;
+      window.history.replaceState({}, "", newUrl);
+    }
+  }, [selectedCategory]);
 
   // Fetch articles from API
   useEffect(() => {
+    const abortController = new AbortController();
+    let isCancelled = false;
+    
     const fetchArticles = async () => {
       setLoading(true);
       setError(null);
@@ -46,37 +88,52 @@ export default function NewsPageAPI() {
         const response = (await newsService.getNews({
           lang: currentLocale,
           page: currentPage,
-          limit: articlesPerPage,
+          limit: 9,
           category: selectedCategory !== "all" ? selectedCategory : undefined,
           search: searchTerm || undefined,
         })) as unknown as {
           success: boolean;
           data: NewsArticle[];
-          pagination: { 
-            limit: number; 
-            page: number; 
-            pages: number; 
-            total: number 
+          pagination: {
+            limit: number;
+            page: number;
+            pages: number;
+            total: number;
           };
-          error?: string
+          error?: string;
         };
 
-        if (response.success && response.data) {
-          setArticles(response.data);
-          setTotalPages(response.pagination.pages || 1);
-          setTotalResults(response.pagination.total || 0);
-        } else {
-          throw new Error(response.error || "Failed to fetch articles");
-        }
+        // Only update state if this request hasn't been cancelled
+        if (!isCancelled && !abortController.signal.aborted) {
+          if (response.success && response.data) {
+            setArticles(response.data);
+            setTotalPages(response.pagination.pages || 1);
+            setTotalResults(response.pagination.total || 0);
+          } else {
+            throw new Error(response.error || "Failed to fetch articles");
+          }
+        } 
       } catch (err) {
-        setError(handleApiError(err));
-        setArticles([]);
+        // Only update error state if this request hasn't been cancelled and it's not an abort error
+        if (!isCancelled && !abortController.signal.aborted && (err as Error).name !== 'AbortError') {
+          setError(handleApiError(err));
+          setArticles([]);
+        }
       } finally {
-        setLoading(false);
+        // Only update loading state if this request hasn't been cancelled
+        if (!isCancelled && !abortController.signal.aborted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchArticles();
+
+    // Cleanup function to cancel the request if component unmounts or dependencies change
+    return () => {
+      isCancelled = true;
+      abortController.abort();
+    };
   }, [currentLocale, currentPage, selectedCategory, searchTerm]);
 
   // Reset page when filters change
@@ -94,7 +151,7 @@ export default function NewsPageAPI() {
           // Add "all" category at the beginning
           const allCategories = [
             { id: "all", name: t("news.categories.all"), slug: "all" },
-            ...response.map(cat => ({ ...cat }))
+            ...response.map((cat) => ({ ...cat })),
           ];
           setCategories(allCategories);
         } else {
@@ -103,7 +160,9 @@ export default function NewsPageAPI() {
       } catch (err) {
         console.error("Failed to fetch categories:", err);
         // Fallback to empty categories if API fails
-        setCategories([{ id: "all", name: t("news.categories.all"), slug: "all" }]);
+        setCategories([
+          { id: "all", name: t("news.categories.all"), slug: "all" },
+        ]);
       } finally {
         setCategoriesLoading(false);
       }
@@ -114,7 +173,10 @@ export default function NewsPageAPI() {
 
   // Map categories to include icons (keeping icon mapping for UI)
   const getCategoryIcon = (slug: string) => {
-    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    const iconMap: Record<
+      string,
+      React.ComponentType<{ className?: string }>
+    > = {
       all: FileText,
       "company-news": Building,
       "industry-news": TrendingUp,
@@ -127,15 +189,15 @@ export default function NewsPageAPI() {
   // Get news type icon for fallback display when image is undefined
   const getNewsTypeIcon = (category?: string) => {
     switch (category) {
-      case 'company-news': 
+      case "company-news":
         return <Building className="w-8 h-8 text-primary" />;
-      case 'industry-news': 
+      case "industry-news":
         return <TrendingUp className="w-8 h-8 text-primary" />;
-      case 'new-regulations': 
+      case "new-regulations":
         return <Globe className="w-8 h-8 text-primary" />;
-      case 'events': 
+      case "events":
         return <Award className="w-8 h-8 text-primary" />;
-      default: 
+      default:
         return <FileText className="w-8 h-8 text-primary" />;
     }
   };
@@ -154,7 +216,6 @@ export default function NewsPageAPI() {
     });
   };
 
-
   const getReadTime = (article: NewsArticle) => {
     if (article.read_time) return article.read_time;
     // Estimate reading time based on content length
@@ -163,7 +224,6 @@ export default function NewsPageAPI() {
     const minutes = Math.ceil(wordCount / wordsPerMinute);
     return `${minutes} phút`;
   };
-
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -215,7 +275,9 @@ export default function NewsPageAPI() {
                 {categoriesLoading ? (
                   <div className="flex items-center justify-center py-4">
                     <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
-                    <span className="ml-2 text-gray-600">Loading categories...</span>
+                    <span className="ml-2 text-gray-600">
+                      Loading categories...
+                    </span>
                   </div>
                 ) : (
                   categories.map((category, index) => {
@@ -239,10 +301,10 @@ export default function NewsPageAPI() {
                       >
                         <IconComponent className="w-4 h-4 mr-2" />
                         {category.name}
-                    </motion.button>
-                  );
-                })
-              )}
+                      </motion.button>
+                    );
+                  })
+                )}
               </div>
             </motion.div>
           </div>
@@ -309,68 +371,68 @@ export default function NewsPageAPI() {
                         href={`/news/${article.slug || article.id}`}
                         className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
                       >
-                      <div className="relative overflow-hidden">
-                        {article.image_url ? (
-                          <div
-                            className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
-                            style={{
-                              backgroundImage: `url(${article.image_url})`,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                            role="img"
-                            aria-label={article.title}
-                          />
-                        ) : (
-                          <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
-                            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                              {getNewsTypeIcon(article.category)}
+                        <div className="relative overflow-hidden">
+                          {article.image_url ? (
+                            <div
+                              className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                              style={{
+                                backgroundImage: `url(${article.image_url})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                              role="img"
+                              aria-label={article.title}
+                            />
+                          ) : (
+                            <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
+                              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                                {getNewsTypeIcon(article.category)}
+                              </div>
                             </div>
+                          )}
+                          <div className="absolute top-4 left-4">
+                            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                              {t("news.featured.badge")}
+                            </span>
                           </div>
-                        )}
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            {t("news.featured.badge")}
-                          </span>
                         </div>
-                      </div>
 
-                      <div className="p-6">
-                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                          <span className="flex items-center">
-                            <Tag className="w-4 h-4 mr-1" />
-                            {article.category}
-                          </span>
-                          <span className="flex items-center">
-                            <Calendar className="w-4 h-4 mr-1" />
-                            {formatDate(article.created_at)}
-                          </span>
-                          {/* <span className="flex items-center">
+                        <div className="p-6">
+                          <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span className="flex items-center">
+                              <Tag className="w-4 h-4 mr-1" />
+                              {article.category}
+                            </span>
+                            <span className="flex items-center">
+                              <Calendar className="w-4 h-4 mr-1" />
+                              {formatDate(article.created_at)}
+                            </span>
+                            {/* <span className="flex items-center">
                             <Eye className="w-4 h-4 mr-1" />
                             {getViews(article)}
                           </span> */}
-                        </div>
+                          </div>
 
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                          {article.title}
-                        </h3>
+                          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                            {article.title}
+                          </h3>
 
-                        <p className="text-gray-600 mb-4 line-clamp-3">
-                          {article.excerpt}
-                        </p>
+                          <p className="text-gray-600 mb-4 line-clamp-3">
+                            {article.excerpt}
+                          </p>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <User className="w-4 h-4 mr-2 text-gray-400" />
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <User className="w-4 h-4 mr-2 text-gray-400" />
+                              <span className="text-sm text-gray-500">
+                                {article.author}
+                              </span>
+                            </div>
                             <span className="text-sm text-gray-500">
-                              {article.author}
+                              {getReadTime(article)}
                             </span>
                           </div>
-                          <span className="text-sm text-gray-500">
-                            {getReadTime(article)}
-                          </span>
                         </div>
-                      </div>
                       </Link>
                     </motion.div>
                   ))}
@@ -416,65 +478,65 @@ export default function NewsPageAPI() {
                           href={`/news/${article.slug || article.id}`}
                           className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
                         >
-                        <div className="relative overflow-hidden">
-                          {article.image_url ? (
-                            <div
-                              className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
-                              style={{
-                                backgroundImage: `url(${article.image_url})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                              }}
-                              role="img"
-                              aria-label={article.title}
-                            />
-                          ) : (
-                            <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
-                              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                                {getNewsTypeIcon(article.category)}
+                          <div className="relative overflow-hidden">
+                            {article.image_url ? (
+                              <div
+                                className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                                style={{
+                                  backgroundImage: `url(${article.image_url})`,
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                }}
+                                role="img"
+                                aria-label={article.title}
+                              />
+                            ) : (
+                              <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
+                                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                                  {getNewsTypeIcon(article.category)}
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="p-6">
-                          <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                            <span className="flex items-center">
-                              <Tag className="w-4 h-4 mr-1" />
-                              {article.category}
-                            </span>
-                            <span className="flex items-center">
-                              <Calendar className="w-4 h-4 mr-1" />
-                              {formatDate(article.created_at)}
-                            </span>
+                            )}
                           </div>
 
-                          <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                            {article.title}
-                          </h3>
-
-                          <p className="text-gray-600 mb-4 line-clamp-3">
-                            {article.excerpt}
-                          </p>
-
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <User className="w-4 h-4 mr-2 text-gray-400" />
-                              <span className="text-sm text-gray-500">
-                                {article.author}
+                          <div className="p-6">
+                            <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                              <span className="flex items-center">
+                                <Tag className="w-4 h-4 mr-1" />
+                                {article.category}
+                              </span>
+                              <span className="flex items-center">
+                                <Calendar className="w-4 h-4 mr-1" />
+                                {formatDate(article.created_at)}
                               </span>
                             </div>
-                            <div className="flex items-center gap-3">
-                              {/* <span className="flex items-center text-sm text-gray-500">
+
+                            <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                              {article.title}
+                            </h3>
+
+                            <p className="text-gray-600 mb-4 line-clamp-3">
+                              {article.excerpt}
+                            </p>
+
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <User className="w-4 h-4 mr-2 text-gray-400" />
+                                <span className="text-sm text-gray-500">
+                                  {article.author}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-3">
+                                {/* <span className="flex items-center text-sm text-gray-500">
                                 <Eye className="w-4 h-4 mr-1" />
                                 {getViews(article)}
                               </span> */}
-                              <span className="text-sm text-gray-500">
-                                {getReadTime(article)}
-                              </span>
+                                <span className="text-sm text-gray-500">
+                                  {getReadTime(article)}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </Link>
                       </motion.div>
                     ))}
