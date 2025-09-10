@@ -151,3 +151,5 @@ export default async function NewsDetailPageRoute({
     notFound();
   }
 }
+
+// export const runtime = 'edge';

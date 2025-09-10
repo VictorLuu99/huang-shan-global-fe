@@ -150,3 +150,4 @@ export default async function KnowledgeDetailPageRoute({
     notFound();
   }
 }
+// export const runtime = 'edge';
