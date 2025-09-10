@@ -4,26 +4,21 @@ import { notFound } from 'next/navigation';
 import KnowledgeDetailPage from '@/components/KnowledgeDetailPage';
 import { knowledgeService } from '@/services/knowledgeService';
 
-// Force dynamic rendering for this route since it uses searchParams
-export const dynamic = 'force-dynamic';
+// Static generation for better performance
+// export const dynamic = 'force-dynamic';
 
 interface KnowledgeDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
-  searchParams: Promise<{
-    lang?: string;
-  }>;
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ 
-  params, 
-  searchParams 
+  params
 }: KnowledgeDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { lang } = await searchParams;
-  const currentLang = lang || 'vn';
+  const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
     const response = await knowledgeService.getKnowledgeBySlug(slug, currentLang);
@@ -106,14 +101,32 @@ export async function generateMetadata({
   }
 }
 
+// Generate static params for better performance
+export async function generateStaticParams() {
+  try {
+    // Fetch all knowledge posts to pre-generate slug-based routes
+    const response = await knowledgeService.getKnowledge({ limit: 100 });
+    
+    if (response.success && response.data) {
+      // Only return posts that have slugs (filter out null/undefined slugs)
+      return response.data
+        .filter((post) => post.slug && typeof post.slug === 'string')
+        .map((post) => ({
+          slug: post.slug,
+        }));
+    }
+  } catch (error) {
+    console.error('Error generating static params for knowledge posts:', error);
+  }
+  
+  return [];
+}
 
 export default async function KnowledgeDetailPageRoute({ 
-  params, 
-  searchParams 
+  params
 }: KnowledgeDetailPageProps) {
   const { slug } = await params;
-  const { lang } = await searchParams;
-  const currentLang = lang || 'vn';
+  const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
     const response = await knowledgeService.getKnowledgeBySlug(slug, currentLang);
@@ -130,4 +143,4 @@ export default async function KnowledgeDetailPageRoute({
     notFound();
   }
 }
-export const runtime = 'edge';
+// export const runtime = 'edge';

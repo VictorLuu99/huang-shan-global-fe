@@ -2,7 +2,7 @@ name = "huang-shan-global-fe"
 compatibility_date = "2024-01-01"
 
 # Cloudflare Pages configuration
-pages_build_output_dir = ".vercel/output"
+pages_build_output_dir = "out"
 
 # Custom headers for performance
 [[headers]]

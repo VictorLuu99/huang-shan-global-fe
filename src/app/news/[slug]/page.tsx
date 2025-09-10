@@ -4,26 +4,21 @@ import { notFound } from 'next/navigation';
 import NewsDetailPage from '@/components/NewsDetailPage';
 import { newsService } from '@/services/newsService';
 
-// Force dynamic rendering for this route since it uses searchParams
-export const dynamic = 'force-dynamic';
+// Static generation for better performance
+// export const dynamic = 'force-dynamic';
 
 interface NewsDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
-  searchParams: Promise<{
-    lang?: string;
-  }>;
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ 
-  params, 
-  searchParams 
+  params
 }: NewsDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { lang } = await searchParams;
-  const currentLang = lang || 'vn';
+  const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
     const response = await newsService.getNewsBySlug(slug, currentLang);
@@ -107,14 +102,32 @@ export async function generateMetadata({
   }
 }
 
+// Generate static params for better performance
+export async function generateStaticParams() {
+  try {
+    // Fetch all news articles to pre-generate slug-based routes
+    const response = await newsService.getNews({ limit: 100 });
+    
+    if (response.success && response.data) {
+      // Only return posts that have slugs (filter out null/undefined slugs)
+      return response.data
+        .filter((post) => post.slug && typeof post.slug === 'string')
+        .map((post) => ({
+          slug: post.slug,
+        }));
+    }
+  } catch (error) {
+    console.error('Error generating static params for news posts:', error);
+  }
+  
+  return [];
+}
 
 export default async function NewsDetailPageRoute({ 
-  params, 
-  searchParams 
+  params
 }: NewsDetailPageProps) {
   const { slug } = await params;
-  const { lang } = await searchParams;
-  const currentLang = lang || 'vn';
+  const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
     const response = await newsService.getNewsBySlug(slug, currentLang);
@@ -132,4 +145,4 @@ export default async function NewsDetailPageRoute({
   }
 }
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
