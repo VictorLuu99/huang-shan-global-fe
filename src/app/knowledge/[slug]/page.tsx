@@ -55,7 +55,7 @@ export async function generateMetadata({
         title: `${title} - Huang Shan Global`,
         description: description,
         type: 'article',
-        url: `https://huangshan-logistics.com/knowledge/${slug}`,
+        url: `https://huang-shan-global-fe.pages.dev/knowledge/${slug}`,
         images: post.featured_image ? [
           {
             url: post.featured_image,
@@ -83,7 +83,7 @@ export async function generateMetadata({
         images: post.featured_image ? [post.featured_image] : ['/images/og-default.jpg'],
       },
       alternates: {
-        canonical: `https://huangshan-logistics.com/knowledge/${slug}`,
+        canonical: `https://huang-shan-global-fe.pages.dev/knowledge/${slug}`,
         languages: {
           'vi': `/knowledge/${slug}?lang=vn`,
           'zh': `/knowledge/${slug}?lang=cn`,

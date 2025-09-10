@@ -282,10 +282,10 @@ export default function NewsPageAPI() {
                             <Calendar className="w-4 h-4 mr-1" />
                             {formatDate(article.published_at)}
                           </span>
-                          <span className="flex items-center">
+                          {/* <span className="flex items-center">
                             <Eye className="w-4 h-4 mr-1" />
                             {getViews(article)}
-                          </span>
+                          </span> */}
                         </div>
 
                         <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">

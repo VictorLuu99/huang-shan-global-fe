@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { KnowledgePost, knowledgeService } from '@/services/knowledgeService';
+import { formatKnowledgeContent, sanitizeHtml } from '@/utils/contentFormatter';
 
 interface KnowledgeDetailPageProps {
   post: KnowledgePost;
@@ -117,7 +118,7 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
         <section className="py-12 bg-gradient-to-br from-primary/10 to-secondary/10">
           <div className="container mx-auto px-6">
             {/* Breadcrumb Navigation */}
-            <motion.nav
+            {/* <motion.nav
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center space-x-2 text-sm text-muted-foreground mb-6"
@@ -137,7 +138,7 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
                   )}
                 </React.Fragment>
               ))}
-            </motion.nav>
+            </motion.nav> */}
 
             {/* Back Button */}
             <motion.div
@@ -197,10 +198,10 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-2">
+                  {/* <div className="flex items-center space-x-2">
                     <Eye className="w-4 h-4" />
                     <span>{Math.floor(Math.random() * 1000) + 100} {t('knowledge.views')}</span>
-                  </div>
+                  </div> */}
 
                   {/* Difficulty Badge */}
                   <div className={`flex items-center space-x-2 px-3 py-1 rounded-full text-sm ${getDifficultyColor('intermediate')}`}>
@@ -277,7 +278,11 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
                   '--tw-prose-td-borders': 'var(--border)',
                 } as React.CSSProperties}
               >
-                <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+                <div 
+                  dangerouslySetInnerHTML={{ 
+                    __html: sanitizeHtml(formatKnowledgeContent(post.content))
+                  }} 
+                />
               </motion.article>
 
               {/* Article Actions */}
@@ -288,7 +293,7 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
                 className="flex items-center justify-between py-8 border-t border-b border-border mt-12 mb-8"
               >
                 <div className="flex items-center space-x-4">
-                  <button className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors">
+                  {/* <button className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors">
                     <ThumbsUp className="w-5 h-5" />
                     <span>{t('knowledge.helpful')}</span>
                     <span className="text-sm text-muted-foreground">({Math.floor(Math.random() * 50) + 10})</span>
@@ -296,13 +301,13 @@ export default function KnowledgeDetailPage({ post }: KnowledgeDetailPageProps) 
                   <button className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors">
                     <MessageCircle className="w-5 h-5" />
                     <span>{t('knowledge.discuss')}</span>
-                  </button>
+                  </button> */}
                 </div>
                 <div className="flex items-center space-x-4">
-                  <button className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors">
+                  {/* <button className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors">
                     <Download className="w-5 h-5" />
                     <span>{t('knowledge.download')}</span>
-                  </button>
+                  </button> */}
                   <button
                     onClick={handleShare}
                     className="flex items-center space-x-2 px-4 py-2 hover:bg-accent rounded-lg transition-colors"
