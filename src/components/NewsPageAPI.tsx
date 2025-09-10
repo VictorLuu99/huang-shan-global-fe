@@ -123,6 +123,22 @@ export default function NewsPageAPI() {
     return iconMap[slug] || FileText;
   };
 
+  // Get news type icon for fallback display when image is undefined
+  const getNewsTypeIcon = (category?: string) => {
+    switch (category) {
+      case 'company-news': 
+        return <Building className="w-8 h-8 text-primary" />;
+      case 'industry-news': 
+        return <TrendingUp className="w-8 h-8 text-primary" />;
+      case 'new-regulations': 
+        return <Globe className="w-8 h-8 text-primary" />;
+      case 'events': 
+        return <Award className="w-8 h-8 text-primary" />;
+      default: 
+        return <FileText className="w-8 h-8 text-primary" />;
+    }
+  };
+
   const featuredArticles = articles
     .filter((article) => article.featured)
     .slice(0, 3);
@@ -137,9 +153,6 @@ export default function NewsPageAPI() {
     });
   };
 
-  const getImageUrl = (article: NewsArticle) => {
-    return article.image_url || "/api/placeholder/400/250";
-  };
 
   const getReadTime = (article: NewsArticle) => {
     if (article.read_time) return article.read_time;
@@ -293,16 +306,24 @@ export default function NewsPageAPI() {
                       whileHover={{ y: -5 }}
                     >
                       <div className="relative overflow-hidden">
-                        <div
-                          className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
-                          style={{
-                            backgroundImage: `url(${getImageUrl(article)})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                          role="img"
-                          aria-label={article.title}
-                        />
+                        {article.image_url ? (
+                          <div
+                            className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                            style={{
+                              backgroundImage: `url(${article.image_url})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                            role="img"
+                            aria-label={article.title}
+                          />
+                        ) : (
+                          <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
+                            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                              {getNewsTypeIcon(article.category)}
+                            </div>
+                          </div>
+                        )}
                         <div className="absolute top-4 left-4">
                           <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                             {t("news.featured.badge")}
@@ -388,16 +409,24 @@ export default function NewsPageAPI() {
                         whileHover={{ y: -5 }}
                       >
                         <div className="relative overflow-hidden">
-                          <div
-                            className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
-                            style={{
-                              backgroundImage: `url(${getImageUrl(article)})`,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                            role="img"
-                            aria-label={article.title}
-                          />
+                          {article.image_url ? (
+                            <div
+                              className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                              style={{
+                                backgroundImage: `url(${article.image_url})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                              role="img"
+                              aria-label={article.title}
+                            />
+                          ) : (
+                            <div className="relative h-48 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
+                              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                                {getNewsTypeIcon(article.category)}
+                              </div>
+                            </div>
+                          )}
                         </div>
 
                         <div className="p-6">
