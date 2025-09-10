@@ -11,7 +11,8 @@
     "type-check": "tsc --noEmit",
     "export": "next build && next export",
     "analyze": "cross-env ANALYZE=true next build",
-    "clean": "rm -rf .next out node_modules/.cache"
+    "clean": "rm -rf .next out node_modules/.cache",
+    "deploy": "next build && npx wrangler pages deploy .vercel/output --project-name=huang-shan-global-fe"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",

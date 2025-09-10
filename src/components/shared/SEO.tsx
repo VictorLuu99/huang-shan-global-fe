@@ -80,7 +80,7 @@ export function generateSEOMetadata({
 }
 
 export function generateStructuredData(type: 'Organization' | 'WebSite' | 'Article', data: Record<string, unknown> = {}) {
-  const baseUrl = 'https://huangshanglobal.com'; // Update with actual domain
+  const baseUrl = 'https://huang-shan-global-fe.pages.dev'; // Update with actual domain
   
   switch (type) {
     case 'Organization':
