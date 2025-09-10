@@ -617,6 +617,16 @@
     "viewGuide": "Xem hướng dẫn",
     "featured": "Nổi bật",
     "readingTime": "phút đọc",
+    "minuteRead": "phút đọc",
+    "views": "lượt xem",
+    "intermediate": "Trung bình",
+    "share": "Chia sẻ",
+    "backToKnowledge": "Về trang kiến thức",
+    "helpful": "Hữu ích",
+    "discuss": "Thảo luận",
+    "download": "Tải xuống",
+    "relatedArticles": "Bài viết liên quan",
+    "viewAllArticles": "Xem tất cả bài viết",
     "guides": {
       "customs_procedures": {
         "title": "Hướng dẫn thủ tục hải quan xuất nhập khẩu",

@@ -1,10 +1,15 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  trailingSlash: true,
+  // Only use static export for production builds, not for development
+  ...(process.env.NODE_ENV === 'production' && process.env.STATIC_EXPORT === 'true' && {
+    output: 'export',
+    trailingSlash: true,
+    images: {
+      unoptimized: true, // Required for static export
+    },
+  }),
   images: {
-    unoptimized: true, // Required for static export
     remotePatterns: [
     ],
   },

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
 import { knowledgeService, KnowledgePost } from '../services/knowledgeService';
@@ -8,7 +9,6 @@ import { handleApiError } from '../services/api';
 import { 
   BookOpen,
   Search,
-  Download,
   Eye,
   Clock,
   Tag,
@@ -107,9 +107,6 @@ const KnowledgePageAPI: React.FC = () => {
     return Math.ceil(wordCount / wordsPerMinute);
   };
 
-  const getDownloads = () => {
-    return Math.floor(Math.random() * 1000) + 100;
-  };
 
   const getRating = () => {
     return 4.5 + Math.random() * 0.5;
@@ -245,8 +242,11 @@ const KnowledgePageAPI: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 * index }}
-                    className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                   >
+                    <Link 
+                      href={`/knowledge/${guide.slug}`}
+                      className="block group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
+                    >
                     <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                       <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
                         {getTypeIcon(getType())}
@@ -303,16 +303,14 @@ const KnowledgePageAPI: React.FC = () => {
                           </div>
                         </div>
                         <div className="flex space-x-2">
-                          <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 transition-colors flex items-center space-x-2">
+                          <div className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2">
                             <Eye className="w-4 h-4" />
                             <span>{t('knowledge.viewGuide')}</span>
-                          </button>
-                          {/* <button className="px-3 py-2 bg-muted text-muted-foreground rounded-lg hover:bg-muted/80 transition-colors">
-                            <Download className="w-4 h-4" />
-                          </button> */}
+                          </div>
                         </div>
                       </div>
                     </div>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
@@ -356,8 +354,11 @@ const KnowledgePageAPI: React.FC = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.05 * index }}
-                      className="group bg-background border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                     >
+                      <Link 
+                        href={`/knowledge/${guide.slug}`}
+                        className="block group bg-background border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
+                      >
                       <div className="relative h-40 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                           {getTypeIcon(getType())}
@@ -391,16 +392,14 @@ const KnowledgePageAPI: React.FC = () => {
                             {/* <span>{getDownloads()}</span> */}
                           </div>
                           <div className="flex space-x-2">
-                            <button className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/80 transition-colors flex items-center space-x-1">
+                            <div className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-1">
                               <Eye className="w-4 h-4" />
                               <span>{t('knowledge.viewGuide')}</span>
-                            </button>
-                            {/* <button className="px-2 py-1.5 bg-muted text-muted-foreground text-sm rounded-lg hover:bg-muted/80 transition-colors">
-                              <Download className="w-4 h-4" />
-                            </button> */}
+                            </div>
                           </div>
                         </div>
                       </div>
+                      </Link>
                     </motion.div>
                   ))}
                 </div>

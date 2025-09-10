@@ -2,19 +2,28 @@ import { apiClient, ApiResponse, SearchParams } from './api';
 
 export interface KnowledgePost {
   id: string;
+  slug: string;
   title: string;
   excerpt: string;
   content: string;
   category: string;
-  author: string;
-  published_at: string;
+  author?: string;
+  published_at?: string;
+  created_at?: string;
+  updated_at?: string;
   read_time?: string;
   views?: number;
   difficulty?: string;
   image_url?: string;
+  featured_image?: string;
   tags?: string[];
-  slug?: string;
-  status: string;
+  status?: string;
+  featured?: number;
+  display_order?: number;
+  // Multi-language title support
+  title_vn?: string;
+  title_en?: string;
+  title_cn?: string;
 }
 
 export interface KnowledgeListResponse {
@@ -49,6 +58,16 @@ export class KnowledgeService {
     if (lang) params.lang = lang;
     
     return await apiClient.get<KnowledgePost>(`/api/knowledge/${id}`, params);
+  }
+
+  /**
+   * Fetch a single knowledge post by slug (recommended for SEO-friendly URLs)
+   */
+  static async getKnowledgeBySlug(slug: string, lang?: string): Promise<ApiResponse<KnowledgePost>> {
+    const params: Record<string, string> = {};
+    if (lang) params.lang = lang;
+    
+    return await apiClient.get<KnowledgePost>(`/api/knowledge/by-slug/${slug}`, params);
   }
 
   /**
@@ -103,6 +122,60 @@ export class KnowledgeService {
     if (lang) params.lang = lang;
     
     return await apiClient.get<KnowledgePost[]>('/api/knowledge', params);
+  }
+
+  /**
+   * Fetch related knowledge posts (by category, excluding current post)
+   */
+  static async getRelatedKnowledge(
+    currentSlug: string,
+    category?: string,
+    lang?: string,
+    limit = 3
+  ): Promise<ApiResponse<KnowledgePost[]>> {
+    const params: SearchParams = {
+      lang,
+      limit,
+      category
+    };
+
+    const response = await this.getKnowledge(params);
+    
+    // Filter out current post from related posts
+    if (response.success && response.data) {
+      response.data = response.data.filter(post => post.slug !== currentSlug);
+      // Limit to requested number after filtering
+      response.data = response.data.slice(0, limit);
+    }
+
+    return response;
+  }
+
+  /**
+   * Generate breadcrumb navigation for knowledge post
+   */
+  static generateBreadcrumb(post: KnowledgePost): Array<{
+    label: string;
+    href: string;
+  }> {
+    const breadcrumb = [
+      { label: 'Home', href: '/' },
+      { label: 'Knowledge', href: '/knowledge' }
+    ];
+
+    if (post.category && post.category !== 'general') {
+      breadcrumb.push({
+        label: post.category.charAt(0).toUpperCase() + post.category.slice(1),
+        href: `/knowledge?category=${post.category}`
+      });
+    }
+
+    breadcrumb.push({
+      label: post.title || post.title_vn || post.title_en || post.title_cn || 'Article',
+      href: `/knowledge/${post.slug}`
+    });
+
+    return breadcrumb;
   }
 }
 

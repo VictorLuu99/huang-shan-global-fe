@@ -615,6 +615,16 @@
     "downloadGuide": "下载指南",
     "viewGuide": "查看指南",
     "readingTime": "分钟阅读",
+    "minuteRead": "分钟阅读",
+    "views": "浏览量",
+    "intermediate": "中级",
+    "share": "分享",
+    "backToKnowledge": "返回知识中心",
+    "helpful": "有帮助",
+    "discuss": "讨论",
+    "download": "下载",
+    "relatedArticles": "相关文章",
+    "viewAllArticles": "查看所有文章",
     "guides": {
       "customs_procedures": {
         "title": "进出口海关手续指南",

@@ -6,6 +6,7 @@ import Footer from '@/components/shared/Footer';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { generateSEOMetadata, generateStructuredData } from '@/components/shared/SEO';
+import ReduxProvider from '@/components/ReduxProvider';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,15 +53,17 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body className={`${inter.variable} antialiased`}>
-        <LanguageProvider>
-          <ToastProvider>
-            <Header />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-          </ToastProvider>
-        </LanguageProvider>
+        <ReduxProvider>
+          <LanguageProvider>
+            <ToastProvider>
+              <Header />
+              <main className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+            </ToastProvider>
+          </LanguageProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

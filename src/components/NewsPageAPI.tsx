@@ -56,7 +56,7 @@ export default function NewsPageAPI() {
             pages: number; 
             total: number 
           };
-          error?: any
+          error?: string
         };
 
         if (response.success && response.data) {

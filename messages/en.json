@@ -615,6 +615,16 @@
     "downloadGuide": "Download Guide",
     "viewGuide": "View Guide",
     "readingTime": "min read",
+    "minuteRead": "min read",
+    "views": "views",
+    "intermediate": "Intermediate",
+    "share": "Share",
+    "backToKnowledge": "Back to Knowledge",
+    "helpful": "Helpful",
+    "discuss": "Discuss",
+    "download": "Download",
+    "relatedArticles": "Related Articles",
+    "viewAllArticles": "View All Articles",
     "guides": {
       "customs_procedures": {
         "title": "Customs Procedures Guide for Import-Export",
