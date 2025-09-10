@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../contexts/LanguageContext';
-import { knowledgeService, KnowledgePost } from '../services/knowledgeService';
+import { knowledgeService, KnowledgePost, Category } from '../services/knowledgeService';
 import { handleApiError } from '../services/api';
 import { 
   BookOpen,
@@ -28,6 +28,8 @@ const KnowledgePageAPI: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
   const { t, currentLocale } = useTranslation();
 
   const itemsPerPage = 12;
@@ -39,17 +41,27 @@ const KnowledgePageAPI: React.FC = () => {
       setError(null);
       
       try {
-        const response = await knowledgeService.getKnowledge({
+        const response = (await knowledgeService.getKnowledge({
           lang: currentLocale,
           page: currentPage,
           limit: itemsPerPage,
           category: selectedCategory !== 'all' ? selectedCategory : undefined,
           search: searchQuery || undefined
-        });
+        })) as unknown as {
+          data: KnowledgePost[];
+          pagination: {
+            limit: number,
+            page: number,
+            pages: number,
+            total: number
+          };
+          success: boolean,
+          error: any
+        };
         
         if (response.success && response.data) {
           setGuides(response.data);
-          setTotalResults(response.total || 0);
+          setTotalResults(response.pagination.total || 0);
         } else {
           throw new Error(response.error || 'Failed to fetch knowledge guides');
         }
@@ -69,15 +81,34 @@ const KnowledgePageAPI: React.FC = () => {
     setCurrentPage(1);
   }, [selectedCategory, searchQuery]);
 
-  const categories = [
-    { id: 'all', label: t('knowledge.categories.all'), count: totalResults },
-    { id: 'procedures', label: t('knowledge.categories.procedures'), count: 0 },
-    { id: 'regulations', label: t('knowledge.categories.regulations'), count: 0 },
-    { id: 'customs', label: t('knowledge.categories.customs'), count: 0 },
-    { id: 'taxes', label: t('knowledge.categories.taxes'), count: 0 },
-    { id: 'guides', label: t('knowledge.categories.guides'), count: 0 },
-    { id: 'tips', label: t('knowledge.categories.tips'), count: 0 }
-  ];
+  // Fetch categories from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setCategoriesLoading(true);
+      try {
+        const response = await knowledgeService.getCategories(currentLocale);
+        console.log("totalResults: ", totalResults);
+        
+        if (Array.isArray(response)) {
+          // Add "all" category at the beginning with count
+          const allCategories = [
+            { id: 'all', name: t('knowledge.categories.all'), slug: 'all' },
+            ...response.map(cat => ({ ...cat }))
+          ];
+          setCategories(allCategories);
+        } else {
+          throw new Error(response.error || 'Failed to fetch categories');
+        }
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+        setCategories([{ id: 'all', name: t('knowledge.categories.all'), slug: 'all' }]);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+    
+    fetchCategories();
+  }, []);
 
   const featuredGuides = guides.slice(0, 3); // Show first 3 guides as featured
 
@@ -173,19 +204,29 @@ const KnowledgePageAPI: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="flex flex-wrap justify-center gap-3"
             >
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                    selectedCategory === category.id
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                  }`}
-                >
-                  {category.label} {category.id === 'all' ? `(${totalResults})` : ''}
-                </button>
-              ))}
+              {categoriesLoading ? (
+                <div className="flex items-center justify-center py-4">
+                  <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+                  <span className="ml-2 text-gray-600">Loading categories...</span>
+                </div>
+              ) : (
+                categories.map((category) => {
+                  const categorySlug = category.slug || category.id;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(categorySlug)}
+                      className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                        selectedCategory === categorySlug
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                      }`}
+                    >
+                      {category.name} {category.id === 'all'}
+                    </button>
+                  );
+                })
+              )}
             </motion.div>
           </div>
         </section>

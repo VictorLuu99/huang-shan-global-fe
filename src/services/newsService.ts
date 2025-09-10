@@ -24,6 +24,12 @@ export interface NewsListResponse {
   totalPages: number;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 export class NewsService {
   /**
    * Fetch paginated news articles with optional filtering
@@ -87,6 +93,16 @@ export class NewsService {
       ...params,
       search: searchTerm
     });
+  }
+
+  /**
+   * Fetch news categories
+   */
+  static async getCategories(lang?: string): Promise<ApiResponse<Category[]>> {
+    const params: Record<string, string> = {};
+    if (lang) params.lang = lang;
+    
+    return await apiClient.get<Category[]>('/api/news/categories', params);
   }
 }
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "../contexts/LanguageContext";
-import { newsService, NewsArticle } from "../services/newsService";
+import { newsService, NewsArticle, Category } from "../services/newsService";
 import { handleApiError } from "../services/api";
 import {
   Search,
@@ -30,6 +30,8 @@ export default function NewsPageAPI() {
   const [error, setError] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
   const { t, currentLocale } = useTranslation();
 
   const articlesPerPage = 9;
@@ -82,13 +84,45 @@ export default function NewsPageAPI() {
     setCurrentPage(1);
   }, [selectedCategory, searchTerm]);
 
-  const categories = [
-    { id: "all", name: t("news.categories.all"), icon: FileText },
-    { id: "company", name: t("news.categories.company"), icon: Building },
-    { id: "industry", name: t("news.categories.industry"), icon: TrendingUp },
-    { id: "regulations", name: t("news.categories.regulations"), icon: Globe },
-    { id: "events", name: t("news.categories.events"), icon: Award },
-  ];
+  // Fetch categories from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setCategoriesLoading(true);
+      try {
+        const response = await newsService.getCategories(currentLocale);
+        if (Array.isArray(response)) {
+          // Add "all" category at the beginning
+          const allCategories = [
+            { id: "all", name: t("news.categories.all"), slug: "all" },
+            ...response.map(cat => ({ ...cat }))
+          ];
+          setCategories(allCategories);
+        } else {
+          throw new Error(response.error || "Failed to fetch categories");
+        }
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+        // Fallback to empty categories if API fails
+        setCategories([{ id: "all", name: t("news.categories.all"), slug: "all" }]);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  // Map categories to include icons (keeping icon mapping for UI)
+  const getCategoryIcon = (slug: string) => {
+    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+      all: FileText,
+      "company-news": Building,
+      "industry-news": TrendingUp,
+      "new-regulations": Globe,
+      events: Award,
+    };
+    return iconMap[slug] || FileText;
+  };
 
   const featuredArticles = articles
     .filter((article) => article.featured)
@@ -112,7 +146,7 @@ export default function NewsPageAPI() {
     if (article.read_time) return article.read_time;
     // Estimate reading time based on content length
     const wordsPerMinute = 200;
-    const wordCount = article.content.split(" ").length;
+    const wordCount = article?.content ? article?.content.split(" ").length : 0;
     const minutes = Math.ceil(wordCount / wordsPerMinute);
     return `${minutes} phút`;
   };
@@ -168,29 +202,37 @@ export default function NewsPageAPI() {
 
               {/* Category Filters */}
               <div className="flex flex-wrap gap-3 justify-center">
-                {categories.map((category, index) => {
-                  const IconComponent = category.icon;
-                  return (
-                    <motion.button
-                      key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`flex items-center px-6 py-3 rounded-full font-medium transition-all ${
-                        selectedCategory === category.id
-                          ? "bg-blue-600 text-white shadow-lg"
-                          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
-                      }`}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <IconComponent className="w-4 h-4 mr-2" />
-                      {category.name}
+                {categoriesLoading ? (
+                  <div className="flex items-center justify-center py-4">
+                    <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+                    <span className="ml-2 text-gray-600">Loading categories...</span>
+                  </div>
+                ) : (
+                  categories.map((category, index) => {
+                    const IconComponent = getCategoryIcon(category.slug);
+                    const categorySlug = category.slug || category.id;
+                    return (
+                      <motion.button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(categorySlug)}
+                        className={`flex items-center px-6 py-3 rounded-full font-medium transition-all ${
+                          selectedCategory === categorySlug
+                            ? "bg-blue-600 text-white shadow-lg"
+                            : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                        }`}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <IconComponent className="w-4 h-4 mr-2" />
+                        {category.name}
                     </motion.button>
                   );
-                })}
+                })
+              )}
               </div>
             </motion.div>
           </div>
@@ -390,10 +432,10 @@ export default function NewsPageAPI() {
                               </span>
                             </div>
                             <div className="flex items-center gap-3">
-                              <span className="flex items-center text-sm text-gray-500">
+                              {/* <span className="flex items-center text-sm text-gray-500">
                                 <Eye className="w-4 h-4 mr-1" />
                                 {getViews(article)}
-                              </span>
+                              </span> */}
                               <span className="text-sm text-gray-500">
                                 {getReadTime(article)}
                               </span>

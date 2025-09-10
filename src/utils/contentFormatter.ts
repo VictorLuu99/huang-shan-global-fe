@@ -128,19 +128,6 @@ export function formatKnowledgeContent(content: string | null | undefined): stri
  */
 export function sanitizeHtml(html: string): string {
   // Allow only safe HTML tags
-  const allowedTags = [
-    'p', 'br', 'strong', 'em', 'code', 'span', 'div', 'h1', 'h2', 'h3', 
-    'li', 'ul', 'ol', 'a', 'blockquote'
-  ];
-  
-  const allowedAttributes = {
-    'a': ['href', 'target', 'rel', 'class'],
-    'span': ['style', 'class'],
-    'div': ['class'],
-    'code': ['class'],
-    'h1': ['class'], 'h2': ['class'], 'h3': ['class'],
-    'li': ['class'], 'ul': ['class'], 'ol': ['class']
-  };
 
   // Simple sanitization - in production, use a library like DOMPurify
   let sanitized = html;

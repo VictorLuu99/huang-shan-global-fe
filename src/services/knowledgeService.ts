@@ -34,6 +34,13 @@ export interface KnowledgeListResponse {
   totalPages: number;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  count?: number;
+}
+
 export class KnowledgeService {
   /**
    * Fetch paginated knowledge posts with optional filtering
@@ -176,6 +183,16 @@ export class KnowledgeService {
     });
 
     return breadcrumb;
+  }
+
+  /**
+   * Fetch knowledge categories
+   */
+  static async getCategories(lang?: string): Promise<ApiResponse<Category[]>> {
+    const params: Record<string, string> = {};
+    if (lang) params.lang = lang;
+    
+    return await apiClient.get<Category[]>('/api/knowledge/categories', params);
   }
 }
 
