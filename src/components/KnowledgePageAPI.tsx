@@ -206,7 +206,7 @@ const KnowledgePageAPI: React.FC = () => {
     if (guide.read_time) return parseInt(guide.read_time.replace(" phút", ""));
     // Estimate reading time based on content length
     const wordsPerMinute = 200;
-    const wordCount = guide.content.split(" ").length;
+    const wordCount = guide?.content?.split(" ").length || 0;
     return Math.ceil(wordCount / wordsPerMinute);
   };
 

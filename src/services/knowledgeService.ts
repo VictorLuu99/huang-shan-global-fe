@@ -23,6 +23,7 @@ export interface KnowledgePost {
   title_vn?: string;
   title_en?: string;
   title_cn?: string;
+  content_type: string; // "rich" or "plain"
 }
 
 export interface KnowledgeListResponse {
