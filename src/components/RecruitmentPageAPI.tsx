@@ -612,43 +612,49 @@ console.log("applicationData: ", applicationData);
                                 {job.description}
                               </p>
 
-                              <div className="grid md:grid-cols-2 gap-6">
-                                <div>
-                                  <h4 className="font-semibold text-gray-900 mb-2">
+                              <div className="grid md:grid-cols-2 gap-8">
+                                <div className="bg-gray-50 p-4 rounded-lg">
+                                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                                    <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
                                     Requirements
                                   </h4>
-                                  <div className="text-sm text-gray-600 space-y-1">
+                                  <div className="space-y-2">
                                     {(job.requirements as unknown as string)
                                       ?.split("\n")
                                       .filter((req) => req.trim())
                                       .map((req, idx) => (
                                         <div
                                           key={idx}
-                                          className="flex items-start"
+                                          className="flex items-start group hover:bg-white hover:shadow-sm rounded-md p-2 transition-all duration-200"
                                         >
-                                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                                          {req.trim()}
+                                          <CheckCircle className="w-4 h-4 text-green-600 mr-3 mt-0.5 flex-shrink-0 group-hover:text-green-700" />
+                                          <span className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-900">
+                                            {req.trim()}
+                                          </span>
                                         </div>
                                       ))}
                                   </div>
                                 </div>
 
                                 {job.benefits && job.benefits.length > 0 && (
-                                  <div>
-                                    <h4 className="font-semibold text-gray-900 mb-2">
+                                  <div className="bg-blue-50 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
                                       Benefits
                                     </h4>
-                                    <div className="text-sm text-gray-600 space-y-1">
+                                    <div className="space-y-2">
                                       {(job.benefits as unknown as string)
                                         ?.split("\n")
-                                        .filter((req) => req.trim())
-                                        .map((req, idx) => (
+                                        .filter((benefit) => benefit.trim())
+                                        .map((benefit, idx) => (
                                           <div
                                             key={idx}
-                                            className="flex items-start"
+                                            className="flex items-start group hover:bg-white hover:shadow-sm rounded-md p-2 transition-all duration-200"
                                           >
-                                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                                            {req.trim()}
+                                            <CheckCircle className="w-4 h-4 text-blue-600 mr-3 mt-0.5 flex-shrink-0 group-hover:text-blue-700" />
+                                            <span className="text-sm text-gray-700 leading-relaxed group-hover:text-gray-900">
+                                              {benefit.trim()}
+                                            </span>
                                           </div>
                                         ))}
                                     </div>
