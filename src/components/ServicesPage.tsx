@@ -30,7 +30,7 @@ const ServicesPage: React.FC = () => {
       shortDesc: "Vận chuyển đường bộ Trung - Việt, 2-3 ngày, kho bãi 2 đầu",
       color: "bg-blue-500",
       features: ["2-3 ngày giao hàng", "Kho bãi tại 2 đầu", "Theo dõi real-time", "Bảo hiểm toàn trình"],
-      price: "Từ 15,000 VNĐ/kg",
+      price: "10,000 VNĐ/kg",
       popular: true
     },
     {
@@ -41,7 +41,7 @@ const ServicesPage: React.FC = () => {
       shortDesc: "Line chuyên biệt TMĐT, 2-3 ngày, tối ưu shop online",
       color: "bg-red-500",
       features: ["Chuyên biệt TMĐT", "Không kiểm hóa", "Tránh tắc biên", "Phù hợp shop online"],
-      price: "Từ 25,000 VNĐ/kg"
+      price: "28,000 VNĐ/kg"
     },
     {
       id: 'ocean-freight',
@@ -61,7 +61,7 @@ const ServicesPage: React.FC = () => {
       shortDesc: "Hóa đơn VAT, nhập khẩu chính ngạch, minh bạch",
       color: "bg-orange-500",
       features: ["Hóa đơn VAT", "Chính ngạch", "Minh bạch an toàn", "Nhập khẩu lâu dài"],
-      price: "Phí từ 8%"
+      price: "Liên hệ báo giá"
     },
     {
       id: 'machinery-import',
@@ -81,7 +81,7 @@ const ServicesPage: React.FC = () => {
       shortDesc: "Tìm nguồn uy tín, đàm phán giá, đặt hàng A-Z",
       color: "bg-purple-500",
       features: ["Tìm nguồn uy tín", "Đàm phán giá tốt", "Đặt hàng A-Z", "Kiểm tra chất lượng"],
-      price: "Phí từ 3%"
+      price: "1%"
     }
   ];
 
@@ -151,17 +151,17 @@ const ServicesPage: React.FC = () => {
                   className="bg-card border border-border rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
                 >
                   {service.popular && (
-                    <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium z-10">
                       Phổ biến
                     </div>
                   )}
                   
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-4 mt-2">
                     <div className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
                       <service.icon className="w-7 h-7 text-white" />
                     </div>
                     <div className="text-right">
-                      <div className="text-sm text-muted-foreground">Giá từ</div>
+                      <div className="text-sm text-muted-foreground">{service.id === 'sourcing-order' ? 'Phí order chỉ từ' : 'Giá chỉ từ'}</div>
                       <div className="font-bold text-primary">{service.price}</div>
                     </div>
                   </div>
@@ -178,10 +178,10 @@ const ServicesPage: React.FC = () => {
                     ))}
                   </div>
                   
-                  <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center group">
+                  <a href="/contact" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center group">
                     Nhận báo giá ngay
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                 </motion.div>
               ))}
             </div>

@@ -80,7 +80,7 @@ const CountUp: React.FC<CountUpProps> = ({
 interface Logo {
   name: string;
   id: number;
-  img: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  img: string; // Changed to string for image path
 }
 
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -120,7 +120,7 @@ const LogoColumn: React.FC<{
   const adjustedTime =
     (currentTime + columnDelay) % (cycleInterval * logos.length);
   const currentIndex = Math.floor(adjustedTime / cycleInterval);
-  const CurrentLogo = logos[currentIndex].img;
+  const currentLogo = logos[currentIndex];
 
   return (
     <motion.div
@@ -162,7 +162,13 @@ const LogoColumn: React.FC<{
             },
           }}
         >
-          <CurrentLogo className="h-20 w-20 max-h-[80%] max-w-[80%] object-contain md:h-32 md:w-32 text-sage-500" />
+          <Image
+            src={currentLogo.img}
+            alt={currentLogo.name}
+            width={128}
+            height={80}
+            className="h-20 w-20 max-h-[80%] max-w-[80%] object-contain md:h-32 md:w-32"
+          />
         </motion.div>
       </AnimatePresence>
     </motion.div>
@@ -202,102 +208,6 @@ const LogoCarousel: React.FC<{
   );
 };
 
-// Sample Logo Components
-const FedExIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#4B0082" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="white"
-      fontSize="12"
-      fontWeight="bold"
-    >
-      FedEx
-    </text>
-  </svg>
-);
-
-const DHLIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FFCC00" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="#D40511"
-      fontSize="12"
-      fontWeight="bold"
-    >
-      DHL
-    </text>
-  </svg>
-);
-
-const UPSIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#8B4513" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="white"
-      fontSize="12"
-      fontWeight="bold"
-    >
-      UPS
-    </text>
-  </svg>
-);
-
-const AmazonIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FF9900" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="white"
-      fontSize="10"
-      fontWeight="bold"
-    >
-      Amazon
-    </text>
-  </svg>
-);
-
-const MaerskIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#0066CC" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="white"
-      fontSize="10"
-      fontWeight="bold"
-    >
-      Maersk
-    </text>
-  </svg>
-);
-
-const TNTIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg viewBox="0 0 100 40" {...props}>
-    <rect width="100" height="40" fill="#FF6600" rx="4" />
-    <text
-      x="50"
-      y="25"
-      textAnchor="middle"
-      fill="white"
-      fontSize="12"
-      fontWeight="bold"
-    >
-      TNT
-    </text>
-  </svg>
-);
 
 // Main Logistics Landing Page Component
 const LogisticsLandingPage: React.FC = () => {
@@ -314,12 +224,11 @@ const LogisticsLandingPage: React.FC = () => {
   const { t, currentLocale } = useTranslation();
 
   const partnerLogos: Logo[] = [
-    { name: "FedEx", id: 1, img: FedExIcon },
-    { name: "DHL", id: 2, img: DHLIcon },
-    { name: "UPS", id: 3, img: UPSIcon },
-    { name: "Amazon", id: 4, img: AmazonIcon },
-    { name: "Maersk", id: 5, img: MaerskIcon },
-    { name: "TNT", id: 6, img: TNTIcon },
+    { name: "Partner 1", id: 1, img: "/images/partners/doitac1.png" },
+    { name: "Partner 2", id: 2, img: "/images/partners/doitac2.png" },
+    { name: "Partner 3", id: 3, img: "/images/partners/doitac3.png" },
+    { name: "Partner 4", id: 4, img: "/images/partners/doitac4.png" },
+    { name: "Partner 5", id: 5, img: "/images/partners/doitac5.png" },
   ];
 
   const services = [
@@ -454,7 +363,7 @@ const LogisticsLandingPage: React.FC = () => {
       <section id="home" className="pt-16">
         <div className="container mx-auto px-4">
           <Image
-            src="/images/background_home.jpg"
+            src="/images/background_home.png"
             alt="Huang Shan Global Logistics"
             width={1200}
             height={600}
@@ -558,7 +467,7 @@ const LogisticsLandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <LogoCarousel columnCount={3} logos={partnerLogos} />
+          <LogoCarousel columnCount={5} logos={partnerLogos} />
         </div>
       </section>
 

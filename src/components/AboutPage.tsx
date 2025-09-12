@@ -146,9 +146,6 @@ const AboutPage: React.FC = () => {
                 className="bg-background rounded-2xl p-8 shadow-lg border"
               >
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mr-4">
-                    <Target className="w-6 h-6 text-blue-500" />
-                  </div>
                   <h3 className="text-2xl font-bold text-primary">{t('about.mission.title')}</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
@@ -164,9 +161,6 @@ const AboutPage: React.FC = () => {
                 className="bg-background rounded-2xl p-8 shadow-lg border"
               >
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center mr-4">
-                    <Eye className="w-6 h-6 text-purple-500" />
-                  </div>
                   <h3 className="text-2xl font-bold text-primary">{t('about.vision.title')}</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">

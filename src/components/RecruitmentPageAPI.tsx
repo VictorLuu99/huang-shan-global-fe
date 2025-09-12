@@ -920,7 +920,7 @@ console.log("applicationData: ", applicationData);
                   <div className="space-y-2 text-left">
                     <div className="flex justify-between">
                       <span>{t("recruitment.contact.weekdays")}</span>
-                      <span>8:00 - 17:30</span>
+                      <span>8:00 - 17:00</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t("recruitment.contact.saturday")}</span>

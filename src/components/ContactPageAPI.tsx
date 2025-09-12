@@ -572,7 +572,7 @@ const ContactPageAPI: React.FC = () => {
                       <span className="text-muted-foreground">
                         {t("contact.hours.weekdays")}
                       </span>
-                      <span className="font-medium">8:00 - 17:30</span>
+                      <span className="font-medium">8:00 - 17:00</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">
