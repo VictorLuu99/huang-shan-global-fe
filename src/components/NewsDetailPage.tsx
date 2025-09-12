@@ -20,6 +20,7 @@ import {
 import { useTranslation } from '@/hooks/useTranslation';
 import { NewsArticle, newsService } from '@/services/newsService';
 import { formatNewsContent, sanitizeHtml } from '@/utils/contentFormatter';
+import Image from "next/image";
 
 interface NewsDetailPageProps {
   post: NewsArticle;
@@ -214,7 +215,7 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
                   transition={{ delay: 0.2 }}
                   className="mb-8"
                 >
-                  <img
+                  <Image
                     src={post.image_url}
                     alt={post.title}
                     className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
@@ -337,7 +338,7 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
                       >
                         <div className="bg-card rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border group-hover:border-primary/50 h-full">
                           {relatedPost.image_url && (
-                            <img
+                            <Image
                               src={relatedPost.image_url}
                               alt={relatedPost.title}
                               className="w-full h-32 object-cover rounded-lg mb-4"

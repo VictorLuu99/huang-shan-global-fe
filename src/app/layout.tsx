@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
+import ContactBar from '@/components/shared/ContactBar';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { generateSEOMetadata, generateStructuredData } from '@/components/shared/SEO';
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: Props) {
               <main className="min-h-screen">
                 {children}
               </main>
+              <ContactBar />
               <Footer />
             </ToastProvider>
           </LanguageProvider>
