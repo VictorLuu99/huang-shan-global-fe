@@ -133,6 +133,7 @@
       "title": "Gửi yêu cầu tư vấn",
       "subtitle": "Điền thông tin bên dưới để nhận tư vấn từ chuyên gia của chúng tôi",
       "personal_info": "Thông tin cá nhân",
+      "full_name": "Họ và tên",
       "firstName": "Tên",
       "lastName": "Họ",
       "first_name": "Tên",
@@ -141,15 +142,6 @@
       "phone": "Số điện thoại",
       "company": "Công ty",
       "service_type": "Loại dịch vụ quan tâm",
-      "priority": "Mức độ ưu tiên",
-      "priority_levels": {
-        "low": "Thấp",
-        "normal": "Bình thường",
-        "high": "Cao",
-        "urgent": "Khẩn cấp"
-      },
-      "subject": "Tiêu đề",
-      "subject_placeholder": "Nhập tiêu đề yêu cầu tư vấn của bạn",
       "message": "Nội dung chi tiết",
       "messagePlaceholder": "Mô tả chi tiết về nhu cầu logistics của bạn, loại hàng hóa, tuyến đường vận chuyển, thời gian dự kiến...",
       "message_placeholder": "Mô tả chi tiết về nhu cầu logistics của bạn, loại hàng hóa, tuyến đường vận chuyển, thời gian dự kiến...",
@@ -166,12 +158,10 @@
       }
     },
     "services": {
-      "ground_transport": "Vận tải đường bộ",
-      "air_freight": "Vận tải hàng không",
-      "ocean_freight": "Vận tải đường biển",
-      "warehousing": "Dịch vụ kho bãi",
-      "consultation": "Tư vấn logistics",
-      "other": "Dịch vụ khác"
+      "official_unofficial_transport": "Vận tải chính thức và không chính thức",
+      "ecommerce_shipping": "Vận chuyển thương mại điện tử",
+      "import_machinery": "Nhập khẩu máy móc",
+      "order_taobao_1688": "Đặt hàng Taobao/1688"
     },
     "info": {
       "title": "Thông tin liên hệ",

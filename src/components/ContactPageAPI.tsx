@@ -16,24 +16,18 @@ import {
   Building,
   Package,
   Globe,
-  Star,
   CheckCircle,
   User,
-  MessageSquare,
   Loader2,
   AlertCircle,
 } from "lucide-react";
 
 interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
+  fullName: string;
   phone: string;
   company: string;
   serviceType: string;
-  subject: string;
   message: string;
-  priority: string;
 }
 
 interface SubmissionState {
@@ -44,15 +38,11 @@ interface SubmissionState {
 
 const ContactPageAPI: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
+    fullName: "",
     phone: "",
     company: "",
     serviceType: "",
-    subject: "",
     message: "",
-    priority: "normal",
   });
 
   const [submission, setSubmission] = useState<SubmissionState>({
@@ -85,14 +75,13 @@ const ContactPageAPI: React.FC = () => {
     setSubmission({ isLoading: true, isSubmitted: false, error: null });
     try {
       const submitData = {
-        full_name: `${formData.firstName} ${formData.lastName}`.trim(),
-        email: formData.email,
+        full_name: formData.fullName.trim(),
         phone: formData.phone,
         company: formData.company,
         service_type: formData.serviceType,
-        subject: formData.subject,
+        subject: `Service Request: ${formData.serviceType}`,
         message: formData.message,
-        priority: formData.priority,
+        priority: "normal",
         language: currentLocale,
         status: "pending",
       };
@@ -121,15 +110,11 @@ const ContactPageAPI: React.FC = () => {
         });
         // Reset form
         setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
+          fullName: "",
           phone: "",
           company: "",
           serviceType: "",
-          subject: "",
           message: "",
-          priority: "normal",
         });
         // Hide success message after 5 seconds
         setTimeout(() => {
@@ -161,34 +146,24 @@ const ContactPageAPI: React.FC = () => {
 
   const serviceTypes = [
     {
-      id: "ground_transport",
-      label: t("contact.services.ground_transport"),
+      id: "official_unofficial_transport",
+      label: t("contact.services.official_unofficial_transport"),
       icon: <Truck className="w-4 h-4" />,
     },
     {
-      id: "air_freight",
-      label: t("contact.services.air_freight"),
+      id: "ecommerce_shipping",
+      label: t("contact.services.ecommerce_shipping"),
       icon: <Package className="w-4 h-4" />,
     },
     {
-      id: "ocean_freight",
-      label: t("contact.services.ocean_freight"),
-      icon: <Globe className="w-4 h-4" />,
-    },
-    {
-      id: "warehousing",
-      label: t("contact.services.warehousing"),
+      id: "import_machinery",
+      label: t("contact.services.import_machinery"),
       icon: <Building className="w-4 h-4" />,
     },
     {
-      id: "consultation",
-      label: t("contact.services.consultation"),
-      icon: <MessageSquare className="w-4 h-4" />,
-    },
-    {
-      id: "other",
-      label: t("contact.services.other"),
-      icon: <Star className="w-4 h-4" />,
+      id: "order_taobao_1688",
+      label: t("contact.services.order_taobao_1688"),
+      icon: <Globe className="w-4 h-4" />,
     },
   ];
 
@@ -274,68 +249,36 @@ const ContactPageAPI: React.FC = () => {
                             <User className="w-5 h-5 mr-2" />
                             {t("contact.form.personal_info")}
                           </h3>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                              <label className="block text-sm font-medium mb-2">
-                                {t("contact.form.first_name")} *
-                              </label>
-                              <input
-                                type="text"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={handleInputChange}
-                                required
-                                disabled={submission.isLoading}
-                                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium mb-2">
-                                {t("contact.form.last_name")} *
-                              </label>
-                              <input
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={handleInputChange}
-                                required
-                                disabled={submission.isLoading}
-                                className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                              />
-                            </div>
+                          <div>
+                            <label className="block text-sm font-medium mb-2">
+                              {t("contact.form.full_name")} *
+                            </label>
+                            <input
+                              type="text"
+                              name="fullName"
+                              value={formData.fullName}
+                              onChange={handleInputChange}
+                              required
+                              disabled={submission.isLoading}
+                              className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
+                            />
                           </div>
                         </div>
 
                         {/* Contact Information */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-medium mb-2">
-                              {t("contact.form.email")} *
-                            </label>
-                            <input
-                              type="email"
-                              name="email"
-                              value={formData.email}
-                              onChange={handleInputChange}
-                              required
-                              disabled={submission.isLoading}
-                              className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium mb-2">
-                              {t("contact.form.phone")} *
-                            </label>
-                            <input
-                              type="tel"
-                              name="phone"
-                              value={formData.phone}
-                              onChange={handleInputChange}
-                              required
-                              disabled={submission.isLoading}
-                              className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                            />
-                          </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            {t("contact.form.phone")} *
+                          </label>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            required
+                            disabled={submission.isLoading}
+                            className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
+                          />
                         </div>
 
                         {/* Company Information */}
@@ -382,49 +325,6 @@ const ContactPageAPI: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Priority */}
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            {t("contact.form.priority")}
-                          </label>
-                          <select
-                            name="priority"
-                            value={formData.priority}
-                            onChange={handleInputChange}
-                            disabled={submission.isLoading}
-                            className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                          >
-                            <option value="low">
-                              {t("contact.form.priority_levels.low")}
-                            </option>
-                            <option value="normal">
-                              {t("contact.form.priority_levels.normal")}
-                            </option>
-                            <option value="high">
-                              {t("contact.form.priority_levels.high")}
-                            </option>
-                            <option value="urgent">
-                              {t("contact.form.priority_levels.urgent")}
-                            </option>
-                          </select>
-                        </div>
-
-                        {/* Subject */}
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            {t("contact.form.subject")} *
-                          </label>
-                          <input
-                            type="text"
-                            name="subject"
-                            value={formData.subject}
-                            onChange={handleInputChange}
-                            required
-                            disabled={submission.isLoading}
-                            placeholder={t("contact.form.subject_placeholder")}
-                            className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50"
-                          />
-                        </div>
 
                         {/* Message */}
                         <div>

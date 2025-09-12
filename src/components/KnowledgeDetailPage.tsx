@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { KnowledgePost, knowledgeService } from "@/services/knowledgeService";
-import { formatKnowledgeContent, sanitizeHtml } from "@/utils/contentFormatter";
+import Image from "next/image";
 
 interface KnowledgeDetailPageProps {
   post: KnowledgePost;
@@ -333,7 +333,7 @@ export default function KnowledgeDetailPage({
                   transition={{ delay: 0.2 }}
                   className="mb-8"
                 >
-                  <img
+                  <Image
                     src={post.featured_image}
                     alt={post.title}
                     className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
@@ -464,7 +464,7 @@ export default function KnowledgeDetailPage({
                       >
                         <div className="bg-card rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border group-hover:border-primary/50 h-full">
                           {relatedPost.featured_image && (
-                            <img
+                            <Image
                               src={relatedPost.featured_image}
                               alt={relatedPost.title}
                               className="w-full h-32 object-cover rounded-lg mb-4"

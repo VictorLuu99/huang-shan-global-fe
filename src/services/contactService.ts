@@ -2,11 +2,10 @@ import { apiClient, ApiResponse } from './api';
 
 export interface ContactFormData {
   full_name: string;
-  email: string;
   phone: string;
   company?: string;
   service_type?: string;
-  subject: string;
+  subject?: string;
   message: string;
   priority?: string;
   language?: string;
@@ -38,14 +37,13 @@ export class ContactService {
    */
   static async submitQuickInquiry(data: {
     name: string;
-    email: string;
+    phone: string;
     message: string;
     language?: string;
   }): Promise<ApiResponse<ContactSubmissionResponse>> {
     const formData: ContactFormData = {
       full_name: data.name,
-      email: data.email,
-      phone: '',
+      phone: data.phone,
       subject: 'Quick Inquiry',
       message: data.message,
       priority: 'normal',
@@ -61,7 +59,6 @@ export class ContactService {
    */
   static async submitServiceRequest(data: {
     name: string;
-    email: string;
     phone: string;
     company?: string;
     serviceType: string;
@@ -70,7 +67,6 @@ export class ContactService {
   }): Promise<ApiResponse<ContactSubmissionResponse>> {
     const formData: ContactFormData = {
       full_name: data.name,
-      email: data.email,
       phone: data.phone,
       company: data.company,
       service_type: data.serviceType,
@@ -120,24 +116,16 @@ static isValidPhone(phone: string): boolean {
       errors.push('Full name is required');
     }
 
-    if (!data.email?.trim()) {
-      errors.push('Email is required');
-    } else if (!this.isValidEmail(data.email)) {
-      errors.push('Please enter a valid email address');
-    }
-
-    if (!data.subject?.trim()) {
-      errors.push('Subject is required');
+    if (!data.phone?.trim()) {
+      errors.push('Phone number is required');
+    } else if (!this.isValidPhone(data.phone)) {
+      errors.push('Please enter a valid phone number');
     }
 
     if (!data.message?.trim()) {
       errors.push('Message is required');
     } else if (data.message.trim().length < 10) {
       errors.push('Message must be at least 10 characters long');
-    }
-
-    if (data.phone && !this.isValidPhone(data.phone)) {
-      errors.push('Please enter a valid phone number');
     }
 
     return {

@@ -133,23 +133,10 @@
       "title": "Send consultation request",
       "subtitle": "Fill out the information below to receive consultation from our experts",
       "personal_info": "Personal information",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "email": "Email",
+      "full_name": "Full Name",
       "phone": "Phone Number",
       "company": "Company",
       "service_type": "Service type of interest",
-      "priority": "Priority level",
-      "priority_levels": {
-        "low": "Low",
-        "normal": "Normal",
-        "high": "High",
-        "urgent": "Urgent"
-      },
-      "subject": "Subject",
-      "subject_placeholder": "Enter your consultation request subject",
       "message": "Detailed content",
       "messagePlaceholder": "Describe in detail your logistics needs, type of goods, shipping routes, expected timeline...",
       "message_placeholder": "Describe in detail your logistics needs, type of goods, shipping routes, expected timeline...",
@@ -166,12 +153,10 @@
       }
     },
     "services": {
-      "ground_transport": "Ground Transportation",
-      "air_freight": "Air Freight",
-      "ocean_freight": "Ocean Freight",
-      "warehousing": "Warehousing Services",
-      "consultation": "Logistics Consultation",
-      "other": "Other Services"
+      "official_unofficial_transport": "Official and Unofficial Transport",
+      "ecommerce_shipping": "E-commerce Shipping",
+      "import_machinery": "Import Machinery",
+      "order_taobao_1688": "Order Taobao/1688"
     },
     "info": {
       "title": "Contact information",

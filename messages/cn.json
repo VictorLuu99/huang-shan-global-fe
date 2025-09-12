@@ -133,23 +133,10 @@
       "title": "发送咨询请求",
       "subtitle": "请填写以下信息，获得我们专家的咨询",
       "personal_info": "个人信息",
-      "firstName": "名字",
-      "lastName": "姓氏",
-      "first_name": "名字",
-      "last_name": "姓氏",
-      "email": "邮箱",
+      "full_name": "姓名",
       "phone": "电话号码",
       "company": "公司",
       "service_type": "感兴趣的服务类型",
-      "priority": "优先级",
-      "priority_levels": {
-        "low": "低",
-        "normal": "普通",
-        "high": "高",
-        "urgent": "紧急"
-      },
-      "subject": "标题",
-      "subject_placeholder": "输入您的咨询请求标题",
       "message": "详细内容",
       "messagePlaceholder": "详细描述您的物流需求，货物类型，运输路线，预期时间...",
       "message_placeholder": "详细描述您的物流需求，货物类型，运输路线，预期时间...",
@@ -166,12 +153,10 @@
       }
     },
     "services": {
-      "ground_transport": "陆路运输",
-      "air_freight": "航空货运",
-      "ocean_freight": "海运",
-      "warehousing": "仓储服务",
-      "consultation": "物流咨询",
-      "other": "其他服务"
+      "official_unofficial_transport": "正式和非正式运输",
+      "ecommerce_shipping": "电商运输",
+      "import_machinery": "进口机械",
+      "order_taobao_1688": "淘宝/1688代购"
     },
     "info": {
       "title": "联系信息",

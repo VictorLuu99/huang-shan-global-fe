@@ -9,7 +9,6 @@ import {
   Phone,
   Users,
   TrendingUp,
-  Target,
   Eye,
   Star,
   FileText,

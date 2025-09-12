@@ -211,8 +211,8 @@ const LogoCarousel: React.FC<{
 
 // Main Logistics Landing Page Component
 const LogisticsLandingPage: React.FC = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
@@ -302,9 +302,9 @@ const LogisticsLandingPage: React.FC = () => {
     try {
       // Prepare data for API
       const submitData = {
-        full_name: `${firstName} ${lastName}`.trim(),
+        full_name: fullName,
         email: email,
-        phone: '', // Home form doesn't have phone, set as empty
+        phone: phone,
         company: company,
         subject: 'Contact Form Submission - Home Page',
         message: message,
@@ -334,8 +334,8 @@ const LogisticsLandingPage: React.FC = () => {
         setSubmitted(true);
         
         // Reset form after successful submission
-        setFirstName("");
-        setLastName("");
+        setFullName("");
+        setPhone("");
         setEmail("");
         setCompany("");
         setMessage("");
@@ -543,7 +543,7 @@ const LogisticsLandingPage: React.FC = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t("contact.phone")}</h3>
+                    <h3 className="font-semibold">{t("contact.info.phone")}</h3>
                     <div className="text-muted-foreground space-y-1">
                       <a href="tel:0389591238" className="block hover:text-primary transition-colors">
                         038.959.1238
@@ -560,7 +560,7 @@ const LogisticsLandingPage: React.FC = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t("contact.email")}</h3>
+                    <h3 className="font-semibold">{t("contact.info.email")}</h3>
                     <a 
                       href="mailto:huangshanglobal@gmail.com" 
                       className="text-muted-foreground hover:text-primary transition-colors block"
@@ -575,7 +575,7 @@ const LogisticsLandingPage: React.FC = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{t("contact.address")}</h3>
+                    <h3 className="font-semibold">{t("contact.info.address")}</h3>
                     <a 
                       href="https://maps.app.goo.gl/tYXyBhZNtMHchAFV6" 
                       target="_blank" 
@@ -598,33 +598,32 @@ const LogisticsLandingPage: React.FC = () => {
               >
                 {!submitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">
-                          {t("contact.form.firstName")}
-                        </label>
-                        <input
-                          type="text"
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                          disabled={isLoading}
-                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">
-                          {t("contact.form.lastName")}
-                        </label>
-                        <input
-                          type="text"
-                          value={lastName}
-                          onChange={(e) => setLastName(e.target.value)}
-                          disabled={isLoading}
-                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
-                          required
-                        />
-                      </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        {t("contact.form.full_name")}
+                      </label>
+                      <input
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        disabled={isLoading}
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        {t("contact.form.phone")}
+                      </label>
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        disabled={isLoading}
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background disabled:opacity-50"
+                        required
+                      />
                     </div>
 
                     <div>

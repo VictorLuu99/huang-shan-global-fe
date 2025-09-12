@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../../contexts/LanguageContext';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 
@@ -12,7 +12,6 @@ const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
   const pathname = usePathname();
-  const router = useRouter();
 
   const navigationItems = [
     { href: '/', label: t('nav.home') },
@@ -55,7 +54,7 @@ const Header: React.FC = () => {
           <Link 
             href="/" 
             className="flex items-center space-x-3"
-            onClick={(e) => handleNavigation('/')}
+            onClick={() => handleNavigation('/')}
           >
             <div className="w-10 h-10 rounded-lg overflow-hidden">
               <div 
@@ -77,7 +76,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleNavigation(item.href)}
+                onClick={() => handleNavigation(item.href)}
                 className={`text-sm font-medium transition-colors relative ${
                   isActiveLink(item.href)
                     ? 'text-primary'
@@ -132,7 +131,7 @@ const Header: React.FC = () => {
                         ? 'text-primary'
                         : 'text-foreground hover:text-primary'
                     }`}
-                    onClick={(e) => {
+                    onClick={() => {
                       handleNavigation(item.href);
                       setMobileMenuOpen(false);
                     }}
