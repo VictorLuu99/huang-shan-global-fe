@@ -5,7 +5,6 @@ import KnowledgeDetailPage from '@/components/KnowledgeDetailPage';
 import { knowledgeService } from '@/services/knowledgeService';
 
 // Static generation for better performance
-// export const dynamic = 'force-dynamic';
 
 interface KnowledgeDetailPageProps {
   params: Promise<{
@@ -106,14 +105,17 @@ export async function generateStaticParams() {
   try {
     // Fetch all knowledge posts to pre-generate slug-based routes
     const response = await knowledgeService.getKnowledge({ limit: 100 });
-    
-    if (response.success && response.data) {
+    if (response.success && Array.isArray(response.data) && response.data.length > 0) {
       // Only return posts that have slugs (filter out null/undefined slugs)
       return response.data
         .filter((post) => post.slug && typeof post.slug === 'string')
         .map((post) => ({
           slug: post.slug,
         }));
+    } else {
+      return [
+        { slug: 'no-knowledge' },
+      ]
     }
   } catch (error) {
     console.error('Error generating static params for knowledge posts:', error);

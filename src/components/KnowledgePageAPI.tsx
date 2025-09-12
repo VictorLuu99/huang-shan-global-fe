@@ -45,7 +45,15 @@ const KnowledgePageAPI: React.FC = () => {
 
   const itemsPerPage = 12;
 
-  // URL parameter for category is handled by initial state
+  // Handle URL parameters for category filtering (only for browser navigation)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get("category");
+
+    if (categoryParam && categoryParam !== selectedCategory) {
+      setSelectedCategory(categoryParam);
+    }
+  }, []); // Only run once on mount
 
   // Update URL when category changes
   useEffect(() => {

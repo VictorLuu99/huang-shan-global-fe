@@ -5,7 +5,6 @@ import NewsDetailPage from '@/components/NewsDetailPage';
 import { newsService } from '@/services/newsService';
 
 // Static generation for better performance
-// export const dynamic = 'force-dynamic';
 
 interface NewsDetailPageProps {
   params: Promise<{
@@ -108,13 +107,17 @@ export async function generateStaticParams() {
     // Fetch all news articles to pre-generate slug-based routes
     const response = await newsService.getNews({ limit: 100 });
     
-    if (response.success && response.data) {
+    if (response.success && Array.isArray(response.data) && response.data.length > 0) {
       // Only return posts that have slugs (filter out null/undefined slugs)
       return response.data
         .filter((post) => post.slug && typeof post.slug === 'string')
         .map((post) => ({
           slug: post.slug,
         }));
+    } else {
+      return [
+        { slug: 'no-news' },
+      ]
     }
   } catch (error) {
     console.error('Error generating static params for news posts:', error);
