@@ -42,15 +42,7 @@ export default function NewsPageAPI() {
   const { t, currentLocale } = useTranslation();
 
 
-  // Handle URL parameters for category filtering (only for browser navigation)
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get("category");
-
-    if (categoryParam && categoryParam !== selectedCategory) {
-      setSelectedCategory(categoryParam);
-    }
-  }, []); // Only run once on mount
+  // Handle URL parameters for category filtering is already done in initial state
 
   useEffect(() => {
     const url = new URL(window.location.href);
