@@ -114,11 +114,7 @@ export async function generateStaticParams() {
         .map((post) => ({
           slug: post.slug,
         }));
-    } else {
-      return [
-        { slug: 'no-news' },
-      ]
-    }
+    } 
   } catch (error) {
     console.error('Error generating static params for news posts:', error);
   }

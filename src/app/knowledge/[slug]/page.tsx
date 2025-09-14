@@ -112,11 +112,7 @@ export async function generateStaticParams() {
         .map((post) => ({
           slug: post.slug,
         }));
-    } else {
-      return [
-        { slug: 'no-knowledge' },
-      ]
-    }
+    } 
   } catch (error) {
     console.error('Error generating static params for knowledge posts:', error);
   }

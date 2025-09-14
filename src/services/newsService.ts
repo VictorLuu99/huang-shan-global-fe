@@ -13,7 +13,8 @@ export interface NewsArticle {
   image_url?: string;
   tags?: string[];
   slug?: string;
-  created_at: string
+  created_at: string;
+  content_type: string; // "rich" or "plain"
 }
 
 export interface NewsListResponse {

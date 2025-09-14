@@ -117,6 +117,98 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
     });
   };
 
+    // Preview content (mirrors admin editor preview behavior)
+    const handlePreview = async () => {
+      const content = post.content || "";
+      if (!content.trim()) return;
+  
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL || ""}/api/preview/content`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              content_html: content,
+              content_type: "rich",
+              language: currentLocale,
+            }),
+          }
+        );
+  
+        const result = (await response.json()) as {
+          success: boolean;
+          data: {
+            sanitized_html: string;
+            word_count: number;
+            reading_time: number;
+            images: Array<{ src: string; alt: string }>;
+          };
+        };
+  
+        if (result.success) {
+          const previewWindow = window.open(
+            "",
+            "_blank",
+            "width=800,height=600,scrollbars=yes"
+          );
+          if (previewWindow) {
+            previewWindow.document.write(`
+              <!DOCTYPE html>
+              <html>
+              <head>
+                <title>Content Preview</title>
+                <meta charset="utf-8">
+                <style>
+                  body { 
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    line-height: 1.6;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    color: #333;
+                  }
+                  img { max-width: 100%; height: auto; }
+                  h1, h2, h3, h4, h5, h6 { color: #2d3748; margin-top: 1.5em; }
+                  .preview-header {
+                    background: #f7fafc;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    margin-bottom: 2rem;
+                    border-left: 4px solid #4299e1;
+                  }
+                  .stats {
+                    display: flex;
+                    gap: 1rem;
+                    margin-top: 0.5rem;
+                    font-size: 0.875rem;
+                    color: #718096;
+                  }
+                </style>
+              </head>
+              <body>
+                <div class="preview-header">
+                  <h2 style="margin: 0 0 0.5rem 0;">Content Preview</h2>
+                  <div class="stats">
+                    <span>📝 ${result.data.word_count} words</span>
+                    <span>⏱️ ${result.data.reading_time}m read</span>
+                    <span>🖼️ ${result.data.images.length} images</span>
+                  </div>
+                </div>
+                <div class="content">
+                  ${result.data.sanitized_html}
+                </div>
+              </body>
+              </html>
+            `);
+            previewWindow.document.close();
+          }
+        }
+      } catch (err) {
+        console.error("Preview failed", err);
+      }
+    };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Reading Progress Bar */}
@@ -242,6 +334,15 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
         <section className="py-12">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
+            {post.content_type === "rich" && (
+              <button
+                onClick={handlePreview}
+                className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors mb-4"
+              >
+                <Eye className="w-5 h-5" />
+                <span>{t("knowledge.preview_version") || "Preview"}</span>
+              </button>
+            )}
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -265,11 +366,12 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
                   '--tw-prose-td-borders': 'var(--border)',
                 } as React.CSSProperties}
               >
-                <div 
-                  dangerouslySetInnerHTML={{ 
-                    __html: sanitizeHtml(formatNewsContent(post.content))
-                  }} 
-                />
+                <div className="prose max-w-none prose-lg">
+                  <div
+                    className="content"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                </div>
               </motion.article>
 
               {/* Article Actions */}
