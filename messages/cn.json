@@ -402,6 +402,9 @@
       "part_time": "兼职",
       "contract": "合同"
     },
+    "salary_negotiable": "面议",
+    "salary_from": "起薪",
+    "salary_upto": "最高",
     "education": {
       "bachelor": "本科学历",
       "college": "专科学历",

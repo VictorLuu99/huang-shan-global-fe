@@ -407,6 +407,9 @@
       "part_time": "Bán thời gian",
       "contract": "Hợp đồng"
     },
+    "salary_negotiable": "Lương thỏa thuận",
+    "salary_from": "Từ",
+    "salary_upto": "Lên đến",
     "education": {
       "bachelor": "Đại học",
       "college": "Cao đẳng",

@@ -149,6 +149,12 @@ export default function RecruitmentPageAPI() {
         job.salary_currency
       }`;
     }
+    if (job.salary_min && !job.salary_max) {
+      return `${t("recruitment.salary_from")} ${job.salary_min.toLocaleString()} 'VND'}`;
+    }
+    if (job.salary_max && !job.salary_min) {
+      return `${t("recruitment.salary_upto")} ${job.salary_max.toLocaleString()} 'VND'}`;
+    }
     return t("recruitment.salary_negotiable");
   };
 
@@ -587,7 +593,7 @@ console.log("applicationData: ", applicationData);
                               {job?.type}
                             </span>
                             <span className="flex items-center">
-                              <DollarSign className="w-4 h-4 mr-1" />
+                              {/* <DollarSign className="w-4 h-4 mr-1" /> */}
                               {formatSalary(job)}
                             </span>
                           </div>

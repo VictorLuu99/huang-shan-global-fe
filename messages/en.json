@@ -402,6 +402,9 @@
       "part_time": "Part-time",
       "contract": "Contract"
     },
+    "salary_negotiable": "Negotiable",
+    "salary_from": "From",
+    "salary_upto": "Up to",
     "education": {
       "bachelor": "Bachelor's Degree",
       "college": "College Degree",
