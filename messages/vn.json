@@ -460,7 +460,15 @@
       "resume": "CV/Resume",
       "upload_resume": "Tải lên CV (PDF, DOC, DOCX)",
       "submit": "Gửi đơn",
-      "cancel": "Hủy"
+      "cancel": "Hủy",
+      "success": {
+        "title": "Đã gửi đơn ứng tuyển thành công!",
+        "message": "Chúng tôi sẽ xem xét hồ sơ và liên hệ với bạn sớm nhất."
+      },
+      "error": {
+        "title": "Gửi đơn ứng tuyển thất bại",
+        "message": "Vui lòng kiểm tra thông tin và thử lại."
+      }
     },
     "experience": {
       "entry": "Mới tốt nghiệp (0-1 năm)",

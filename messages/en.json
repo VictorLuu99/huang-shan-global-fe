@@ -455,7 +455,15 @@
       "resume": "CV/Resume",
       "upload_resume": "Upload CV (PDF, DOC, DOCX)",
       "submit": "Submit Application",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "success": {
+        "title": "Application Submitted Successfully!",
+        "message": "We will review your application and contact you soon."
+      },
+      "error": {
+        "title": "Application Submission Failed",
+        "message": "Please check your information and try again."
+      }
     },
     "experience": {
       "entry": "Fresh Graduate (0-1 years)",

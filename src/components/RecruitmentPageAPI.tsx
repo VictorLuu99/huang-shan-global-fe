@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "../contexts/LanguageContext";
+import { useToast } from "../contexts/ToastContext";
 import { recruitmentService, JobListing } from "../services/recruitmentService";
 import { handleApiError } from "../services/api";
 import {
@@ -94,6 +95,7 @@ export default function RecruitmentPageAPI() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const { t, currentLocale } = useTranslation();
+  const { addToast } = useToast();
 
   // Fetch jobs from API
   useEffect(() => {
@@ -150,14 +152,17 @@ export default function RecruitmentPageAPI() {
       }`;
     }
     if (job.salary_min && !job.salary_max) {
-      return `${t("recruitment.salary_from")} ${job.salary_min.toLocaleString()} 'VND'}`;
+      return `${t(
+        "recruitment.salary_from"
+      )} ${job.salary_min.toLocaleString()} 'VND'}`;
     }
     if (job.salary_max && !job.salary_min) {
-      return `${t("recruitment.salary_upto")} ${job.salary_max.toLocaleString()} 'VND'}`;
+      return `${t(
+        "recruitment.salary_upto"
+      )} ${job.salary_max.toLocaleString()} 'VND'}`;
     }
     return t("recruitment.salary_negotiable");
   };
-
 
   const formatDepartment = (dept: string) => {
     return dept.replace("_", " ").toUpperCase();
@@ -166,14 +171,14 @@ export default function RecruitmentPageAPI() {
   const handleApplicationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("comin here1");
-    
+
     if (!showApplication) return;
     console.log("comin here2");
 
     try {
       setSubmitting(true);
       setError(null);
-console.log("applicationData: ", applicationData);
+      console.log("applicationData: ", applicationData);
 
       // Validate required fields
       if (
@@ -215,19 +220,17 @@ console.log("applicationData: ", applicationData);
         portfolio_url: applicationData.portfolio_url,
         linkedin_url: applicationData.linkedin_url,
       };
-      console.log("serviceData: ", serviceData);
-      
-      const result = await recruitmentService.submitApplication(
+
+      await recruitmentService.submitApplication(
         String(showApplication),
         serviceData
       );
-      if (!result.success) {
-        throw new Error(result.error || "Failed to submit application");
-      }
-
-      console.log("Application submitted successfully:", result.data);
-
       setSubmitSuccess(true);
+      addToast({
+        type: "success",
+        title: t("recruitment.application.success.title"),
+        message: t("recruitment.application.success.message"),
+      });
       setShowApplication(null);
 
       // Reset form
@@ -249,7 +252,13 @@ console.log("applicationData: ", applicationData);
       });
     } catch (err) {
       console.error("Error submitting application:", err);
-      setError(handleApiError(err));
+      const errorMessage = handleApiError(err);
+      setError(errorMessage);
+      addToast({
+        type: "error",
+        title: t("recruitment.application.error.title"),
+        message: errorMessage,
+      });
     } finally {
       setSubmitting(false);
     }
@@ -347,8 +356,8 @@ console.log("applicationData: ", applicationData);
             >
               <CheckCircle className="w-5 h-5 mr-2" />
               <span>
-                Your application has been submitted successfully! We will review
-                it and contact you soon.
+                {t("recruitment.application.success.title")}
+                {t("recruitment.application.success.message")}
               </span>
               <button
                 onClick={() => setSubmitSuccess(false)}
@@ -524,7 +533,9 @@ console.log("applicationData: ", applicationData);
               </div>
 
               <p className="text-gray-600 text-center">
-                {t("recruitment.search.results", { count: filteredJobs.length })}
+                {t("recruitment.search.results", {
+                  count: filteredJobs.length,
+                })}
               </p>
             </motion.div>
           </div>
@@ -878,6 +889,26 @@ console.log("applicationData: ", applicationData);
                             </button>
                           </div>
                         </form>
+                        {/* Error Message */}
+                        <AnimatePresence>
+                          {error && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -50 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -50 }}
+                              className="bg-red-100 border border-red-200 text-red-800 px-6 py-4 mx-6 mt-6 rounded-lg flex items-center"
+                            >
+                              <AlertCircle className="w-5 h-5 mr-2" />
+                              <span>{error}</span>
+                              <button
+                                onClick={() => setError(null)}
+                                className="ml-auto text-red-600 hover:text-red-800"
+                              >
+                                ×
+                              </button>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     )}
                   </AnimatePresence>
