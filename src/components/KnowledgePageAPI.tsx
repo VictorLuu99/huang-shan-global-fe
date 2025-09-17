@@ -27,7 +27,7 @@ import {
 const KnowledgePageAPI: React.FC = () => {
   // Initialize selectedCategory from URL parameter
   const [selectedCategory, setSelectedCategory] = useState(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("category") || "all";
     }
@@ -42,6 +42,8 @@ const KnowledgePageAPI: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
   const { t, currentLocale } = useTranslation();
+
+  console.log("guides: ", guides);
 
   const itemsPerPage = 12;
 
@@ -83,7 +85,7 @@ const KnowledgePageAPI: React.FC = () => {
   useEffect(() => {
     const abortController = new AbortController();
     let isCancelled = false;
-    
+
     const fetchGuides = async () => {
       setLoading(true);
       setError(null);
@@ -113,12 +115,18 @@ const KnowledgePageAPI: React.FC = () => {
             setGuides(response.data);
             setTotalResults(response.pagination.total || 0);
           } else {
-            throw new Error(response.error || "Failed to fetch knowledge guides");
+            throw new Error(
+              response.error || "Failed to fetch knowledge guides"
+            );
           }
         }
       } catch (err) {
         // Only update error state if this request hasn't been cancelled and it's not an abort error
-        if (!isCancelled && !abortController.signal.aborted && (err as Error).name !== 'AbortError') {
+        if (
+          !isCancelled &&
+          !abortController.signal.aborted &&
+          (err as Error).name !== "AbortError"
+        ) {
           setError(handleApiError(err));
           setGuides([]);
         }
@@ -371,22 +379,37 @@ const KnowledgePageAPI: React.FC = () => {
                       className="block group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                     >
                       <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                          {getTypeIcon(getType())}
-                        </div>
-                        <div className="absolute top-4 left-4">
-                          <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
-                            {t("knowledge.featured")}
-                          </span>
-                        </div>
-                        <div className="absolute top-4 right-4">
-                          <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
-                            <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                            <span className="text-xs font-medium">
-                              {getRating().toFixed(1)}
-                            </span>
-                          </div>
-                        </div>
+                        {guide.featured_image ? (
+                          <div
+                            className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                            style={{
+                              backgroundImage: `url(${guide.featured_image})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                            role="img"
+                            aria-label={guide.title}
+                          />
+                        ) : (
+                          <>
+                            <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
+                              {getTypeIcon(getType())}
+                            </div>
+                            <div className="absolute top-4 left-4">
+                              <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+                                {t("knowledge.featured")}
+                              </span>
+                            </div>
+                            <div className="absolute top-4 right-4">
+                              <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                                <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                                <span className="text-xs font-medium">
+                                  {getRating().toFixed(1)}
+                                </span>
+                              </div>
+                            </div>
+                          </>
+                        )}
                       </div>
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-3">
@@ -505,18 +528,34 @@ const KnowledgePageAPI: React.FC = () => {
                         className="block group bg-background border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-primary/20"
                       >
                         <div className="relative h-40 bg-gradient-to-br from-muted/50 to-muted/80 flex items-center justify-center">
-                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                            {getTypeIcon(getType())}
-                          </div>
-                          <div className="absolute top-3 right-3">
-                            <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
-                              <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                              <span className="text-xs font-medium">
-                                {getRating().toFixed(1)}
-                              </span>
-                            </div>
-                          </div>
+                          {guide.featured_image ? (
+                            <div
+                              className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
+                              style={{
+                                backgroundImage: `url(${guide.featured_image})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                              role="img"
+                              aria-label={guide.title}
+                            />
+                          ) : (
+                            <>
+                              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                {getTypeIcon(getType())}
+                              </div>
+                              <div className="absolute top-3 right-3">
+                                <div className="flex items-center space-x-1 bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                                  <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                                  <span className="text-xs font-medium">
+                                    {getRating().toFixed(1)}
+                                  </span>
+                                </div>
+                              </div>
+                            </>
+                          )}
                         </div>
+
                         <div className="p-5">
                           <div className="flex items-center justify-between mb-3">
                             <span

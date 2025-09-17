@@ -334,6 +334,8 @@ export default function KnowledgeDetailPage({
                   className="mb-8"
                 >
                   <Image
+                    width={800}
+                    height={400}
                     src={post.featured_image}
                     alt={post.title}
                     className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
@@ -359,17 +361,16 @@ export default function KnowledgeDetailPage({
         {/* Article Content */}
         <section className="py-12">
           <div className="container mx-auto px-6 ">
-        
             <div className="max-w-4xl mx-auto">
-            {post.content_type === "rich" && (
-              <button
-                onClick={handlePreview}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors mb-4"
-              >
-                <Eye className="w-5 h-5" />
-                <span>{t("knowledge.preview_version") || "Preview"}</span>
-              </button>
-            )}
+              {post.content_type === "rich" && (
+                <button
+                  onClick={handlePreview}
+                  className="flex items-center space-x-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors mb-4"
+                >
+                  <Eye className="w-5 h-5" />
+                  <span>{t("knowledge.preview_version") || "Preview"}</span>
+                </button>
+              )}
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -468,6 +469,8 @@ export default function KnowledgeDetailPage({
                         <div className="bg-card rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border group-hover:border-primary/50 h-full">
                           {relatedPost.featured_image && (
                             <Image
+                              width={800}
+                              height={400}
                               src={relatedPost.featured_image}
                               alt={relatedPost.title}
                               className="w-full h-32 object-cover rounded-lg mb-4"
