@@ -300,7 +300,7 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
               </motion.div>
 
               {/* Featured Image */}
-              {post.image_url && (
+              {post.featured_image && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -308,8 +308,10 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
                   className="mb-8"
                 >
                   <Image
-                    src={post.image_url}
+                    src={post.featured_image}
                     alt={post.title}
+                    width={800}
+                    height={400}
                     className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                   />
                 </motion.div>
@@ -439,10 +441,12 @@ export default function NewsDetailPage({ post }: NewsDetailPageProps) {
                         className="block group"
                       >
                         <div className="bg-card rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-border group-hover:border-primary/50 h-full">
-                          {relatedPost.image_url && (
+                          {relatedPost.featured_image && (
                             <Image
-                              src={relatedPost.image_url}
+                              src={relatedPost.featured_image}
                               alt={relatedPost.title}
+                              width={400}
+                              height={128}
                               className="w-full h-32 object-cover rounded-lg mb-4"
                             />
                           )}

@@ -50,9 +50,9 @@ export async function generateMetadata({
         description: description,
         type: 'article',
         url: `https://huang-shan-global-fe.pages.dev/news/${slug}`,
-        images: post.image_url ? [
+        images: post.featured_image ? [
           {
-            url: post.image_url,
+            url: post.featured_image,
             width: 1200,
             height: 630,
             alt: title,
@@ -74,7 +74,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: `${title} - Huang Shan Global`,
         description: description,
-        images: post.image_url ? [post.image_url] : ['/images/og-default.jpg'],
+        images: post.featured_image ? [post.featured_image] : ['/images/og-default.jpg'],
       },
       alternates: {
         canonical: `https://huang-shan-global-fe.pages.dev/news/${slug}`,

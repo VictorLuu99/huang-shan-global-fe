@@ -10,7 +10,7 @@ export interface NewsArticle {
   read_time?: string;
   views?: number;
   featured: boolean;
-  image_url?: string;
+  featured_image?: string;
   tags?: string[];
   slug?: string;
   created_at: string;

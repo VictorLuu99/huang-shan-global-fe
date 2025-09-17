@@ -372,11 +372,11 @@ export default function NewsPageAPI() {
                         className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
                       >
                         <div className="relative overflow-hidden">
-                          {article.image_url ? (
+                          {article.featured_image ? (
                             <div
                               className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
                               style={{
-                                backgroundImage: `url(${article.image_url})`,
+                                backgroundImage: `url(${article.featured_image})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
                               }}
@@ -479,11 +479,11 @@ export default function NewsPageAPI() {
                           className="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group cursor-pointer h-full"
                         >
                           <div className="relative overflow-hidden">
-                            {article.image_url ? (
+                            {article.featured_image ? (
                               <div
                                 className="w-full h-48 group-hover:scale-105 transition-transform duration-300"
                                 style={{
-                                  backgroundImage: `url(${article.image_url})`,
+                                  backgroundImage: `url(${article.featured_image})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                 }}
