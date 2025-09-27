@@ -8,27 +8,3 @@ pages_build_output_dir = "out"
 [vars]
 NEXT_PUBLIC_API_URL="https://huangshan-api.xox-labs-server.workers.dev"
 NEXT_PUBLIC_ENVIRONMENT="production"
-
-# Custom headers for performance
-[[headers]]
-for = "/*"
-[headers.values]
-X-Frame-Options = "DENY"
-X-Content-Type-Options = "nosniff"
-Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache optimization
-[[headers]]
-for = "/images/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "/css/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "/js/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"

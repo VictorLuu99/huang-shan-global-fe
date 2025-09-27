@@ -129,12 +129,11 @@ export default async function NewsDetailPageRoute({
   const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
+    // For static generation, always use API call
     const response = await newsService.getNewsBySlug(slug, currentLang);
-    
     if (!response.success || !response.data) {
       notFound();
     }
-
     const post = response.data;
 
     return <NewsDetailPage post={post} />;

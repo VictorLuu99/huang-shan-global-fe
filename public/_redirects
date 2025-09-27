@@ -1,0 +1,14 @@
+# Static file redirects - prioritize static content over functions
+/news/dynamic-route-test-post-creation-verification  /news/dynamic-route-test-post-creation-verification/  301
+/news/beautiful-ui-test-final-solution  /news/beautiful-ui-test-final-solution/  301
+/news/beautiful-dynamic-post-test  /news/beautiful-dynamic-post-test/  301
+/news/final-solution-test-perfect-ui  /news/final-solution-test-perfect-ui/  301
+/news/test-final-clean-configuration  /news/test-final-clean-configuration/  301
+/news/van-chuyen-duong-bo-chinh-ngach-lua-chon-toi-uu-khi-nhap-hang-trung-quoc  /news/van-chuyen-duong-bo-chinh-ngach-lua-chon-toi-uu-khi-nhap-hang-trung-quoc/  301
+
+# Error page redirects
+/404  /404/  301
+/500  /500/  301
+
+# SPA fallback for unmatched routes (this should be last)
+/*  /index.html  200

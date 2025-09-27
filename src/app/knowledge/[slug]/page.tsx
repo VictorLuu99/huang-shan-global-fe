@@ -127,12 +127,11 @@ export default async function KnowledgeDetailPageRoute({
   const currentLang = 'vn'; // Default to Vietnamese for static generation
 
   try {
+    // For static generation, always use API call
     const response = await knowledgeService.getKnowledgeBySlug(slug, currentLang);
-    
     if (!response.success || !response.data) {
       notFound();
     }
-
     const post = response.data;
 
     return <KnowledgeDetailPage post={post} />;

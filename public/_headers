@@ -1,0 +1,23 @@
+# Security and Performance Headers
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Static assets cache
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images cache
+/images/*
+  Cache-Control: public, max-age=86400
+
+# API responses cache
+/api/*
+  Cache-Control: public, max-age=300, s-maxage=600
+
+# HTML pages cache
+/*.html
+  Cache-Control: public, max-age=3600, s-maxage=86400
